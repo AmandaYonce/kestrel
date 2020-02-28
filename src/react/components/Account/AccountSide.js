@@ -14,7 +14,7 @@ import HolderImage from "../../../images/owl-black-square.png"
         <CardBody>
             <CardImg top width="100%" src={HolderImage} alt="Kwitter Icon" className="img-fluid" style={{ width: 140 }} />
             
-                <CardTitle>Title</CardTitle>
+                <CardTitle>AccountSide Title</CardTitle>
                 <CardSubtitle>Subtitle</CardSubtitle>
                 <CardText>do we need more text here?  can we use this image placeholder if the user image is "null"</CardText>
             </CardBody>

@@ -14,7 +14,7 @@ import HolderImage from "../../../images/owl-black-square.png"
         <CardBody>
             <CardImg top width="100%" src={HolderImage} alt="Kwitter Icon" className="img-fluid" style={{ width: 140 }} />
             
-                <CardTitle>Title</CardTitle>
+                <CardTitle>MFSide Title</CardTitle>
                 <CardSubtitle>Subtitle</CardSubtitle>
                 <CardText>Use this card for advanced features like Top 10 tweets or whatever we come up with</CardText>
             </CardBody>

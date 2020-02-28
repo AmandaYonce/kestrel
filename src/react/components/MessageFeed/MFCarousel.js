@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Carousel from 'react-bootstrap/Carousel'
-import HolderImage from "../../../images/owl-black-rectangle.png"
+import HolderImage from "../../../images/messagebackground.png"
 
 
 class MFCarousel extends Component{

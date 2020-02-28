@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { login } from "../../../redux";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import { CardBody, CardTitle } from 'reactstrap';
+import SmallIcon from "../../../images/owl-icon.png"
 
 class LoginForm extends React.Component {
   state = { username: "", password: "" };
@@ -21,8 +23,9 @@ class LoginForm extends React.Component {
     const { loading, error } = this.props;
     return (
       <React.Fragment>
-        
-        <Form style={{'margin':"200px 100px"}} onSubmit={this.handleLogin}>
+        <CardBody>
+          <CardTitle style={{"fontSize": "40px", "font-family": 'Poppins'}}>Existing User Login</CardTitle>
+        <Form  onSubmit={this.handleLogin}>
         <Form.Group id="login-form" >
           <Form.Label style={{"fontSize": "30px", "font-family": 'Poppins'}} htmlFor="username">Username</Form.Label>
           <Form.Control style={{"width": "300px"}} type="text" placeholder="Username" name="username" autoFocus required onChange={this.handleChange}/>
@@ -33,14 +36,15 @@ class LoginForm extends React.Component {
             <Form.Control style={{"width": "300px"}} type="password" placeholder="Password" name="password" required onChange={this.handleChange}/>
           </Form.Group>
 
-          <Button variant="secondary" type="submit" disabled={loading}>
+          <Button variant="secondary" type="submit" disabled={loading} style={{ fontSize: 28 }}>
+          <img src={SmallIcon} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "30px", "paddingRight": "5px" }} />
             Login
           </Button>
 
         {loading && <Spinner name="circle" color="blue" />}
         {error && <p style={{ color: "red" }}>{error.message}</p>}
         </Form>
-        
+        </CardBody>
       </React.Fragment>
     );
   }
