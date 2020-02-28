@@ -4,7 +4,7 @@ import React from "react";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { CardBody, CardTitle, Col} from 'reactstrap';
-import SmallIcon from "../../../images/owl-icon.png"
+import SmallIcon from "../../../images/owl-black-square-single.png"
 
 
 class RegistrationForm extends React.Component {
@@ -54,8 +54,8 @@ class RegistrationForm extends React.Component {
           </Form.Group>
           </Form.Row>
 
-          <Button variant="secondary" type="submit" style={{ fontSize: 28 }} >
-          <img src={SmallIcon} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "30px", "paddingRight": "5px"}} />Register
+          <Button variant="secondary" type="submit" style={{ "fontSize": "28", "backgroundColor": "#333333"}} >
+          <img src={SmallIcon} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "40px", "paddingRight": "5px"}} />Register
           </Button>
         </Form>
         </CardBody>

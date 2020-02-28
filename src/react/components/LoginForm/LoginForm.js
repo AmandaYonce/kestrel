@@ -5,7 +5,7 @@ import { login } from "../../../redux";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { CardBody, CardTitle } from 'reactstrap';
-import SmallIcon from "../../../images/owl-icon.png"
+import SmallIcon from "../../../images/owl-black-square-single.png"
 
 class LoginForm extends React.Component {
   state = { username: "", password: "" };
@@ -36,8 +36,8 @@ class LoginForm extends React.Component {
             <Form.Control style={{"width": "300px"}} type="password" placeholder="Password" name="password" required onChange={this.handleChange}/>
           </Form.Group>
 
-          <Button variant="secondary" type="submit" disabled={loading} style={{ fontSize: 28 }}>
-          <img src={SmallIcon} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "30px", "paddingRight": "5px" }} />
+          <Button variant="secondary" type="submit" disabled={loading} style={{ "fontSize": "28", "backgroundColor": "#333333" }}>
+          <img src={SmallIcon} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "40px", "paddingRight": "5px" }} />
             Login
           </Button>
 

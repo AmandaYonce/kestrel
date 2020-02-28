@@ -4,7 +4,7 @@ import {
     CardTitle, CardSubtitle, CardText
   } from 'reactstrap';
 
-import HolderImage from "../../../images/owl-black-square.png"
+import HolderImage from "../../../images/owl-white-background.png"
 
   class AccountSide extends Component {
     render() {
@@ -12,7 +12,7 @@ import HolderImage from "../../../images/owl-black-square.png"
         <Fragment>
         <Card>
         <CardBody>
-            <CardImg top width="100%" src={HolderImage} alt="Kwitter Icon" className="img-fluid" style={{ width: 140 }} />
+            <CardImg top width="100%" src={HolderImage} alt="Kwitter Icon" className="img-fluid rounded-circle" style={{ width: 335 }} />
             
                 <CardTitle>AccountSide Title</CardTitle>
                 <CardSubtitle>Subtitle</CardSubtitle>
