@@ -4,6 +4,8 @@ import {
     CardTitle, CardSubtitle, CardText
   } from 'reactstrap';
 import MFCarousel from './MFCarousel';
+import SmallIcon from "../../../images/owl-black-square-single.png"
+import Button from 'react-bootstrap/Button'
 
 
 class MFMain extends Component {
@@ -17,6 +19,12 @@ class MFMain extends Component {
         
       </CardBody>
       <MFCarousel/>
+      <br/>
+      <Button variant="secondary" type="submit" style={{ "fontSize": "28", "backgroundColor": "#333333" }}>
+          <img src={SmallIcon} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "40px",  }} />
+            New Message
+          </Button>
+      
       </Fragment>
     );
   }
