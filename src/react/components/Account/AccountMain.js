@@ -16,6 +16,10 @@ class AccountMain extends Component {
         <CardSubtitle className="text-secondary mb-3 font-weight-normal text-uppercase" style={{ fontSize: '0.8rem' }}>Subtitle- maybe user about section</CardSubtitle>
         <CardText className="text-secondary mb-4 font-weight-normal" style={{ fontSize: '0.95rem' }}>do we want a button for delete user? What about edit or update user?</CardText>
       </CardBody>
+      <Button variant="secondary" type="submit"  style={{ "fontSize": "28", "backgroundColor": "d6e7e5", "marginRight": "20px" }}>
+          <img src={SmallIcon} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "40px", "paddingRight": "5px" }} />
+            Edit User
+          </Button>
       <Button variant="secondary" type="submit"  style={{ "fontSize": "28", "backgroundColor": "red" }}>
           <img src={SmallIcon} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "40px", "paddingRight": "5px" }} />
             Delete User
