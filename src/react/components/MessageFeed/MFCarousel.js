@@ -1,51 +1,88 @@
 import React, { Component } from 'react';
 import Carousel from 'react-bootstrap/Carousel'
 import HolderImage from "../../../images/messagebackground.png"
+import Button from 'react-bootstrap/Button'
+import { connect } from "react-redux";
+import { getMessages } from "../../../redux/messages.js/getMessages";
 
 
 class MFCarousel extends Component{
-    
+
+  componentDidMount(){
+    this.props.getMessages()
+  }
+  
     render(){
+    if(this.props.messages===null){
+      return (
+      <Carousel>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={HolderImage}
+          alt="First slide"
+        />
+        </Carousel.Item>
+        </Carousel>)
+    }
     return (
         <Carousel>
-        <Carousel.Item>
+        {this.props.messages.map(message=>(
+        <Carousel.Item key={message.id}>
           <img
             className="d-block w-100"
             src={HolderImage}
             alt="First slide"
           />
           <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+              <React.Fragment>
+              <h2>{message.text}</h2>
+              <h4>{message.username}</h4>
+              <Button type="submit" style={{"backgroundColor": "#d6e7e5"}}>
+                <p style={{"color": "black", "fontSize": "20px", "margin":"0"}}>Like</p>
+                </Button>
+              </React.Fragment>
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src={HolderImage}
-            alt="Third slide"
-          />
-      
-          <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src={HolderImage}
-            alt="Third slide"
-          />
-      
-          <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
+          ))}
+
+        
+       </Carousel>
+       
     );
     }
   }
+const mapStateToProps=state=>{
+  return{
+    messages: state.messages.getMessages.result,
+    loading: state.messages.getMessages.loading,
+    error: state.messages.getMessages.error
+  }
+}
+
+  const mapDispatchToProps={
+    getMessages
+  }
   
- export default MFCarousel
+ export default connect(mapStateToProps, mapDispatchToProps)(MFCarousel);
+
+
+  /*{this.props.messages.map(message=>(
+        <Carousel.Item key={message.id}>
+          <img
+            className="d-block w-100"
+            src={HolderImage}
+            alt="First slide"
+          />
+          <Carousel.Caption>
+              <React.Fragment>
+              <h2>{message.text}</h2>
+              <h4>{message.username}</h4>
+              <Button type="submit" style={{"backgroundColor": "#d6e7e5"}}>
+                <p style={{"color": "black", "fontSize": "20px", "margin":"0"}}>Like</p>
+                </Button>
+              </React.Fragment>
+          </Carousel.Caption>
+        </Carousel.Item>
+          ))}*/
+          
