@@ -1,4 +1,4 @@
-import {GETMESSAGES} from "../../messages.js/getMessages"
+import {GETMESSAGES} from "../../messages/getMessages"
 
   const initialState={
       result: null,
