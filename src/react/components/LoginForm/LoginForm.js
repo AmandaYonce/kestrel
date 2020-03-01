@@ -24,15 +24,15 @@ class LoginForm extends React.Component {
     return (
       <React.Fragment>
         <CardBody>
-          <CardTitle style={{"fontSize": "40px", "font-family": 'Poppins'}}>Existing User Login</CardTitle>
+          <CardTitle style={{"fontSize": "40px", "fontFamily": 'Poppins'}}>Existing User Login</CardTitle>
         <Form  onSubmit={this.handleLogin}>
         <Form.Group id="login-form" >
-          <Form.Label style={{"fontSize": "30px", "font-family": 'Poppins'}} htmlFor="username">Username</Form.Label>
+          <Form.Label style={{"fontSize": "30px", "fontFamily": 'Poppins'}} htmlFor="username">Username</Form.Label>
           <Form.Control style={{"width": "300px"}} type="text" placeholder="Username" name="username" autoFocus required onChange={this.handleChange}/>
           </Form.Group>
 
           <Form.Group id="login-form" onSubmit={this.handleLogin}>
-            <Form.Label style={{"fontSize": "30px", "font-family": 'Poppins'}} htmlFor="password">Password</Form.Label>
+            <Form.Label style={{"fontSize": "30px", "fontFamily": 'Poppins'}} htmlFor="password">Password</Form.Label>
             <Form.Control style={{"width": "300px"}} type="password" placeholder="Password" name="password" required onChange={this.handleChange}/>
           </Form.Group>
 
