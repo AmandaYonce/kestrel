@@ -1,3 +1,4 @@
+
 import {
     handleJsonResponse,
     createActions,
@@ -9,7 +10,6 @@ export const getMessages = () => (dispatch) => {
         type: GETMESSAGES.START
     })
 
-  
 
   return fetch("https://kwitter-api.herokuapp.com/messages?limit=300&offset=0")
     .then(handleJsonResponse)

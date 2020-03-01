@@ -35,7 +35,7 @@ class MFCarousel extends Component{
             src={HolderImage}
             alt="First slide"
           />
-          <Carousel.Caption style={{"padding": "0"}}>
+          <Carousel.Caption>
               <React.Fragment>
               <h2 style={{"fontSize": "2em"}}>{message.text}</h2>
               <h4 style={{"fontSize": "1em"}}>{message.username}</h4>
@@ -66,4 +66,23 @@ const mapStateToProps=state=>{
   
  export default connect(mapStateToProps, mapDispatchToProps)(MFCarousel);
 
+
+  /*{this.props.messages.map(message=>(
+        <Carousel.Item key={message.id}>
+          <img
+            className="d-block w-100"
+            src={HolderImage}
+            alt="First slide"
+          />
+          <Carousel.Caption>
+              <React.Fragment>
+              <h2>{message.text}</h2>
+              <h4>{message.username}</h4>
+              <Button type="submit" style={{"backgroundColor": "#d6e7e5"}}>
+                <p style={{"color": "black", "fontSize": "20px", "margin":"0"}}>Like</p>
+                </Button>
+              </React.Fragment>
+          </Carousel.Caption>
+        </Carousel.Item>
+          ))}*/
           
