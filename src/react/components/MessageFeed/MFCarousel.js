@@ -3,8 +3,7 @@ import Carousel from 'react-bootstrap/Carousel'
 import HolderImage from "../../../images/messagebackground.png"
 import Button from 'react-bootstrap/Button'
 import { connect } from "react-redux";
-import { getMessages } from "../../../redux/messages/getMessages";
-import thumb from "../../../images/thumb.png"
+import { getMessages } from "../../../redux/messages.js/getMessages";
 
 
 class MFCarousel extends Component{
@@ -35,13 +34,12 @@ class MFCarousel extends Component{
             src={HolderImage}
             alt="First slide"
           />
-          <Carousel.Caption style={{"padding": "0"}}>
+          <Carousel.Caption>
               <React.Fragment>
-              <h2 style={{"fontSize": "2em"}}>{message.text}</h2>
-              <h4 style={{"fontSize": "1em"}}>{message.username}</h4>
-              <Button type="submit" style={{ "backgroundColor": "#d6e7e5", "border": "2px solid black", "padding": '0 3px'}}>
-                <img src={thumb} style={{"width": "25px"}} alt="like"></img>
-                <p style={{"color": "black", "fontSize": "20px", "margin":"0"}}>1</p>
+              <h2>{message.text}</h2>
+              <h4>{message.username}</h4>
+              <Button type="submit" style={{"backgroundColor": "#d6e7e5"}}>
+                <p style={{"color": "black", "fontSize": "20px", "margin":"0"}}>Like</p>
                 </Button>
               </React.Fragment>
           </Carousel.Caption>
@@ -66,4 +64,23 @@ const mapStateToProps=state=>{
   
  export default connect(mapStateToProps, mapDispatchToProps)(MFCarousel);
 
+
+  /*{this.props.messages.map(message=>(
+        <Carousel.Item key={message.id}>
+          <img
+            className="d-block w-100"
+            src={HolderImage}
+            alt="First slide"
+          />
+          <Carousel.Caption>
+              <React.Fragment>
+              <h2>{message.text}</h2>
+              <h4>{message.username}</h4>
+              <Button type="submit" style={{"backgroundColor": "#d6e7e5"}}>
+                <p style={{"color": "black", "fontSize": "20px", "margin":"0"}}>Like</p>
+                </Button>
+              </React.Fragment>
+          </Carousel.Caption>
+        </Carousel.Item>
+          ))}*/
           
