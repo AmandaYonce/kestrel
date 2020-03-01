@@ -42,15 +42,13 @@ class MFCarousel extends Component{
           
           <Card style={{"backgroundColor": "#faf9f5"}}>
         {this.props.messages.map(message=>(
-          <React.Fragment>
+          <React.Fragment key={message.id}>
             <CardBody key={message.id} style={{"border": "2px solid black"}}>
           
           <CardSubtitle className="text-secondary mb-3 font-weight-normal text-uppercase" style={{ fontSize: '0.8rem' }}></CardSubtitle>
           
-          <CardText>
-              <React.Fragment>
-              <h2 style={{"fontSize": "2em"}}>{message.text}</h2>
-              <h4 style={{"fontSize": "1em"}}>{message.username}</h4>
+            <CardText style={{"fontSize": "2em"}}>{message.text}</CardText>
+            <CardText style={{"fontSize": "1em"}}>{message.username}</CardText>
               <br/>
               <Button type="submit" 
               //onClick={this.handleLike(message.id)} 
@@ -58,15 +56,11 @@ class MFCarousel extends Component{
                 <img src={thumbsUp} style={{"width": "25px", "paddingRight": "3px"}} alt="like"></img>
                 {message.likes.length}
                 </Button>
-              </React.Fragment>
-          </CardText>
-    </CardBody>
-    <br/>
-    </React.Fragment>
-    ))}
+              </CardBody>
+            <br/>
+            </React.Fragment>
+        ))}
     </Card>
-    
-    
         )
     }
   }
