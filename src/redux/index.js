@@ -16,6 +16,7 @@ export const store = configureStore({
     router: connectRouter(history),
     auth: combineReducers(authReducers),
     messages: combineReducers(messages)
+
   },
   preloadedState: {},
   devTools: process.env.NODE_ENV !== "production"
