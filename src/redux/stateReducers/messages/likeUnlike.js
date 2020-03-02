@@ -1,3 +1,5 @@
+/*
+
 import {LIKEUNLIKE} from "../../messages/likeUnlike"
 
   const initialState={
@@ -34,3 +36,5 @@ import {LIKEUNLIKE} from "../../messages/likeUnlike"
   //export default createReducer(GETMESSAGES, getMessages)
 
   export default likeUnlike
+
+  */

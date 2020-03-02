@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
-//import {Carousel} from 'react-bootstrap/Carousel'
 import HolderImage from "../../../images/messagebackground.png"
 import Button from 'react-bootstrap/Button'
 import { connect } from "react-redux";
 import { getMessages } from "../../../redux/messages/getMessages";
 import thumbsUp from "../../../images/thumb.png"
-//import {likeUnlike}  from "../../../redux/messages/likeUnlike"
+import {Card, CardBody, CardSubtitle, CardText} from 'reactstrap';
 import {
-  Card, CardBody,
-  CardSubtitle, CardText
-} from 'reactstrap';
+  handleJsonResponse,
+  jsonHeaders,
+  domain
+} from "../../../redux/helpers";
+import {store} from "../../../redux/index"
 
+
+const url=domain 
 
 class MFCarousel extends Component{
 
@@ -18,14 +21,60 @@ class MFCarousel extends Component{
     this.props.getMessages()
   };
 
-  /*
-  handleLike = (e, messageID) =>{
-    this.props.likeUnlike(messageID)
-  }
-  */
-  
+  handleLike = (e, messageID) => {
+        const state=store.getState()
+        const token=state.auth.login.result.token
 
+      fetch(url +"/likes", {
+          method: "POST",
+          headers: { Authorization: "Bearer "+ token, ...jsonHeaders},
+          body: JSON.stringify({messageId: messageID})
+      })
+        .then(handleJsonResponse)
+        .then(result => {
+          if(result.statusCode===200){
+            this.props.getMessages()
+          } else if (result.statusCode===400){
+            this.handleUnlike(messageID)
+          }
+        })
+        .catch(err=> {
+          if (err.statusCode===400){
+          this.handleUnlike(messageID)
+        }
+      })
+  }
+
+  handleUnlike=(messageID)=>{
+        const state=store.getState()
+        const username=state.auth.login.result.username
+        const token=state.auth.login.result.token
+
+      fetch(url+"/messages/"+messageID, {
+          method: "GET",
+         
+      })
+        .then(handleJsonResponse)
+        .then(result=> {
+          result.message.likes.map(each=>{
+            if(each.username===username){
+                const likeID=each.id
+                console.log(likeID)
+              fetch(url+"/likes/"+likeID, {
+                method: "DELETE",
+                headers: { Authorization: "Bearer "+ token, ...jsonHeaders}
+              })
+              .then(handleJsonResponse)
+              .then(result=>this.props.getMessages())
+            }
+            return each.id
+          })
+        })
+          
+        }
+  
     render(){
+      //const messages=Object.keys(this.props.messages).map(key=>this.props.messages[key])
     if(this.props.messages===null){
       return (
         <Card>
@@ -51,7 +100,7 @@ class MFCarousel extends Component{
             <CardText style={{"fontSize": "1em"}}>{message.username}</CardText>
               <br/>
               <Button type="submit" 
-              //onClick={this.handleLike(message.id)} 
+              onClick={e=>this.handleLike(e, message.id)} 
               style={{ "backgroundColor": "#d6e7e5", "border": "2px solid black", "padding": '0 3px', "color": "black", "fontSize": "20px", "margin":"0"}}>
                 <img src={thumbsUp} style={{"width": "25px", "paddingRight": "3px"}} alt="like"></img>
                 {message.likes.length}
@@ -69,13 +118,12 @@ const mapStateToProps=state=>{
   return{
     messages: state.messages.getMessages.result,
     loading: state.messages.getMessages.loading,
-    error: state.messages.getMessages.error
+    error: state.messages.getMessages.error,
   }
 }
 
   const mapDispatchToProps={
     getMessages,
-    //likeUnlike
   }
   
  export default connect(mapStateToProps, mapDispatchToProps)(MFCarousel);

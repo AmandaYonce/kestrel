@@ -6,12 +6,10 @@ import {
 
 export const GETMESSAGES = createActions("getMessages");
 export const getMessages = () => (dispatch) => {
-    dispatch({
-        type: GETMESSAGES.START
-    })
+    dispatch(GETMESSAGES.START())
 
 
-  return fetch("https://kwitter-api.herokuapp.com/messages?limit=300&offset=0")
+  return fetch("https://kwitter-api.herokuapp.com/messages?limit=10&offset=0")
     .then(handleJsonResponse)
     .then(result =>{
       result=Object.keys(result.messages).map(key=>result.messages[key])

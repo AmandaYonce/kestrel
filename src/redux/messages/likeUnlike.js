@@ -1,4 +1,4 @@
-
+/*
 import {
     handleJsonResponse,
     createActions,
@@ -24,3 +24,4 @@ const token=getState().auth.login.result.token
     .catch(err => Promise.reject(dispatch(LIKEUNLIKE.FAIL(err))))
     
 };
+*/
