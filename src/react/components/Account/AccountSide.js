@@ -12,8 +12,9 @@ import {domain} from "../../../redux/helpers"
   class AccountSide extends Component {
 
     render() {
-     console.log(this.props)
+     
       if(this.props.details===null || this.props===null){
+        this.props.userInfo()
       return (
         <Card style={{ marginTop: 100 }}>
         <CardBody  >

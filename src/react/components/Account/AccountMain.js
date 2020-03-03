@@ -13,7 +13,7 @@ import {
 class AccountMain extends Component {
 
   render() {
-    console.log(this.props.details)
+    
     if(this.props.details===null || this.props===null){
       return (
         <Fragment>
