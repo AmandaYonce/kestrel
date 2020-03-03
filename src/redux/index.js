@@ -4,7 +4,7 @@ import { combineReducers } from "redux";
 import { connectRouter } from "connected-react-router";
 import { reducers as authReducers } from "./auth";
 import * as messages from "./stateReducers/messages"
-//import {likeUnlike} from "./stateReducers/messages"
+import { likeReducers } from "./messages/likeUnlike"
 
 export * from "./auth";
 
@@ -17,7 +17,7 @@ export const store = configureStore({
     router: connectRouter(history),
     auth: combineReducers(authReducers),
     messages: combineReducers(messages),
-    //likeUnlike: combineReducers(likeUnlike)
+    likeReducers: combineReducers(likeReducers)
 
   },
   preloadedState: {},

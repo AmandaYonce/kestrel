@@ -13,7 +13,7 @@ export const getMessages = () => (dispatch) => {
     .then(handleJsonResponse)
     .then(result =>{
       result=Object.keys(result.messages).map(key=>result.messages[key])
-      return dispatch({
+      dispatch({
         type: GETMESSAGES.SUCCESS,
         payload: result
       })
