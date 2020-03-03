@@ -1,28 +1,49 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import {
     Card, CardImg, CardBody,
-    CardTitle, CardSubtitle, CardText
   } from 'reactstrap';
-
 import HolderImage from "../../../images/owl-white-background.png"
+import { userInfo } from "../../../redux/account/userInfo"
+import { connect } from "react-redux";
+import {domain} from "../../../redux/helpers"
+
+
 
   class AccountSide extends Component {
+
     render() {
+     console.log(this.props)
+      if(this.props.details===null || this.props===null){
       return (
-        <Fragment>
-        <Card>
-        <CardBody>
-            <CardImg top width="100%" src={HolderImage} alt="Kwitter Icon" className="img-fluid rounded-circle" style={{ width: 335 }} />
-                <CardTitle>AccountSide Title</CardTitle>
-                <CardSubtitle>Subtitle</CardSubtitle>
-                <CardText>do we need more text here?  can we use this image placeholder if the user image is "null"</CardText>
+        <Card style={{ marginTop: 100 }}>
+        <CardBody  >
+            <CardImg top width="100%" 
+            src={HolderImage} alt="Kwitter Icon" 
+            className="img-fluid rounded-circle" 
+            style={{ width: 335 }} />
             </CardBody>
         </Card>
-        
-        </Fragment>
-      );
+      )}
+      
+      return (
+        <Card style={{ marginTop: 100 }}>
+        <CardBody >
+            <CardImg top width="100%" 
+            src={domain+this.props.details.pictureLocation} alt="Kwitter Icon" 
+            className="img-fluid rounded-circle" 
+            style={{ width: 335}} />
+            </CardBody>
+        </Card>
+      )
     }
     
   }
   
-  export default AccountSide;
+  export default connect(
+    state => ({
+      details: state.userInfo.userInfo.result,
+      loading: state.userInfo.userInfo.loading,
+      error: state.userInfo.userInfo.error,
+    }),
+    { userInfo }
+  )(AccountSide);

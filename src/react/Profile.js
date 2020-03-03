@@ -6,8 +6,13 @@ import { Container, Row, Col } from 'reactstrap';
 import {MFMain} from "./components"
 import {MFSide} from "./components"
 import {MFBottom} from "./components"
+import { userInfo } from "../redux/account/userInfo"
+import { connect } from "react-redux";
 
 class Profile extends React.Component {
+  componentDidMount(){
+    this.props.userInfo()
+  };
   render() {
     return (
       <>
@@ -34,4 +39,4 @@ class Profile extends React.Component {
   }
 }
 
-export default userIsAuthenticated(Profile);
+export default connect(null,{userInfo}) (userIsAuthenticated(Profile));

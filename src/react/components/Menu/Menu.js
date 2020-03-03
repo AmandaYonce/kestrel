@@ -5,7 +5,7 @@ import {
   Navbar, Nav, NavbarBrand, NavItem, Collapse, NavbarToggler} from 'reactstrap';
 import img from "../../../images/owl-icon.png"
 import { NavLink } from "react-router-dom"
-//testing branch settings
+
 
 
 class Menu extends React.Component {

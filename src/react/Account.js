@@ -6,7 +6,9 @@ import { Container, Row, Col } from 'reactstrap';
 import {AccountMain} from "./components"
 import {AccountSide} from "./components"
 
+
 class Account extends React.Component {
+ 
   render() {
     return (
       <>
@@ -28,5 +30,7 @@ class Account extends React.Component {
     );
   }
 }
+
+
 
 export default userIsAuthenticated(Account);
