@@ -9,10 +9,11 @@ import {domain} from "../../../redux/helpers"
 
 
 
+
   class AccountSide extends Component {
 
     render() {
-     
+
       if(this.props.details===null || this.props===null){
         this.props.userInfo()
       return (

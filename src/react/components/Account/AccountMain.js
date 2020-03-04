@@ -8,9 +8,18 @@ import {
   import { userInfo } from "../../../redux/account/userInfo"
   import { connect } from "react-redux";
   import { Spinner } from 'reactstrap'
+  import { EditUserModal } from "./EditUserModal"
 
 
 class AccountMain extends Component {
+  state = { modal: false};
+  
+  toggle=()=>{
+    const newState=!this.state.modal
+    this.setState({modal:newState})
+    console.log(this.state)
+  }
+  
 
   render() {
     
@@ -24,17 +33,27 @@ class AccountMain extends Component {
       )
       }
     return (
+      
       <Fragment>
-        <CardBody>
-    <CardTitle className="h3 mb-2 pt-2 font-weight-bold text-secondary" style={{"marginTop": "100px"}}>{this.props.details.displayName}</CardTitle>
+        <CardBody style={{"backgroundColor": "#d6e7e5", "marginTop": "100px"}}>
+    <CardTitle className="h3 mb-2 pt-2 font-weight-bold text-secondary" >{this.props.details.displayName}</CardTitle>
         <CardSubtitle className="text-secondary mb-3 font-weight-normal text-uppercase" style={{ fontSize: '0.8rem' }}>{this.props.details.about}</CardSubtitle>
     <CardText className="text-secondary mb-4 font-weight-normal" style={{ fontSize: '0.95rem' }}>User Created: {Date(this.props.details.createdAt)}</CardText>
     <CardText className="text-secondary mb-4 font-weight-normal" style={{ fontSize: '0.95rem' }}>User Updated: {Date(this.props.details.updatedAt)}</CardText>
       </CardBody>
-      <Button variant="secondary" type="submit"  style={{ "fontSize": "28", "backgroundColor": "d6e7e5", "marginRight": "20px" }}>
+      <br/>
+
+      <Button variant="secondary"   
+      onClick={this.toggle}
+      style={{ "fontSize": "28", "backgroundColor": "d6e7e5", "marginRight": "20px" }}>
           <img src={SmallIcon} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "40px", "paddingRight": "5px" }} />
             Edit User
           </Button>
+         
+      
+          
+         
+
       <Button variant="secondary" type="submit"  style={{ "fontSize": "28", "backgroundColor": "red" }}>
           <img src={SmallIcon} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "40px", "paddingRight": "5px" }} />
             Delete User
