@@ -28,8 +28,8 @@ class AccountMain extends Component {
         <CardBody>
     <CardTitle className="h3 mb-2 pt-2 font-weight-bold text-secondary" style={{"marginTop": "100px"}}>{this.props.details.displayName}</CardTitle>
         <CardSubtitle className="text-secondary mb-3 font-weight-normal text-uppercase" style={{ fontSize: '0.8rem' }}>{this.props.details.about}</CardSubtitle>
-    <CardText className="text-secondary mb-4 font-weight-normal" style={{ fontSize: '0.95rem' }}>User Created:{this.props.details.createdAt}</CardText>
-    <CardText className="text-secondary mb-4 font-weight-normal" style={{ fontSize: '0.95rem' }}>User Updated:{this.props.details.updatedAt}</CardText>
+    <CardText className="text-secondary mb-4 font-weight-normal" style={{ fontSize: '0.95rem' }}>User Created: {Date(this.props.details.createdAt)}</CardText>
+    <CardText className="text-secondary mb-4 font-weight-normal" style={{ fontSize: '0.95rem' }}>User Updated: {Date(this.props.details.updatedAt)}</CardText>
       </CardBody>
       <Button variant="secondary" type="submit"  style={{ "fontSize": "28", "backgroundColor": "d6e7e5", "marginRight": "20px" }}>
           <img src={SmallIcon} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "40px", "paddingRight": "5px" }} />

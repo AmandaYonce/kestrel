@@ -5,7 +5,6 @@ import { userIsAuthenticated } from "./HOCs";
 import { Container, Row, Col } from 'reactstrap';
 import {MFMain} from "./components"
 import {MFSide} from "./components"
-import {MFBottom} from "./components"
 import { userInfo } from "../redux/account/userInfo"
 import { connect } from "react-redux";
 
@@ -27,10 +26,6 @@ class Profile extends React.Component {
             <Col xs={{ order: 1 }} md={{ size: 7, offset: 1 }} tag="section" className="py-5 mb-5 py-md-0 mb-md-0">
             <MFMain />
             </Col>
-        </Row>
-
-        <Row noGutters className="pt-2 pt-md-5 w-100 px-4 px-xl-0 position-relative">
-            <MFBottom/>
         </Row>
         </Container>
   </main>

@@ -24,7 +24,7 @@ export const handleLike = (e, messageID) => dispatch =>{
     return fetch(url +"/likes", {
         method: "POST",
         headers: { Authorization: "Bearer "+ token, ...jsonHeaders},
-        body: JSON.stringify({messageId: messageID})
+        body: JSON.stringify({messageId: messageID,})
     })
       .then(handleJsonResponse)
       .then(result => {
