@@ -35,6 +35,7 @@ class MFMain extends Component {
             />
             New Message
           </Button>
+          {/* new message here */}
         </Card>
         <br />
         <MFCarousel />
