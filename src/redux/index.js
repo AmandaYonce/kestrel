@@ -8,6 +8,7 @@ import { likeReducers } from "./messages/likeUnlike"
 import * as userInfo from "./stateReducers/account"
 import {editReducers} from "./account/edituser"
 import {editPassReducer} from "./account/editPassword"
+import {editPhotoReducer} from "./account/editPhoto"
 
 
 export * from "./auth";
@@ -25,6 +26,7 @@ export const store = configureStore({
     userInfo: combineReducers(userInfo),
     editUser: combineReducers(editReducers),
     editPassword: combineReducers(editPassReducer),
+    editPhoto: combineReducers(editPhotoReducer)
    
 
   },

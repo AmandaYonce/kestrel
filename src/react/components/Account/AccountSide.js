@@ -6,11 +6,20 @@ import HolderImage from "../../../images/owl-white-background.png"
 import { userInfo } from "../../../redux/account/userInfo"
 import { connect } from "react-redux";
 import {domain} from "../../../redux/helpers"
-
-
-
+import Button from 'react-bootstrap/Button'
+import SmallIcon from "../../../images/owl-black-square-single.png"
+import {editPhoto} from "../../../redux/account/editPhoto"
+import EditPhotoModal from "./EditPhotoModal"
 
   class AccountSide extends Component {
+    state = { photoModal: false};
+
+  toggle=()=>{
+    const newState=!this.state.photoModal
+    this.setState({photoModal:newState})
+    console.log(this.state)
+  }
+
 
     render() {
 
@@ -24,6 +33,13 @@ import {domain} from "../../../redux/helpers"
             className="img-fluid rounded-circle" 
             style={{ width: 335 }} />
             </CardBody>
+            <Button variant="secondary" 
+              type="submit"  
+              onClick={this.toggleDeleteUser}
+              style={{ "fontSize": "28", "backgroundColor": "aliceBlue", "color": "black" }}>
+              <img src={SmallIcon} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "40px", "paddingRight": "5px" }} />
+            Add/Edit Photo
+            </Button>
         </Card>
       )}
       
@@ -35,6 +51,20 @@ import {domain} from "../../../redux/helpers"
             className="img-fluid rounded-circle" 
             style={{ width: 335}} />
             </CardBody>
+
+            <Button variant="secondary"  
+                  onClick={(e)=>{
+                    this.toggle()
+                  }}
+                  style={{ "fontSize": "28", "backgroundColor": "aliceBlue", "color": "black" }}>
+                <img src={SmallIcon} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "40px", "paddingRight": "5px" }} />
+                Add/Edit Photo
+            </Button>
+
+            <EditPhotoModal 
+            modal={this.state.photoModal}
+            toggle={this.toggle}>
+            </EditPhotoModal>
         </Card>
       )
     }
@@ -47,5 +77,5 @@ import {domain} from "../../../redux/helpers"
       loading: state.userInfo.userInfo.loading,
       error: state.userInfo.userInfo.error,
     }),
-    { userInfo }
+    { userInfo, editPhoto }
   )(AccountSide);
