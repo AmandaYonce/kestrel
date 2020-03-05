@@ -8,10 +8,9 @@ import SmallIcon from "../../../images/owl-black-square-single.png"
 import Button from 'react-bootstrap/Button'
 
 
+
 class MFMain extends Component {
-
-
-
+ 
   render() {
     return (
       <Fragment>
