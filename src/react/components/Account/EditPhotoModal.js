@@ -35,7 +35,7 @@ class EditPhotoModal extends Component {
         <ModalBody>
         <Form.Row>
             <Form.Group as={Col} md="6" id="login-form" >
-          <Form.Label style={{"fontSize": "25px", "fontFamily": 'Poppins'}} className="custom-file-label" placeholder="photo" htmlFor="customFile">{this.state.photo}</Form.Label>
+          <Form.Label style={{"fontSize": "25px", "fontFamily": 'Poppins'}} className="custom-file-label" placeholder="photo" htmlFor="customFile">Photo:{this.state.photo}</Form.Label>
           <Form.Control style={{"width": "600px"}} type="file" className="custom-file-input" name="photo"  required  onChange={this.handlePhotoChange}/>
           </Form.Group>
             </Form.Row>

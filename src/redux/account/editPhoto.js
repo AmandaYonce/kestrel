@@ -22,7 +22,7 @@ import {
       return fetch(url + "/users/"+ username + "/picture", {
           method: "PUT",
           headers: { Authorization: "Bearer "+ token, ...jsonHeaders},
-          body: JSON.stringify({picture: picture})
+          body: JSON.stringify({picture: {picture}})
       })
         .then(handleJsonResponse)
         .then(result =>{
