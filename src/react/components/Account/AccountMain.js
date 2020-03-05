@@ -8,15 +8,31 @@ import {
   import { userInfo } from "../../../redux/account/userInfo"
   import { connect } from "react-redux";
   import { Spinner } from 'reactstrap'
-  import { EditUserModal } from "./EditUserModal"
+  import EditUserModal  from "./EditUserModal"
+  import PasswordModal from "./PasswordModal"
+  import DeleteUserModal from "./DeleteUserModal"
 
 
 class AccountMain extends Component {
-  state = { modal: false};
+  state = { modal: false,
+            passwordModal: false,
+            deleteUserModal: false};
   
   toggle=()=>{
     const newState=!this.state.modal
     this.setState({modal:newState})
+    console.log(this.state)
+  }
+
+  togglePassword=()=>{
+    const newState=!this.state.passwordModal
+    this.setState({passwordModal:newState})
+    console.log(this.state)
+  }
+
+  toggleDeleteUser=()=>{
+    const newState=!this.state.deleteUserModal
+    this.setState({deleteUserModal:newState})
     console.log(this.state)
   }
   
@@ -48,16 +64,38 @@ class AccountMain extends Component {
       style={{ "fontSize": "28", "backgroundColor": "d6e7e5", "marginRight": "20px" }}>
           <img src={SmallIcon} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "40px", "paddingRight": "5px" }} />
             Edit User
-          </Button>
-         
-      
-          
-         
+      </Button>
 
-      <Button variant="secondary" type="submit"  style={{ "fontSize": "28", "backgroundColor": "red" }}>
+      <Button variant="secondary"   
+      onClick={this.togglePassword}
+      style={{ "fontSize": "28", "backgroundColor": "d6e7e5", "marginRight": "20px" }}>
+          <img src={SmallIcon} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "40px", "paddingRight": "5px" }} />
+            Change Password
+      </Button>
+         
+      <Button variant="secondary" 
+      type="submit"  
+      onClick={this.toggleDeleteUser}
+      style={{ "fontSize": "28", "backgroundColor": "red" }}>
           <img src={SmallIcon} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "40px", "paddingRight": "5px" }} />
             Delete User
-          </Button>
+      </Button>
+
+      <EditUserModal 
+      modal={this.state.modal}
+      toggle={this.toggle}>
+      </EditUserModal>
+
+      <DeleteUserModal 
+      modal={this.state.deleteUserModal}
+      toggle={this.toggleDeleteUser}>
+      </DeleteUserModal>
+
+      <PasswordModal 
+      modal={this.state.passwordModal}
+      toggle={this.togglePassword}>
+      </PasswordModal>
+          
       </Fragment>
     );
   }

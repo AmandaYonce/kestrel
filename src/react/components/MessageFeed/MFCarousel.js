@@ -39,6 +39,7 @@ class MFCarousel extends Component{
           
             <CardText style={{"fontSize": "2em"}}>{message.text}</CardText>
             <CardText style={{"fontSize": "1em"}}>{message.username}</CardText>
+            <CardText style={{"fontSize": "1em"}}>{Date(message.createdAt)}</CardText>
               <br/>
               <Button type="submit" 
               onClick={e=>this.props.handleLike(e, message.id)} 

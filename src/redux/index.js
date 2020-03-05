@@ -6,6 +6,8 @@ import { reducers as authReducers } from "./auth";
 import * as messages from "./stateReducers/messages"
 import { likeReducers } from "./messages/likeUnlike"
 import * as userInfo from "./stateReducers/account"
+import {editReducers} from "./account/edituser"
+import {editPassReducer} from "./account/editPassword"
 
 export * from "./auth";
 
@@ -19,7 +21,9 @@ export const store = configureStore({
     auth: combineReducers(authReducers),
     messages: combineReducers(messages),
     likeReducers: combineReducers(likeReducers),
-    userInfo: combineReducers(userInfo)
+    userInfo: combineReducers(userInfo),
+    editUser: combineReducers(editReducers),
+    editPassword: combineReducers(editPassReducer)
 
   },
   preloadedState: {},
