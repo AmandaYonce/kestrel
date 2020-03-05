@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
   import Button from 'react-bootstrap/Button'
   import { Modal, ModalHeader, ModalFooter } from 'reactstrap';
-  //import { userInfo } from "../../../redux/account/userInfo"
   //import { connect } from "react-redux";
  
 
@@ -30,7 +29,6 @@ class DeleteUserModal extends Component {
         </ModalFooter>
       </Modal>
       )
-
     }
 }
 

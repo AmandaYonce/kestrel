@@ -9,6 +9,7 @@ import * as userInfo from "./stateReducers/account"
 import {editReducers} from "./account/edituser"
 import {editPassReducer} from "./account/editPassword"
 
+
 export * from "./auth";
 
 export const history = createBrowserHistory({
@@ -23,7 +24,8 @@ export const store = configureStore({
     likeReducers: combineReducers(likeReducers),
     userInfo: combineReducers(userInfo),
     editUser: combineReducers(editReducers),
-    editPassword: combineReducers(editPassReducer)
+    editPassword: combineReducers(editPassReducer),
+   
 
   },
   preloadedState: {},

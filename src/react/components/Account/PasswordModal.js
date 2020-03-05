@@ -5,6 +5,7 @@ import React, { Component } from 'react';
   import { Col} from 'reactstrap';
   import { connect } from "react-redux";
   import {editPassword} from "../../../redux/account/editPassword"
+  import { Redirect } from 'react-router-dom'
  
 
 class PasswordModal extends Component {
@@ -23,24 +24,29 @@ class PasswordModal extends Component {
         this.setState({newPassword:newState})
     }
 
-    handlePsswordSubmitted=(event)=>{
+    handlePasswordSubmitted=(event)=>{
         const newState=!this.state.passwordSubmitted
         this.setState({passwordSubmitted: newState})
+        this.handleRedirect()
+    }
+
+    handleRedirect=()=>{
+      if(this.state.passwordSubmitted){
+        return <Redirect to='/' />
+      }
     }
 
 
   render() {
-    //if(this.state.passwordSubmitted===true){
-      //  return (<Home/>) 
-    //}
       return (
-
+       
         <Modal
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
         isOpen={this.props.modal}
       >
+
         <ModalHeader >
           Edit User Information
         </ModalHeader>
@@ -59,14 +65,13 @@ class PasswordModal extends Component {
             <Form.Control style={{"width": "250px"}} onChange={this.handleNewPasswordChange} type="text" placeholder="New Password" name="username" autoFocus required />
             </Form.Group>
             </Form.Row>
-        
         </ModalBody>
         <ModalFooter>
+          
           <Button 
           onClick={(e)=>{
             this.props.editPassword(e, this.state.newPassword)
-            this.props.toggle()
-            this.props.handlePasswordSubmitted()
+            this.handlePasswordSubmitted()
         }}>Submit</Button>
          
           <Button 
@@ -79,6 +84,5 @@ class PasswordModal extends Component {
     }
 }
 
-//export default PasswordModal
 
 export default connect(null, { editPassword })(PasswordModal);
