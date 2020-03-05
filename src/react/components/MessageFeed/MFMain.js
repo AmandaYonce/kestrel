@@ -4,8 +4,8 @@ import Form from "react-bootstrap/Form";
 import MFCarousel from "./MFCarousel";
 import SmallIcon from "../../../images/owl-black-square-single.png";
 import Button from "react-bootstrap/Button";
-//import newMessages from "src/redux/messages/newMessages.js";
-
+import { addNewMessage } from "../../../redux/messages/newMessages";
+import { connect } from "react-redux";
 
 class MFMain extends Component {
   state = {
@@ -14,11 +14,11 @@ class MFMain extends Component {
 
   handleAddNewMessage = e => {
     e.preventDefault();
-    this.props.addNewMessage(this.state);
+    this.props.addNewMessage(this.state.message);
   };
 
   handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ message: e.target.value });
   };
 
   render() {
@@ -62,4 +62,6 @@ class MFMain extends Component {
   }
 }
 
-export default MFMain;
+// export default MFMain;
+
+export default connect(null, { addNewMessage })(MFMain);

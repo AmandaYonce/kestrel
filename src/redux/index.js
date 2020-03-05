@@ -9,6 +9,7 @@ import * as userInfo from "./stateReducers/account"
 import {editReducers} from "./account/edituser"
 import {editPassReducer} from "./account/editPassword"
 import {editPhotoReducer} from "./account/editPhoto"
+import { newMessageReducer } from "../redux/messages/newMessages";
 
 
 export * from "./auth";
@@ -26,9 +27,8 @@ export const store = configureStore({
     userInfo: combineReducers(userInfo),
     editUser: combineReducers(editReducers),
     editPassword: combineReducers(editPassReducer),
-    editPhoto: combineReducers(editPhotoReducer)
-   
-
+    editPhoto: combineReducers(editPhotoReducer),
+    newMessage: combineReducers(newMessageReducer)
   },
   preloadedState: {},
   devTools: process.env.NODE_ENV !== "production"
