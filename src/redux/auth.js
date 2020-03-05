@@ -40,8 +40,6 @@ export const logout = () => (dispatch, getState) => {
     .catch(err => Promise.reject(dispatch(LOGOUT.FAIL(err))));
 };
 
-
-
 export const reducers = {
   login: createReducer(getInitStateFromStorage("login", asyncInitialState), {
     ...asyncCases(LOGIN),
@@ -49,5 +47,5 @@ export const reducers = {
   }),
   logout: createReducer(asyncInitialState, {
     ...asyncCases(LOGOUT)
-  }),
+  })
 };

@@ -4,11 +4,22 @@ import Form from "react-bootstrap/Form";
 import MFCarousel from "./MFCarousel";
 import SmallIcon from "../../../images/owl-black-square-single.png";
 import Button from "react-bootstrap/Button";
+import newMessages from "src/redux/messages/newMessages.js";
 
 class MFMain extends Component {
-  handleAddNewMessage() {
-    console.log("add new message activated");
-  }
+  state = {
+    message: ""
+  };
+
+  handleAddNewMessage = e => {
+    e.preventDefault();
+    this.props.addNewMessage(this.state);
+  };
+
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
   render() {
     return (
       <Fragment>
@@ -16,9 +27,15 @@ class MFMain extends Component {
           <CardBody>
             <Form.Group>
               <Form.Label className="h3 mb-2 pt-2 font-weight-bold text-secondary">
-                New Message
+                HOME
               </Form.Label>
-              <Form.Control as="textarea" rows="3" />
+              <Form.Control
+                as="textarea"
+                rows="3"
+                placeholder="What's Happening?"
+                name="message"
+                onChange={this.handleChange}
+              />
             </Form.Group>
           </CardBody>
 
@@ -26,6 +43,7 @@ class MFMain extends Component {
             variant="secondary"
             type="submit"
             style={{ fontSize: "28", backgroundColor: "#333333" }}
+            onClick={this.handleAddNewMessage}
           >
             <img
               src={SmallIcon}
@@ -35,7 +53,6 @@ class MFMain extends Component {
             />
             New Message
           </Button>
-          {/* new message here */}
         </Card>
         <br />
         <MFCarousel />
