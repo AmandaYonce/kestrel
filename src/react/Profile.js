@@ -9,10 +9,21 @@ import { userInfo } from "../redux/account/userInfo"
 import { connect } from "react-redux";
 
 class Profile extends React.Component {
+  state={
+    newMessage: false
+  }
+
+  toggleNewMessage=e=>{
+    this.setState({ newMessage: !this.state.newMessage })
+  }
+
   componentDidMount(){
     this.props.userInfo()
   };
+
+
   render() {
+    console.log(this.state.newMessage)
     return (
       <>
         <Menu isAuthenticated={this.props.isAuthenticated} />
@@ -24,7 +35,10 @@ class Profile extends React.Component {
             </Col>
             
             <Col xs={{ order: 1 }} md={{ size: 7, offset: 1 }} tag="section" className="py-5 mb-5 py-md-0 mb-md-0">
-            <MFMain />
+            <MFMain 
+            newMessage={this.state.newMessage}
+            toggleMessage={this.toggleNewMessage}
+            />
             </Col>
         </Row>
         </Container>

@@ -25,7 +25,10 @@ export const addNewMessage = messageData => (dispatch, getState) => {
     body: JSON.stringify({ text: messageData })
   })
     .then(handleJsonResponse)
-    .then(result => dispatch(ADDNEWMESSAGE.SUCCESS(result)))
+    .then(result => {
+      dispatch(ADDNEWMESSAGE.SUCCESS(result))
+      dispatch(getMessages());
+    })
     .catch(err => Promise.reject(dispatch(ADDNEWMESSAGE.FAIL(err))));
 };
 

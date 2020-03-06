@@ -9,18 +9,21 @@ import { connect } from "react-redux";
 
 class MFMain extends Component {
   state = {
-    message: ""
+    message: "",
+    toggle: false
   };
 
   handleAddNewMessage = e => {
     e.preventDefault();
+    this.setState({message: ""})
     this.props.addNewMessage(this.state.message);
+    this.props.toggleMessage()
   };
 
   handleChange = e => {
     this.setState({ message: e.target.value });
-  };
-
+  }
+;
   render() {
     return (
       <Fragment>
@@ -33,7 +36,7 @@ class MFMain extends Component {
               <Form.Control
                 as="textarea"
                 rows="3"
-                placeholder="What's Happening?"
+                placeholder="What's Happening"
                 name="message"
                 onChange={this.handleChange}
               />
