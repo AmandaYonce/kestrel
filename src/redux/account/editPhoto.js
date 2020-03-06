@@ -9,6 +9,7 @@ import {
     createReducer
   } from "../helpers";
   import {userInfo} from "./userInfo"
+
     
     const url=domain
     
@@ -22,7 +23,7 @@ import {
       return fetch(url + "/users/"+ username + "/picture", {
           method: "PUT",
           headers: { Authorization: "Bearer "+ token, ...jsonHeaders},
-          body: JSON.stringify({picture: {picture}})
+          body: {picture: picture}
       })
         .then(handleJsonResponse)
         .then(result =>{
@@ -43,3 +44,8 @@ import {
         ...asyncCases(EDITPHOTO),
       })
     };
+
+
+
+
+    

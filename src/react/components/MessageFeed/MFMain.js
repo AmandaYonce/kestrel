@@ -10,7 +10,8 @@ import { connect } from "react-redux";
 class MFMain extends Component {
   state = {
     message: "",
-    toggle: false
+    toggle: false,
+    target: ""
   };
 
   handleAddNewMessage = e => {
@@ -64,7 +65,4 @@ class MFMain extends Component {
     );
   }
 }
-
-// export default MFMain;
-
 export default connect(null, { addNewMessage })(MFMain);
