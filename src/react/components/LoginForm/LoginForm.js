@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { CardBody, CardTitle } from 'reactstrap';
 import SmallIcon from "../../../images/owl-black-square-single.png"
+import { getMessages } from "../../../redux/messages/getMessages";
 
 class LoginForm extends React.Component {
   state = { username: "", password: "" };
@@ -13,11 +14,14 @@ class LoginForm extends React.Component {
   handleLogin = e => {
     e.preventDefault();
     this.props.login(this.state);
+    this.props.getMessages()
   };
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
+
+
 
   render() {
     const { loading, error } = this.props;
@@ -56,5 +60,5 @@ export default connect(
     loading: state.auth.login.loading,
     error: state.auth.login.error
   }),
-  { login }
+  { login, getMessages }
 )(LoginForm);

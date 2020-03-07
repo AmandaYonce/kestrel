@@ -17,7 +17,6 @@ import EditPhotoModal from "./EditPhotoModal"
   toggle=()=>{
     const newState=!this.state.photoModal
     this.setState({photoModal:newState})
-    console.log(this.state)
   }
 
 

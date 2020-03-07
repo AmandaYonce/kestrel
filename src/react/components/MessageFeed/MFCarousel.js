@@ -9,13 +9,19 @@ import {handleLike, handleUnlike} from "../../../redux/messages/likeUnlike"
 
 
 class MFCarousel extends Component{
+  state={
+    render: true
+  }
 
+  
   componentDidMount(){
     this.props.getMessages()
-
+    this.setState({render: !this.state.render})
   };   
+
   
     render(){
+
     if(this.props.messages===null){
       return (
         <Card>

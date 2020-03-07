@@ -2,6 +2,9 @@
 import {
     handleJsonResponse,
     createActions,
+    getInitStateFromStorage,
+    createReducer,
+    asyncCases
   } from "../helpers";
 
 export const GETMESSAGES = createActions("getMessages");
@@ -12,6 +15,7 @@ export const getMessages = () => (dispatch) => {
   return fetch("https://kwitter-api.herokuapp.com/messages?limit=150&offset=0")
     .then(handleJsonResponse)
     .then(result =>{
+      console.log(result)
       result=Object.keys(result.messages).map(key=>result.messages[key])
       dispatch({
         type: GETMESSAGES.SUCCESS,
@@ -24,3 +28,14 @@ export const getMessages = () => (dispatch) => {
     })
 };
 
+const initialState={
+  result: null,
+  loading: false,
+  error: null
+}
+
+export const messageReducers = {
+  getMessages: createReducer(getInitStateFromStorage("getMessages", initialState), {...asyncCases(GETMESSAGES)})
+  }
+
+  

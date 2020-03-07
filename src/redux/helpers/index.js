@@ -31,6 +31,12 @@ export const asyncInitialState = {
   error: null
 };
 
+export const newState={
+  result: {},
+  loading: false,
+  error: null
+}
+
 export const asyncCases = ({ START, SUCCESS, FAIL }) => ({
   [START]: (state, action) => {
     state.loading = true;

@@ -55,13 +55,13 @@ class EditUserModal extends Component {
            
             <Form.Group as={Col} md="6" id="login-form" >
             <Form.Label style={{"fontSize": "25px", "fontFamily": 'Poppins'}} htmlFor="displayname">Display Name</Form.Label>
-            <Form.Control style={{"width": "250px"}} type="text" placeholder={this.props.details.displayName} name="username" autoFocus  onChange={this.handleDisplayNameChange}/>
+            <Form.Control style={{"width": "250px"}} type="text" placeholder={this.props.details.displayName} name="username" autoFocus required onChange={this.handleDisplayNameChange}/>
             </Form.Group>
             </Form.Row>
             <Form.Row>
             <Form.Group as={Col} md="6" id="login-form" >
           <Form.Label style={{"fontSize": "25px", "fontFamily": 'Poppins'}} htmlFor="about">About</Form.Label>
-          <Form.Control style={{"width": "600px"}} type="text" placeholder={this.props.details.about} name="username" autoFocus  onChange={this.handleAboutChange}/>
+          <Form.Control style={{"width": "600px"}} type="text" placeholder={this.props.details.about} name="username" autoFocus required onChange={this.handleAboutChange}/>
           </Form.Group>
             </Form.Row>
 

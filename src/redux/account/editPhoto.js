@@ -1,7 +1,5 @@
 import {
     domain,
-    jsonHeaders,
-    handleJsonResponse,
     getInitStateFromStorage,
     asyncInitialState,
     asyncCases,
@@ -9,6 +7,7 @@ import {
     createReducer
   } from "../helpers";
   import {userInfo} from "./userInfo"
+  import axios from 'axios'
 
     
     const url=domain
@@ -19,24 +18,17 @@ import {
         
         const token=getState().auth.login.result.token
         const username=getState().auth.login.result.username
-        console.log("fetch")
-      return fetch(url + "/users/"+ username + "/picture", {
-          method: "PUT",
-          headers: { Authorization: "Bearer "+ token, ...jsonHeaders},
-          body: {picture: picture}
-      })
-        .then(handleJsonResponse)
-        .then(result =>{
-          dispatch(userInfo())
-            dispatch({
-                type: EDITPHOTO.SUCCESS,
-            })
-        })
-        .catch(err => {
+
+        const headers = { Authorization: "Bearer "+ token}
+
+      return axios.put(url + "/users/"+ username + "/picture", picture, {headers:headers})
+          .then(result=> dispatch(userInfo()), dispatch(EDITPHOTO.SUCCESS()))
+
+          .catch(err => {
             return Promise.reject(dispatch({ type:
             EDITPHOTO.FAIL, payload: err}))
         })
-    };
+    }
   
   
     export const editPhotoReducer = {
