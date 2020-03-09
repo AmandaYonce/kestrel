@@ -15,7 +15,6 @@ class EditPhotoModal extends Component {
     }
     
     handlePhotoChange=(event)=>{
-      console.log(event.target.files)
         const newState=event.target.files[0]
         this.setState({photo:newState, placeholder: event.target.value})
     }
@@ -23,13 +22,11 @@ class EditPhotoModal extends Component {
     handlePhotoUpload=(event)=>{
       const data = new FormData()
       data.append("picture", this.state.photo)
-      console.log(data)
       this.props.editPhoto(event, data);
     }
     
 
   render() {
-    console.log(this.state)
       return (
 
         <Modal

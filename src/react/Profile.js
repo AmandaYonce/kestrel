@@ -23,7 +23,6 @@ class Profile extends React.Component {
 
 
   render() {
-    console.log(this.state.newMessage)
     return (
       <>
         <Menu isAuthenticated={this.props.isAuthenticated} />

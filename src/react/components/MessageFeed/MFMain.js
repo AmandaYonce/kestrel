@@ -7,39 +7,51 @@ import Button from "react-bootstrap/Button";
 import { addNewMessage } from "../../../redux/messages/newMessages";
 import { connect } from "react-redux";
 
+
 class MFMain extends Component {
+  constructor(props) {
+    super(props);
+    this.input = React.createRef();
+  }
   state = {
     message: "",
     toggle: false,
-    target: ""
+    target: "",
+    input: this.input
   };
 
   handleAddNewMessage = e => {
     e.preventDefault();
-    this.setState({message: ""})
     this.props.addNewMessage(this.state.message);
+    this.setState({message: ""})
+    this.input.current._valueTracker.setValue(this.input.current.value="...")
     this.props.toggleMessage()
   };
 
   handleChange = e => {
-    this.setState({ message: e.target.value });
+    this.setState({ message: e.target.value })
+   
   }
-;
+
+
   render() {
+
     return (
       <Fragment>
         <Card>
           <CardBody>
             <Form.Group>
               <Form.Label className="h3 mb-2 pt-2 font-weight-bold text-secondary">
-                HOME
+                What's Happening
               </Form.Label>
               <Form.Control
                 as="textarea"
                 rows="3"
-                placeholder="What's Happening"
+                ref={this.input}
+                placeholder="..."
                 name="message"
                 onChange={this.handleChange}
+                className="form-control"
               />
             </Form.Group>
           </CardBody>
@@ -59,7 +71,6 @@ class MFMain extends Component {
             New Message
           </Button>
         </Card>
-        <br />
         <MFCarousel />
       </Fragment>
     );

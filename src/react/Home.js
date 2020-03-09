@@ -18,7 +18,7 @@ class Home extends React.Component {
             </Col>
         </Row>
         </Container>
-  </main>
+        </main>
       </>
     );
   }

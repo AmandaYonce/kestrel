@@ -12,10 +12,9 @@ export const getMessages = () => (dispatch) => {
     dispatch(GETMESSAGES.START())
 
 
-  return fetch("https://kwitter-api.herokuapp.com/messages?limit=150&offset=0")
+  return fetch("https://kwitter-api.herokuapp.com/messages?limit=200&offset=0")
     .then(handleJsonResponse)
     .then(result =>{
-      console.log(result)
       result=Object.keys(result.messages).map(key=>result.messages[key])
       dispatch({
         type: GETMESSAGES.SUCCESS,

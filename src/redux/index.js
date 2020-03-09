@@ -11,6 +11,7 @@ import {editPassReducer} from "./account/editPassword"
 import {editPhotoReducer} from "./account/editPhoto"
 import { newMessageReducer } from "../redux/messages/newMessages";
 import {messageReducers} from "./messages/getMessages"
+import {deleteMessageReducer} from "./messages/deleteMessage"
 
 
 export * from "./auth";
@@ -29,7 +30,8 @@ export const store = configureStore({
     editUser: combineReducers(editReducers),
     editPassword: combineReducers(editPassReducer),
     editPhoto: combineReducers(editPhotoReducer),
-    newMessage: combineReducers(newMessageReducer)
+    newMessage: combineReducers(newMessageReducer),
+    deleteMessage: combineReducers(deleteMessageReducer)
   },
   preloadedState: {},
   devTools: process.env.NODE_ENV !== "production"
