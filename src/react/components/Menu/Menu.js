@@ -10,6 +10,7 @@ import Button from 'react-bootstrap/Button'
 import SmallIcon from "../../../images/owl-black-square-single.png"
 import GoogleLogin from 'react-google-login'
 
+
 //google client id 209391469626-1fdk4io2u5lcadmri9p6behjisl24a7r.apps.googleusercontent.com
 //google client secret n7qcHKqBThUh_zC7UzFJyQXH
 
@@ -45,21 +46,19 @@ class Menu extends React.Component {
     this.props.logout();
   };
 
- 
+  responseGoogle=(response)=>{
+    console.log(response)
+    //this.setState({redirect: true})
+    const googleLogInData={
+      username: response.profileObj.googleId.slice(12),
+      password: response.profileObj.googleId.slice(12)
+    }
+    console.log(googleLogInData)
+    this.props.login(googleLogInData)
+  }
 
   render() {
     const { loading } = this.props;
-    const responseGoogle=(response)=>{
-      console.log(response)
-      this.setState({redirect: true})
-      const googleLogInData={
-        username: response.profileObj.name,
-        password: response.profileObj.googleId
-      }
-      console.log(googleLogInData)
-      this.props.login(googleLogInData)
-    }
-
       if(this.props.isAuthenticated) {
         return (
         <div id="menu">
@@ -68,9 +67,7 @@ class Menu extends React.Component {
         <Collapse isOpen={this.state.isOpen}  navbar>
             <Nav className="mr-auto" navbar>
               <NavItem >
-                <NavLink className="font-weight-bold" exact to="/">
                   <img src={img} alt="avatar" className="img-fluid rounded-circle" style={{ width: 74 }} />
-                </NavLink>
                 <NavbarBrand  style={{'fontSize': "80px", "fontFamily": 'Dosis', "padding": "0", "color": "#d6e7e5", }}href="/">Kwitter</NavbarBrand>
               </NavItem>
               </Nav>
@@ -111,23 +108,23 @@ class Menu extends React.Component {
             <Nav >
                 <Form onSubmit={this.handleLogin} style={{display: "flex"}}>
                 <NavItem>
-                  <Form.Control style={{"width": "170px", "marginRight":"5px"}} type="text" placeholder="Username" name="username" autoFocus required onChange={this.handleChange}/>
+                  <Form.Control style={{"width": "170px", "marginRight":"5px", border: "2px solid #007bff"}} type="text" placeholder="Username" name="username" autoFocus required onChange={this.handleChange}/>
                   <br/>
-                    <Form.Control style={{"width": "170px"}} type="password" placeholder="Password" name="password" required onChange={this.handleChange}/>
+                    <Form.Control style={{"width": "170px", border: "2px solid #007bff"}} type="password" placeholder="Password" name="password" required onChange={this.handleChange}/>
                     </NavItem>
                     <NavItem style={{display: "flex"}}>
                       <Button type="submit" disabled={loading} style={{ "fontSize": "28", "backgroundColor": "#333333", marginRight: "10px"}}>
                         <img src={SmallIcon} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "40px", "paddingRight": "5px" }} />
                           Login
                       </Button>
-                     
                       <GoogleLogin 
                         clientId="209391469626-4urq7enr97m6dhe001jr4921d0dvbvog.apps.googleusercontent.com"
                         buttonText="Log In"
-                        onSuccess={responseGoogle}
-                        onFailure={responseGoogle}
+                        onSuccess={response=>this.responseGoogle(response)}
+                        onFailure={response=>this.responseGoogle(response)}
                         cookiePolicy={'single_host_origin' }
                         />
+
                   </NavItem>
                   </Form>
             </Nav>
@@ -148,5 +145,11 @@ export default connect(
     loginLoading: state.auth.login.loading,
     loginError: state.auth.login.error
   }),
-  { logout, login }
+  { logout, login, GoogleLogin }
 )(Menu);
+
+
+
+ 
+                      
+                        
