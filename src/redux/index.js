@@ -3,7 +3,6 @@ import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import { connectRouter } from "connected-react-router";
 import { reducers as authReducers } from "./auth";
-//import * as messages from "./stateReducers/messages"
 import { likeReducers } from "./messages/likeUnlike"
 import * as userInfo from "./stateReducers/account"
 import {editReducers} from "./account/edituser"

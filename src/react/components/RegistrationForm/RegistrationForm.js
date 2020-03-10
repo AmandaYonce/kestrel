@@ -1,11 +1,11 @@
 import React from "react";
-//import Spinner from "react-spinkit";
 import { connect } from "react-redux";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { CardBody, CardTitle, Col } from "reactstrap";
 import SmallIcon from "../../../images/owl-black-square-single.png";
 import { register } from "../../../redux/stateReducers/registrationForm/registrationForm";
+import GoogleLogin from "react-google-login"
 
 class RegistrationForm extends React.Component {
   state = { username: "", displayName: "", password: "" };
@@ -16,6 +16,20 @@ class RegistrationForm extends React.Component {
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
+
+  responseGoogle=(response)=>{
+    console.log(response)
+    //this.setState({redirect: true})
+    const googleRegisterData={
+      username: response.profileObj.googleId.slice(12),
+      displayName: response.profileObj.givenName,
+      password: response.profileObj.googleId.slice(12),
+      
+    }
+    console.log(googleRegisterData)
+    this.props.register(googleRegisterData)
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -94,6 +108,14 @@ class RegistrationForm extends React.Component {
               />
               Register
             </Button>
+
+            <GoogleLogin 
+                        clientId="209391469626-4urq7enr97m6dhe001jr4921d0dvbvog.apps.googleusercontent.com"
+                        buttonText="Log In"
+                        onSuccess={response=>this.responseGoogle(response)}
+                        onFailure={response=>this.responseGoogle(response)}
+                        cookiePolicy={'single_host_origin' }
+                        />
           </Form>
         </CardBody>
       </React.Fragment>
