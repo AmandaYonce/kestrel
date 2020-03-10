@@ -3,7 +3,6 @@ import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import { connectRouter } from "connected-react-router";
 import { reducers as authReducers } from "./auth";
-<<<<<<< HEAD
 //import * as messages from "./stateReducers/messages"
 import { likeReducers } from "./messages/likeUnlike"
 import * as userInfo from "./stateReducers/account"
@@ -13,12 +12,8 @@ import {editPhotoReducer} from "./account/editPhoto"
 import { newMessageReducer } from "../redux/messages/newMessages";
 import {messageReducers} from "./messages/getMessages"
 import {deleteMessageReducer} from "./messages/deleteMessage"
-
-=======
-import * as messages from "./stateReducers/messages";
 import { reducers as register } from "./stateReducers/registrationForm/registrationForm";
-//import {likeUnlike} from "./stateReducers/messages"
->>>>>>> Userregistration
+
 
 export * from "./auth";
 
@@ -30,7 +25,6 @@ export const store = configureStore({
   reducer: {
     router: connectRouter(history),
     auth: combineReducers(authReducers),
-<<<<<<< HEAD
     messages: combineReducers(messageReducers),
     likeReducers: combineReducers(likeReducers),
     userInfo: combineReducers(userInfo),
@@ -38,12 +32,9 @@ export const store = configureStore({
     editPassword: combineReducers(editPassReducer),
     editPhoto: combineReducers(editPhotoReducer),
     newMessage: combineReducers(newMessageReducer),
-    deleteMessage: combineReducers(deleteMessageReducer)
-=======
-    messages: combineReducers(messages),
+    deleteMessage: combineReducers(deleteMessageReducer),
     register: combineReducers(register)
-    //likeUnlike: combineReducers(likeUnlike)
->>>>>>> Userregistration
+
   },
   preloadedState: {},
   devTools: process.env.NODE_ENV !== "production"
