@@ -3,7 +3,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import { connectRouter } from "connected-react-router";
 import { reducers as authReducers } from "./auth";
-import * as messages from "./stateReducers/messages"
+import * as messages from "./stateReducers/messages";
+import { reducers as register } from "./stateReducers/registrationForm/registrationForm";
 //import {likeUnlike} from "./stateReducers/messages"
 
 export * from "./auth";
@@ -17,8 +18,8 @@ export const store = configureStore({
     router: connectRouter(history),
     auth: combineReducers(authReducers),
     messages: combineReducers(messages),
+    register: combineReducers(register)
     //likeUnlike: combineReducers(likeUnlike)
-
   },
   preloadedState: {},
   devTools: process.env.NODE_ENV !== "production"
