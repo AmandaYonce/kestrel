@@ -45,10 +45,19 @@ import EditPhotoModal from "./EditPhotoModal"
       return (
         <Card style={{ marginTop: 100 }}>
         <CardBody >
+          {this.props.details.pictureLocation===null &&  
+           <CardImg top width="100%" 
+           src={HolderImage} alt="Kwitter Icon" 
+           className="img-fluid rounded-circle" 
+           style={{ width: 335 }} />
+          
+          }
+          {this.props.details.pictureLocation !== null &&
             <CardImg top width="100%" 
             src={domain+this.props.details.pictureLocation} alt="Kwitter Icon" 
             className="img-fluid rounded-circle" 
             style={{ width: 335}} />
+          }
             </CardBody>
 
             <Button variant="secondary"  

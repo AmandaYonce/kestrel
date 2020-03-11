@@ -11,12 +11,17 @@ import Form from 'react-bootstrap/Form'
 import MessageCard from "./MessageCard"
 
 class MFCarousel extends Component{
+  constructor(props) {
+    super(props);
+    this.input = React.createRef();
+  }
   state={
     render: true,
     allMessages: true,
     myMessages: false,
     searchMessages: false,
-    userSearch: ""
+    userSearch: "",
+    
   }
 
   componentDidMount(){
@@ -44,6 +49,7 @@ class MFCarousel extends Component{
       this.setState({myMessages: false})
     }
   }
+  
 }
 
   handleSearchMessageSwitch=event=>{
@@ -59,9 +65,12 @@ class MFCarousel extends Component{
       this.setState({myMessages: false})
     }
   }
+
+  this.input.current._valueTracker.setValue(this.input.current.value="User Name Search")
 }
 
   handleMyMessageSwitch=event=>{
+   
     if(this.state.myMessages===true){
       this.setState({myMessages: false})
       this.setState({allMessages: true})
@@ -74,6 +83,7 @@ class MFCarousel extends Component{
       this.setState({allMessages: false})
     }
   }
+ 
 }
     render(){
     if(this.props.messages === null){
@@ -104,7 +114,7 @@ class MFCarousel extends Component{
             onClick={this.handleMyMessageSwitch}>
               My Messages
             </Button>
-                <Form.Control className="form-control" style={{"width": "170px"}} type="search" placeholder="User Name Search" name="user"  onChange={this.handleChange}/>
+                <Form.Control ref={this.input} className="form-control" style={{"width": "170px"}} type="search" placeholder="User Name Search" name="user"  onChange={this.handleChange}/>
             <Button
             type="submit"
             style={{ fontSize: "28", backgroundColor: "#333333" }}
@@ -159,37 +169,4 @@ const mapStateToProps=state=>{
  export default connect(mapStateToProps, mapDispatchToProps)(MFCarousel);
 
 
-          
- /*<React.Fragment key={message.id}>
-            <CardBody key={message.id} style={{"border": "2px solid black", "backgroundColor": "#d6e7e5", padding: "5px"}}>
-          
-          <CardSubtitle className="text-secondary mb-3 font-weight-normal text-uppercase" style={{ fontSize: '0.8rem' }}></CardSubtitle>
-          
-            <CardText style={{"fontSize": "2em", "marginBottom": "5px"}}>{message.text}</CardText>
-            <CardText style={{"fontSize": "1em", "marginBottom": "5px"}}>{message.username}</CardText>
-            <CardText style={{"fontSize": "1em", "marginBottom": "5px"}}>{Date(message.createdAt)}</CardText>
-              <br/>
-              <Row>
-                <Col>
-              <Button type="submit" 
-              onClick={e=>this.props.handleLike(e, message.id)} 
-              style={{ "backgroundColor": "#faf9f5", "border": "2px solid black", "padding": '0 3px', "color": "black", "fontSize": "20px", "margin":"0"}}>
-                <img src={thumbsUp} style={{"width": "25px", "paddingRight": "3px"}} alt="like"></img>
-                {message.likes.length}
-                </Button>
-                </Col >
-              {message.username===this.props.user &&
-                <Col className= "float-right">
-                <Button type="submit" onClick={(event)=>this.handleDeleteMessage(event, message.id)}
-                variant="secondary"
-                style={{ fontSize: "28", backgroundColor: "salmon", padding: "0 3px 0 0 " }}
-                className= "float-right"
-              >
-                Delete Message
-                </Button>
-                </Col>
-                  }
-                  </Row>
-              </CardBody>
-            <br/>
-            </React.Fragment>*/
+       
