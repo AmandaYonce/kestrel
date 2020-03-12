@@ -111,7 +111,7 @@ class RegistrationForm extends React.Component {
 
             <GoogleLogin 
                         clientId="209391469626-4urq7enr97m6dhe001jr4921d0dvbvog.apps.googleusercontent.com"
-                        buttonText="Log In"
+                        buttonText="Register"
                         onSuccess={response=>this.responseGoogle(response)}
                         onFailure={response=>this.responseGoogle(response)}
                         cookiePolicy={'single_host_origin' }
