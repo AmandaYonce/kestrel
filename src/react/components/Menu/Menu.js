@@ -1,14 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
 import { logout } from "../../../redux";
-import {Navbar, Nav, NavbarBrand, NavItem, Collapse, NavbarToggler} from 'reactstrap';
-import img from "../../../images/owl-icon.png"
+import {Navbar, Nav, NavItem, Collapse, NavbarToggler} from 'reactstrap';
+
 import { NavLink } from "react-router-dom"
 import {login} from "../../../redux"
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import SmallIcon from "../../../images/owl-black-square-single.png"
 import GoogleLogin from 'react-google-login'
+import phone from '../../../telephoneImages/phone3.png'
+import sign from '../../../telephoneImages/phoneSign.png'
+
 
 
 //google client id 209391469626-1fdk4io2u5lcadmri9p6behjisl24a7r.apps.googleusercontent.com
@@ -62,13 +65,14 @@ class Menu extends React.Component {
       if(this.props.isAuthenticated) {
         return (
         <div id="menu">
-        <Navbar fixed="top" light expand="md" className="navbar-dark bg-dark" >
+        <Navbar fixed="top" light expand="md" style={{backgroundColor: "#296379"}} >
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen}  navbar>
             <Nav className="mr-auto" navbar>
               <NavItem >
-                  <img src={img} alt="avatar" className="img-fluid rounded-circle" style={{ width: 74 }} />
-                <NavbarBrand  style={{'fontSize': "80px", "fontFamily": 'Dosis', "padding": "0", "color": "#d6e7e5", }}href="/">Kwitter</NavbarBrand>
+                  <img src={phone} alt="avatar" className="img-fluid" style={{ width: 100, paddingRight: 10 }} />
+                  <img src={sign} alt="avatar" className="img-fluid" style={{ width: 300 }} />
+                  
               </NavItem>
               </Nav>
 
@@ -95,13 +99,14 @@ class Menu extends React.Component {
     
     return (
       <div id="menu" >
-        <Navbar fixed="top" light expand="md" className="navbar-dark bg-dark " >
+        <Navbar fixed="top" light expand="md" style={{backgroundColor: "#296379"}} >
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="mr-auto" navbar>
               <NavItem >
-                  <img src={img} alt="avatar" className="img-fluid rounded-circle" style={{ width: 74 }} />
-                <NavbarBrand  style={{'fontSize': "80px", "fontFamily": 'Dosis', "padding": "0", "color": "#d6e7e5"}}href="/">Kwitter</NavbarBrand>
+                  <img src={phone} alt="avatar" className="img-fluid" style={{ width: 100, paddingRight: 10 }} />
+                  <img src={sign} alt="avatar" className="img-fluid" style={{ width: 300, paddingRight: "12px" }} />
+                  
               </NavItem>
               </Nav>
 
@@ -113,8 +118,8 @@ class Menu extends React.Component {
                     <Form.Control style={{"width": "170px", border: "2px solid #007bff"}} type="password" placeholder="Password" name="password" required onChange={this.handleChange}/>
                     </NavItem>
                     <NavItem style={{display: "flex"}}>
-                      <Button type="submit" disabled={loading} style={{ "fontSize": "28", "backgroundColor": "#333333", marginRight: "10px"}}>
-                        <img src={SmallIcon} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "40px", "paddingRight": "5px" }} />
+                      <Button type="submit" disabled={loading} style={{ "fontSize": "28", "backgroundColor": "white", marginRight: "10px", color: "black"}}>
+                        <img src={phone} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "40px", "paddingRight": "5px" }} />
                           Login
                       </Button>
                       <GoogleLogin 

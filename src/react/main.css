@@ -1,0 +1,100 @@
+
+
+.item3{
+    background-color: #78854D;  /*dark green*/
+    background-color: #F0CF65;  /*dark yellow*/
+    background-color: #ABBB7C;  /*light green*/
+    background-color: #9B3D12;  /*red*/
+    background-color: #FCF5C7;  /*light yellow*/
+    background-color: #ffebd3; /*light peach from phone background on account*/
+    background-color: #296379; /*dark blue nav background color on account from phone background*/
+}
+
+.background{
+    background-image: url(../telephoneImages/phonegrey.png);
+    background-repeat: no-repeat;
+}
+
+.largebackground{
+    background-image: url(../telephoneImages/phonegreylarge.png);
+    background-repeat: no-repeat;
+
+}
+
+.phoneGameBackground{
+    background-image: url(../telephoneImages/kidsphonegame.jpg);
+    background-repeat: no-repeat;
+
+}
+
+.telephoneBackground{
+    background-image: url(../telephoneImages/phonebackground.jpeg);
+    
+
+}
+
+.blurbBackground{
+    background-image: url(../telephoneImages/textBlurb.png);
+    background-repeat: no-repeat;
+
+}
+
+.chordBackground{
+    background-image: url(../telephoneImages/chord.jpeg);
+    background-repeat: no-repeat;
+    
+}
+
+.phonecordbackground{
+    background-image: url(../telephoneImages/phonewithcord.png);
+    background-repeat: no-repeat;
+
+}
+
+.scratchBackground{
+    background-image: url(../telephoneImages/scratch.png);
+    
+
+}
+
+.herringbone{
+    background-image: url(../telephoneImages/herringbone.jpeg);
+    background-repeat: no-repeat;
+
+}
+
+.diamonds {
+    background-image: url(../telephoneImages/diamonds.jpeg);
+    background-repeat: no-repeat;
+}
+
+.elegant{
+    background-image: url(../telephoneImages/elegant.jpeg);
+    background-repeat: no-repeat;
+
+}
+
+.bowtie{
+    background-image: url(../telephoneImages/bowtie.jpeg);
+    background-repeat: no-repeat;
+
+}
+
+.brick{
+    background-image: url(../telephoneImages/brick.jpeg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+}
+
+.bricklight {
+    background-image: url(../telephoneImages/bricklight.jpeg);
+    background-repeat: no-repeat;
+
+}
+
+.bricklightnophone {
+    background-image: url(../telephoneImages/bricklightnophone.jpeg);
+    background-repeat: no-repeat;
+
+}

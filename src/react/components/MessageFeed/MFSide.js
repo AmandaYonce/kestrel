@@ -11,8 +11,11 @@ import {
     CarouselCaption
   } from 'reactstrap';
   import { getMessages } from "../../../redux/messages/getMessages";
-  import HolderImage from "../../../images/messagebackground.png"
   import { connect } from "react-redux";
+  import "../../../react/main.css"
+  import empty from "../../../telephoneImages/empty.png"
+  import blurb from "../../../telephoneImages/textBlurb.png"
+  import "../../main.css"
 
 
 
@@ -28,7 +31,7 @@ import {
     return
     const nextIndex = this.state.activeIndex === this.props.messages.length - 1 ? 0 : this.state.activeIndex + 1;
     this.setState({activeIndex: nextIndex});
-    console.log(this.state)
+   
   }
 
   check=()=>{
@@ -57,11 +60,11 @@ import {
 
       if(this.props.messages === null){
         return (
-          <Card>
+          <Card style={{backgroundColor: "#C5C7CB"}}>
           <CardBody>
             <img
             className="d-block w-100"
-            src={HolderImage}
+            src={blurb}
             alt="First slide"
           />
           </CardBody>
@@ -89,34 +92,35 @@ import {
                 }
                 onExited={() => this.setState({animating: false})}
                 key={message.id}
-                
+                className="blurbBackground"
               >
-                 <img
-                className="d-block w-100"
-                src={HolderImage}
-                alt="First slide"
-              />
-              <CarouselCaption captionHeader={message.text}
-              captionText={message.username}/>
+                <CarouselCaption captionHeader={message.text}
+                captionText={message.username} />
+                <img src={empty} style={{height: "220px"}}/>
+            
+              
               </CarouselItem>
+              
               )
               })
               
       return (
         <Fragment>
-        <Card>
+        <Card style={{ border: "5px solid #324164", maxWidth: "320px", margin: "0 auto"}} className="scratchBackground" >
+       
+        <CardBody >
+                <CardTitle className="h1 mb-2 pt-2 font-weight-bold " style={{color: "black"}}>Bookmarks</CardTitle>
+                <CardSubtitle className="h3 mb-2 pt-2 font-weight-bold " style={{color: "black"}}>Like a message to bookmark it here</CardSubtitle>
+        </CardBody>
         <CardBody>
-                <CardTitle className="h3 mb-2 pt-2 font-weight-bold text-secondary">Bookmarks</CardTitle>
-                <CardSubtitle className="h5 mb-2 pt-2 font-weight-bold text-secondary">Like a message to bookmark it here</CardSubtitle>
-                
                 <Carousel  
                 activeIndex={this.state.activeIndex}
                 next={this.next}
                 previous={this.previous}
-
                 >
+                  
                   <CarouselIndicators items={slides} activeIndex={this.state.activeIndex} onClickHandler={this.goToIndex} />
-                 {slides}
+                  {slides}
                 
                 <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
                 <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />

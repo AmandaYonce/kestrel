@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import HolderImage from "../../../images/messagebackground.png"
 import { connect } from "react-redux";
 import { getMessages } from "../../../redux/messages/getMessages";
-import {Card, CardBody, Button} from 'reactstrap';
+import {Card, CardBody, Button, Row, CardTitle} from 'reactstrap';
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import {handleLike, handleUnlike} from "../../../redux/messages/likeUnlike"
 import {deleteMessage} from "../../../redux/messages/deleteMessage"
@@ -88,8 +88,8 @@ class MFCarousel extends Component{
     render(){
     if(this.props.messages === null){
       return (
-        <Card>
-        <CardBody>
+        <Card >
+        <CardBody >
           <img
           className="d-block w-100"
           src={HolderImage}
@@ -99,8 +99,11 @@ class MFCarousel extends Component{
         </Card>
         )}
         return (
-          <Card style={{"backgroundColor": "#faf9f5", "border" : "none"}}>
-          <CardBody style={{display: "flex"}}>
+          <Card style={{backgroundColor: "transparent"}} >
+            <CardTitle style={{fontSize: "4rem", fontFamily: "'Odibee Sans'", margin: "0"}} className="text-center">Message Feed</CardTitle>
+            <Row>
+          <CardBody style={{display: "flex", paddingTop: "0", paddingBottom: "0"}} className="rounded">
+            
             <ButtonGroup>
             <Button
             type="submit"
@@ -123,7 +126,9 @@ class MFCarousel extends Component{
             </Button>
             </ButtonGroup>
           </CardBody>
-
+          </Row>
+          <Row className="scroll" style={{maxHeight: "700px", overflow: "auto"}}>
+          <CardBody>
         { this.state.allMessages===true && this.props.messages.map(message=>(
             <MessageCard
               message={message}
@@ -147,7 +152,8 @@ class MFCarousel extends Component{
             </MessageCard>
           }return "" 
         })}
-            
+            </CardBody>
+            </Row>
     </Card>
         )
     }

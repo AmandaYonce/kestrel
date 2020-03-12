@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from "react";
 import { CardBody, Card } from "reactstrap";
 import Form from "react-bootstrap/Form";
-import MFCarousel from "./MFCarousel";
-import SmallIcon from "../../../images/owl-black-square-single.png";
 import Button from "react-bootstrap/Button";
 import { addNewMessage } from "../../../redux/messages/newMessages";
 import { connect } from "react-redux";
+import phone from "../../../telephoneImages/phone3.png"
+import "../../main.css"
 
 
 class MFMain extends Component {
@@ -32,17 +32,15 @@ class MFMain extends Component {
     this.setState({ message: e.target.value })
    
   }
-
-
   render() {
 
     return (
       <Fragment>
-        <Card>
-          <CardBody>
+        <Card style={{ border: "3px solid #324164"}} className="scratchBackground">
+          <CardBody className="rounded">
             <Form.Group>
-              <Form.Label className="h3 mb-2 pt-2 font-weight-bold text-secondary">
-                What's Happening
+              <Form.Label className="h2 mb-2 pt-2 font-weight-bold text-center" style={{color: "black", fontSize: "3rem"}}>
+                Post New Message
               </Form.Label>
               <Form.Control
                 as="textarea"
@@ -59,11 +57,11 @@ class MFMain extends Component {
           <Button
             variant="secondary"
             type="submit"
-            style={{ fontSize: "28", backgroundColor: "#333333" }}
+            style={{ fontSize: "28", backgroundColor: "#6E6F72", color: "white" }}
             onClick={this.handleAddNewMessage}
           >
             <img
-              src={SmallIcon}
+              src={phone}
               alt="avatar"
               className="img-fluid rounded-circle"
               style={{ width: "40px" }}
@@ -71,7 +69,7 @@ class MFMain extends Component {
             New Message
           </Button>
         </Card>
-        <MFCarousel />
+        
       </Fragment>
     );
   }

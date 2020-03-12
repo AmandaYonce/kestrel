@@ -7,6 +7,7 @@ import {CardBody, CardSubtitle, CardText, Row, Col} from 'reactstrap';
 import {handleLike, handleUnlike} from "../../../redux/messages/likeUnlike"
 import {deleteMessage} from "../../../redux/messages/deleteMessage"
 import {login} from "../../../redux/auth"
+import "../../main.css"
 
 
 class MessageCard extends Component{
@@ -22,20 +23,19 @@ class MessageCard extends Component{
         return(
 
             <React.Fragment key={this.props.message.id}>
-            <CardBody key={this.props.message.id} style={{"border": "2px solid black", "backgroundColor": "#d6e7e5", padding: "5px"}}>
+            <CardBody key={this.props.message.id} style={{"border": "6px solid #626666", padding: "5px"}} className="rounded scratchBackground">
           
-          <CardSubtitle className="text-secondary mb-3 font-weight-normal text-uppercase" style={{ fontSize: '0.8rem' }}></CardSubtitle>
+          <CardSubtitle className="mb-3 font-weight-normal text-center" style={{ fontSize: '3rem', margin: "5px", color: "black", fontFamily: 'Boogaloo, cursive' }}>{this.props.message.text}</CardSubtitle>
           
-            <CardText style={{"fontSize": "2em", "marginBottom": "5px"}}>{this.props.message.text}</CardText>
-            <CardText style={{"fontSize": "1em", "marginBottom": "5px"}}>{this.props.message.username}</CardText>
-            <CardText style={{"fontSize": "1em", "marginBottom": "5px"}}>{Date(this.props.message.createdAt)}</CardText>
+            <CardText style={{"fontSize": "1em", "marginBottom": "1px"}}>{this.props.message.username}</CardText>
+            <CardText style={{"fontSize": "1em", "marginBottom": "1px"}}>{Date(this.props.message.createdAt)}</CardText>
               <br/>
               <Row>
                 <Col>
               <Button type="submit" 
               onClick={e=>this.props.handleLike(e, this.props.message.id)} 
               style={{ "backgroundColor": "#faf9f5", "border": "2px solid black", "padding": '0 3px', "color": "black", "fontSize": "20px", "margin":"0"}}>
-                <img src={thumbsUp} style={{"width": "25px", "paddingRight": "3px"}} alt="like"></img>
+                <img src={thumbsUp} style={{"width": "50px", "paddingRight": "3px"}} alt="like"></img>
                 {this.props.message.likes.length}
                 </Button>
                 </Col >

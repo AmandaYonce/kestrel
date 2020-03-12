@@ -7,9 +7,9 @@ import { userInfo } from "../../../redux/account/userInfo"
 import { connect } from "react-redux";
 import {domain} from "../../../redux/helpers"
 import Button from 'react-bootstrap/Button'
-import SmallIcon from "../../../images/owl-black-square-single.png"
 import {editPhoto} from "../../../redux/account/editPhoto"
 import EditPhotoModal from "./EditPhotoModal"
+import phone from "../../../telephoneImages/phone3.png"
 
   class AccountSide extends Component {
     state = { photoModal: false};
@@ -30,13 +30,13 @@ import EditPhotoModal from "./EditPhotoModal"
             <CardImg top width="100%" 
             src={HolderImage} alt="Kwitter Icon" 
             className="img-fluid rounded-circle" 
-            style={{ width: 335 }} />
+            style={{ width: 335, border: "5px solid #9B3D12" }} />
             </CardBody>
             <Button variant="secondary" 
               type="submit"  
               onClick={this.toggleDeleteUser}
               style={{ "fontSize": "28", "backgroundColor": "aliceBlue", "color": "black" }}>
-              <img src={SmallIcon} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "40px", "paddingRight": "5px" }} />
+              <img src={phone} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "40px", "paddingRight": "5px" }} />
             Add/Edit Photo
             </Button>
         </Card>
@@ -49,13 +49,13 @@ import EditPhotoModal from "./EditPhotoModal"
            <CardImg top width="100%" 
            src={HolderImage} alt="Kwitter Icon" 
            className="img-fluid rounded-circle" 
-           style={{ width: 335 }} />
+           style={{ width: 335, border: "5px solid #9B3D12" }} />
           
           }
           {this.props.details.pictureLocation !== null &&
             <CardImg top width="100%" 
             src={domain+this.props.details.pictureLocation} alt="Kwitter Icon" 
-            className="img-fluid rounded-circle" 
+            className="img-fluid" 
             style={{ width: 335}} />
           }
             </CardBody>
@@ -64,8 +64,9 @@ import EditPhotoModal from "./EditPhotoModal"
                   onClick={(e)=>{
                     this.toggle()
                   }}
-                  style={{ "fontSize": "28", "backgroundColor": "aliceBlue", "color": "black" }}>
-                <img src={SmallIcon} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "40px", "paddingRight": "5px" }} />
+                  className="btn-lg"
+                  style={{ "fontSize": "28", "backgroundColor": "#DFD8D2", "color": "black", fontFamily: 'Boogaloo, cursive' }}>
+                <img src={phone} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "40px", "paddingRight": "5px" }} />
                 Add/Edit Photo
             </Button>
 

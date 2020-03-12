@@ -3,9 +3,10 @@ import { connect } from "react-redux";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { CardBody, CardTitle, Col } from "reactstrap";
-import SmallIcon from "../../../images/owl-black-square-single.png";
 import { register } from "../../../redux/stateReducers/registrationForm/registrationForm";
 import GoogleLogin from "react-google-login"
+import "../../main.css"
+import phone from "../../../telephoneImages/phone3.png"
 
 class RegistrationForm extends React.Component {
   state = { username: "", displayName: "", password: "" };
@@ -33,7 +34,7 @@ class RegistrationForm extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <CardBody>
+        <CardBody className="rounded" style={{backgroundColor: "#FCF5C7", border: "4px solid #296379", opacity: ".8", marginTop: "100px"}} >
           <CardTitle style={{ fontSize: "40px", fontFamily: "Poppins" }}>
             New User Registration
           </CardTitle>
@@ -56,7 +57,8 @@ class RegistrationForm extends React.Component {
                   onChange={this.handleChange}
                 />
               </Form.Group>
-
+              </Form.Row>
+              <Form.Row>
               <Form.Group as={Col} md="6" id="login-form">
                 <Form.Label
                   style={{ fontSize: "25px", fontFamily: "Poppins" }}
@@ -98,12 +100,12 @@ class RegistrationForm extends React.Component {
             <Button
               variant="secondary"
               type="submit"
-              style={{ fontSize: "28", backgroundColor: "#333333" }}
+              style={{ fontSize: "28", backgroundColor: "#296379" }}
             >
               <img
-                src={SmallIcon}
+                src={phone}
                 alt="avatar"
-                className="img-fluid rounded-circle"
+                className="img-fluid"
                 style={{ width: "40px", paddingRight: "5px" }}
               />
               Register
@@ -111,7 +113,7 @@ class RegistrationForm extends React.Component {
 
             <GoogleLogin 
                         clientId="209391469626-4urq7enr97m6dhe001jr4921d0dvbvog.apps.googleusercontent.com"
-                        buttonText="Log In"
+                        buttonText="Register"
                         onSuccess={response=>this.responseGoogle(response)}
                         onFailure={response=>this.responseGoogle(response)}
                         cookiePolicy={'single_host_origin' }
