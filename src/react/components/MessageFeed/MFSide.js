@@ -70,10 +70,14 @@ import {
           const likesarray=[]
           const likes = this.props.messages.map((each)=>{
               if(each.likes.length>0){
-                each.likes.map((like)=>{
+                each.likes.filter((like)=>{
                   if(like.username===this.props.username){
                     likesarray.push(each)
+                    return true
+                  } else {
+                    return false
                   }
+
                 })
               }  
               return likesarray
@@ -89,6 +93,7 @@ import {
                 }
                 onExited={() => this.setState({animating: false})}
                 key={message.id}
+                dumb={likes}
                 
               >
                  <img

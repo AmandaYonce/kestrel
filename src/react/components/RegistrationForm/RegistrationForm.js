@@ -77,7 +77,7 @@ class RegistrationForm extends React.Component {
             </Form.Row>
 
             <Form.Row>
-              <Form.Group as={Col} md="6" id="login-form" onSubmit="">
+              <Form.Group as={Col} md="6" id="login-form">
                 <Form.Label
                   style={{ fontSize: "25px", fontFamily: "Poppins" }}
                   htmlFor="password"
