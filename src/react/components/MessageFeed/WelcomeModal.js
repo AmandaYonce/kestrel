@@ -20,7 +20,7 @@ class WelcomeModal extends Component {
 }*/
 
 componentDidMount(){
-  //this.props.randomQuote()
+  this.props.randomQuote()
 }
 
     render(){
