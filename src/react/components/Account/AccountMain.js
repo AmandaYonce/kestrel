@@ -10,8 +10,12 @@ import {
   import EditUserModal  from "./EditUserModal"
   import PasswordModal from "./PasswordModal"
   import DeleteUserModal from "./DeleteUserModal"
-  import phone from "../../../telephoneImages/phone3.png"
   import "../../main.css"
+  import Trash from "../../../images/trash.png"
+  import Password from '../../../images/password.png'
+  import Edit from "../../../images/edit.png"
+  import ReactTimeAgo from 'react-time-ago'
+ 
 
 
 class AccountMain extends Component {
@@ -44,35 +48,40 @@ class AccountMain extends Component {
       return (
         <Fragment>
         <CardBody>
-            <Spinner type="grow" color="warning" style={{ "width": '10rem', "height": '10rem', "marginTop": "100px"}} />
+            <Spinner type="grow" color="#D1D2F9" style={{ "width": '10rem', "height": '10rem', "marginTop": "100px"}} />
         </CardBody>
         </Fragment>
       )
       }
+   
     return (
       
       <Fragment>
-        <CardBody style={{"backgroundColor": "#D0D9D0", "marginTop": "100px", border: "8px solid #324164"}} className="rounded scratchBackground">
+        <CardBody style={{ "marginTop": "100px", border: "3px solid #324164"}} className="rounded scratchBackground">
     <CardTitle className="h3 mb-2 pt-2 font-weight-bold" style={{color: "#6E6F72", fontSize: "4rem"}} >{this.props.details.displayName}</CardTitle>
         <CardSubtitle className=" mb-3 font-weight-normal text-uppercase" style={{ fontSize: '2rem', color: "#626666" }}>{this.props.details.about}</CardSubtitle>
-    <CardText className=" mb-4 font-weight-normal" style={{ fontSize: '0.95rem', color: "#626666" }}>User Created: {Date(this.props.details.createdAt)}</CardText>
-    <CardText className=" mb-4 font-weight-normal" style={{ fontSize: '0.95rem', color: "#626666" }}>User Updated: {Date(this.props.details.updatedAt)}</CardText>
+    <CardText className=" mb-4 font-weight-normal" style={{ fontSize: '1.1rem', color: "#626666" }}>
+      User Since: {Date(this.props.details.createdAt)}
+      </CardText>
+    <CardText className=" mb-4 font-weight-normal" style={{ fontSize: '1.1rem', color: "#626666" }}>
+      User Updated: <ReactTimeAgo date={this.props.details.updatedAt} />
+      </CardText>
       </CardBody>
       <br/>
 
       <Button variant="secondary"   
       onClick={this.toggle}
       className="btn-lg"
-      style={{ "fontSize": "100", "backgroundColor": "#DFD8D2", "marginRight": "20px",  fontFamily: 'Boogaloo, cursive', color: "black" }}>
-          <img src={phone} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "40px", "paddingRight": "5px" }} />
-            Edit User
+      style={{ "fontSize": "100", "backgroundColor": "#DFD8D2", "marginRight": "20px",  fontFamily: 'Boogaloo, cursive', color: "black", boxShadow: "1.5px 1.5px 1.5px 1.5px #324164"  }}>
+          <img src={Edit} alt="avatar"  style={{ "width": "40px", "paddingRight": "5px"}} />
+            Edit User Info
       </Button>
 
       <Button variant="secondary"   
       onClick={this.togglePassword}
       className="btn-lg"
-      style={{ "fontSize": "100", "backgroundColor": "#DFD8D2", "marginRight": "20px", fontFamily: 'Boogaloo, cursive',color: "black" }}>
-          <img src={phone} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "40px", "paddingRight": "5px" }} />
+      style={{ "fontSize": "100", "backgroundColor": "#DFD8D2", "marginRight": "20px", fontFamily: 'Boogaloo, cursive',color: "black", boxShadow: "1.5px 1.5px 1.5px 1.5px #324164" }}>
+          <img src={Password} alt="avatar"  style={{ "width": "40px", "paddingRight": "5px" }} />
             Change Password
       </Button>
          
@@ -80,8 +89,8 @@ class AccountMain extends Component {
       type="submit"  
       onClick={this.toggleDeleteUser}
       className="btn-lg"
-      style={{ "fontSize": "100", "backgroundColor": " #DFD8D2",  fontFamily: 'Boogaloo, cursive', color: "black" }}>
-          <img src={phone} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "40px", "paddingRight": "5px" }} />
+      style={{ "fontSize": "100", "backgroundColor": " #DFD8D2",  fontFamily: 'Boogaloo, cursive', color: "black", boxShadow: "1.5px 1.5px 1.5px 1.5px #324164" }}>
+          <img src={Trash} alt="avatar"  style={{ "width": "40px", "paddingRight": "5px" }} />
             Delete User
       </Button>
 
@@ -99,6 +108,8 @@ class AccountMain extends Component {
       modal={this.state.passwordModal}
       toggle={this.togglePassword}>
       </PasswordModal>
+
+      <CardBody style={{minHeight: "345px"}}></CardBody>
           
       </Fragment>
     );

@@ -1,58 +1,57 @@
 import React, { Component } from 'react';
-import Button from 'react-bootstrap/Button'
 import { connect } from "react-redux";
 import { getMessages } from "../../../redux/messages/getMessages";
-import thumbsUp from "../../../images/thumb.png"
-import {CardBody, CardSubtitle, CardText, Row, Col} from 'reactstrap';
+import {CardBody, CardSubtitle, CardText} from 'reactstrap';
 import {handleLike, handleUnlike} from "../../../redux/messages/likeUnlike"
 import {deleteMessage} from "../../../redux/messages/deleteMessage"
+import { getFriends } from "../../../redux/messages/getMessages";
 import {login} from "../../../redux/auth"
 import "../../main.css"
+import thumb from "../../../images/likethumbround.png"
+import ReactTimeAgo from 'react-time-ago'
+import Trash from "../../../images/trash.png"
+import User from "../../../images/user.png"
+import Bookmark from "../../../images/bookmark.png"
 
 
 class MessageCard extends Component{
-    state={
-
-    }
+  
 
     handleDeleteMessage=(event, messageID)=>{
         this.props.deleteMessage(event, messageID)
       }
 
     render(){
+      
         return(
 
             <React.Fragment key={this.props.message.id}>
-            <CardBody key={this.props.message.id} style={{"border": "6px solid #626666", padding: "5px"}} className="rounded scratchBackground">
+            <CardBody key={this.props.message.id} className="rounded" style={{padding: "15px"}}>
           
-          <CardSubtitle className="mb-3 font-weight-normal text-center" style={{ fontSize: '3rem', margin: "5px", color: "black", fontFamily: 'Boogaloo, cursive' }}>{this.props.message.text}</CardSubtitle>
+          <CardSubtitle style={{ fontSize: '2rem', color: "black", fontFamily: 'Dosis', }}>{this.props.message.text}</CardSubtitle>
           
-            <CardText style={{"fontSize": "1em", "marginBottom": "1px"}}>{this.props.message.username}</CardText>
-            <CardText style={{"fontSize": "1em", "marginBottom": "1px"}}>{Date(this.props.message.createdAt)}</CardText>
-              <br/>
-              <Row>
-                <Col>
-              <Button type="submit" 
-              onClick={e=>this.props.handleLike(e, this.props.message.id)} 
-              style={{ "backgroundColor": "#faf9f5", "border": "2px solid black", "padding": '0 3px', "color": "black", "fontSize": "20px", "margin":"0"}}>
-                <img src={thumbsUp} style={{"width": "50px", "paddingRight": "3px"}} alt="like"></img>
-                {this.props.message.likes.length}
-                </Button>
-                </Col >
+            <CardText style={{"fontSize": "1.2em", "marginBottom": "1px"}}>
+            <img src={User} alt="avatar" style={{width: "30px", paddingRight: "5px"}} className="rounded-circle"/>
+              {this.props.message.username}
+             
+              </CardText>
+            <CardText style={{"fontSize": "1em", "marginBottom": "1px"}}><ReactTimeAgo date={this.props.message.createdAt} /></CardText>
+              
+                <img src={thumb} alt="thumbsup" onClick={e=>this.props.handleLike(e, this.props.message.id)} style={{width: "30px", paddingRight: "8px"}} />
+                <span style={{fontSize: "1.5em"}}>{this.props.message.likes.length}</span>
+                {this.props.message.likes.filter((each)=>{ if (each.username.includes(this.props.user)===true) {return true} else {return false}}).length===1 &&
+                  <img src={Bookmark} alt="bookmark" style={{width: "30px", paddingLeft: "5px"}}/>
+                }
+             
               {this.props.message.username===this.props.user &&
-                <Col className= "float-right">
-                <Button type="submit" onClick={(event)=>this.handleDeleteMessage(event, this.props.message.id)}
-                variant="secondary"
-                style={{ fontSize: "28", backgroundColor: "salmon", padding: "0 3px 0 0 " }}
-                className= "float-right"
-              >
-                Delete Message
-                </Button>
-                </Col>
+               <img src={Trash} 
+               alt="trashcan"
+               onClick={(event)=>this.handleDeleteMessage(event, this.props.message.id)}
+               style={{width: "30px", paddingLeft: "5px"}}/>
                   }
-                  </Row>
+              
               </CardBody>
-            <br/>
+            
             </React.Fragment>
 
         )
@@ -62,7 +61,12 @@ class MessageCard extends Component{
 
 export default connect(
     state=>({
-        user: state.auth.login.result.username
+        user: state.auth.login.result.username,
+        messages: state.messages.getMessages.result,
+        friends: state.friends.getFriends.result
     })
-    , {getMessages, handleLike, handleUnlike, deleteMessage, login})(MessageCard);
+    , {getMessages, handleLike, handleUnlike, deleteMessage, login, getFriends})(MessageCard);
 
+
+    /* {this.props.uniqueUsers.includes(this.props.message.username)===true    && 
+              <img src={friend} alt="friend" style={{width: "30px"}}/>}*/

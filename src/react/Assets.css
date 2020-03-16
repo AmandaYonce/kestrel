@@ -14,9 +14,18 @@ font-family: 'Cherry Cream Soda', cursive;
 */
 
 /*
-background & light pinkish font: #faf9f5
-Light Blue: #d6e7e5
-Dark Grey: #333333
+joanna's blue scheme:
+#576490 dark blue
+#7796CB periwinkle
+#A3BCF9 baby blue
+#D1D2F9 lylac
+#c9CAD9 tangrey
 
 */
 
+.addressBook {
+    background-image: url("../telephoneImages/addressBook.png");
+    background-repeat: no-repeat;
+}
+
+.navbar {max-height:90px !important}

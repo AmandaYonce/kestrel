@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import HolderImage from "../../../images/messagebackground.png"
+import HolderImage from "../../../images/owl-icon.png"
 import { connect } from "react-redux";
 import { getMessages } from "../../../redux/messages/getMessages";
-import {Card, CardBody, Button, Row, CardTitle} from 'reactstrap';
+import {Card, CardBody, Button, CardTitle, Row} from 'reactstrap';
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import {handleLike, handleUnlike} from "../../../redux/messages/likeUnlike"
 import {deleteMessage} from "../../../redux/messages/deleteMessage"
 import {login} from "../../../redux/auth"
 import Form from 'react-bootstrap/Form'
 import MessageCard from "./MessageCard"
+
 
 class MFCarousel extends Component{
   constructor(props) {
@@ -25,9 +26,9 @@ class MFCarousel extends Component{
   }
 
   componentDidMount(){
-    this.props.getMessages()
     this.setState({render: !this.state.render})
   };   
+ 
 
   handleDeleteMessage=(event, messageID)=>{
     this.props.deleteMessage(event, messageID)
@@ -88,51 +89,55 @@ class MFCarousel extends Component{
     render(){
     if(this.props.messages === null){
       return (
-        <Card >
+        <Card>
         <CardBody >
           <img
-          className="d-block w-100"
+          className="d-block"
           src={HolderImage}
           alt="First slide"
+          style={{width: "100px"}}
         />
         </CardBody>
         </Card>
         )}
         return (
-          <Card style={{backgroundColor: "transparent"}} >
-            <CardTitle style={{fontSize: "4rem", fontFamily: "'Odibee Sans'", margin: "0"}} className="text-center">Message Feed</CardTitle>
+          <Card style={{margin: "0 auto",}} className="scratchBackground">
+            <CardBody className="pt-0">
+          <CardTitle style={{color: "#576490", fontSize: "3.2rem", fontFamily: 'Odibee Sans', margin: "0"}} className="text-center">Message Feed</CardTitle>
             <Row>
-          <CardBody style={{display: "flex", paddingTop: "0", paddingBottom: "0"}} className="rounded">
-            
-            <ButtonGroup>
+          <CardBody style={{ paddingTop: "0", paddingBottom: "0", display: "inline-Block"}} className="rounded text-center">
+          <ButtonGroup>
             <Button
             type="submit"
-            style={{ fontSize: "28", backgroundColor: "#333333"}}
+            style={{ color: "black", backgroundColor: "#c9CAD9"}}
             onClick={this.handleAllMessageSwitch}>
-              All Messages
+              All 
             </Button>
             <Button
+            className="rounded"
             type="submit"
-            style={{ fontSize: "28", backgroundColor: "#333333"}}
+            style={{ color: "black", backgroundColor: "#c9CAD9"}}
             onClick={this.handleMyMessageSwitch}>
-              My Messages
+              Mine
             </Button>
                 <Form.Control ref={this.input} className="form-control" style={{"width": "170px"}} type="search" placeholder="User Name Search" name="user"  onChange={this.handleChange}/>
             <Button
+            className= "rounded"
             type="submit"
-            style={{ fontSize: "28", backgroundColor: "#333333" }}
+            style={{ color: "black", backgroundColor: "#c9CAD9" }}
             onClick={this.handleSearchMessageSwitch}>
               Search
             </Button>
             </ButtonGroup>
           </CardBody>
           </Row>
-          <Row className="scroll" style={{maxHeight: "700px", overflow: "auto"}}>
-          <CardBody>
+          <Row className="scroll" style={{maxHeight: "500px", overflow: "auto"}}>
+          <CardBody style={{padding: "0 5px"}} className= "w-100 flex-fill">
         { this.state.allMessages===true && this.props.messages.map(message=>(
             <MessageCard
               message={message}
-              key={message.id}></MessageCard>
+              key={message.id}>
+              </MessageCard>
         ))}
 
         { this.state.myMessages===true && this.props.messages.map(message=>{
@@ -140,6 +145,7 @@ class MFCarousel extends Component{
               return <MessageCard 
               key={message.id}
               message={message}>
+              
               </MessageCard>
             }return "" 
             })}
@@ -154,7 +160,8 @@ class MFCarousel extends Component{
         })}
             </CardBody>
             </Row>
-    </Card>
+            </CardBody>
+  </Card>
         )
     }
   }

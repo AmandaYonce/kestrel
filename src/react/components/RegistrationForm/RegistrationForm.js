@@ -6,7 +6,10 @@ import { CardBody, CardTitle, Col } from "reactstrap";
 import { register } from "../../../redux/stateReducers/registrationForm/registrationForm";
 import GoogleLogin from "react-google-login"
 import "../../main.css"
-import phone from "../../../telephoneImages/phone3.png"
+import logo from "../../../images/owl-icon.png"
+import Password from "../../../images/password.png"
+import User from "../../../images/user.png"
+import displayName from "../../../images/displayName.png"
 
 class RegistrationForm extends React.Component {
   state = { username: "", displayName: "", password: "" };
@@ -34,7 +37,7 @@ class RegistrationForm extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <CardBody className="rounded" style={{backgroundColor: "#FCF5C7", border: "4px solid #296379", opacity: ".8", marginTop: "100px"}} >
+        <CardBody className="rounded" style={{backgroundColor: "#FCF5C7", border: "4px solid #576490", boxShadow: "2px 2px 2px 2px #d6e7e5", opacity: ".8", marginTop: "70px"}} >
           <CardTitle style={{ fontSize: "40px", fontFamily: "Poppins" }}>
             New User Registration
           </CardTitle>
@@ -45,6 +48,7 @@ class RegistrationForm extends React.Component {
                   style={{ fontSize: "25px", fontFamily: "Poppins" }}
                   htmlFor="username"
                 >
+                  <img src={User} alt="user icon" style={{width: "25px"}}/>
                   Username
                 </Form.Label>
                 <Form.Control
@@ -64,6 +68,7 @@ class RegistrationForm extends React.Component {
                   style={{ fontSize: "25px", fontFamily: "Poppins" }}
                   htmlFor="displayname"
                 >
+                  <img src={displayName} alt="user icon" style={{width: "28px"}}/>
                   Display Name
                 </Form.Label>
                 <Form.Control
@@ -83,7 +88,7 @@ class RegistrationForm extends React.Component {
                 <Form.Label
                   style={{ fontSize: "25px", fontFamily: "Poppins" }}
                   htmlFor="password"
-                >
+                > <img src={Password} alt="password" style={{width: "25px", paddingRight: "3px"}}/>
                   Password
                 </Form.Label>
                 <Form.Control
@@ -98,15 +103,15 @@ class RegistrationForm extends React.Component {
             </Form.Row>
 
             <Button
-              variant="secondary"
+             
               type="submit"
-              style={{ fontSize: "28", backgroundColor: "#296379" }}
+              style={{ fontSize: "28", backgroundColor: "#576490" }}
             >
               <img
-                src={phone}
+                src={logo}
                 alt="avatar"
                 className="img-fluid"
-                style={{ width: "40px", paddingRight: "5px" }}
+                style={{ width: "30px", paddingRight: "5px" }}
               />
               Register
             </Button>

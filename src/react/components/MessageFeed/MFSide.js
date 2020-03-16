@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import {
     Card, CardBody,
-    CardTitle, CardSubtitle
+    CardTitle
   } from 'reactstrap';
   import {
     Carousel,
@@ -11,10 +11,10 @@ import {
     CarouselCaption
   } from 'reactstrap';
   import { getMessages } from "../../../redux/messages/getMessages";
+  import {getFriends} from "../../../redux/messages/getMessages"
   import { connect } from "react-redux";
   import "../../../react/main.css"
   import empty from "../../../telephoneImages/empty.png"
-  import blurb from "../../../telephoneImages/textBlurb.png"
   import "../../main.css"
 
 
@@ -23,32 +23,36 @@ import {
     state={
       activeIndex: 0,
       animating: false,
-      likesCount: 0 
+      likesCount: 0
     }
+
+  infinite=()=>{
+    if(this.state.activeIndex>this.state.likesCount){
+      this.setState({activeIndex: 0})
+    }
+  }
 
   next = () => {
     if (this.state.animating) 
     return
     const nextIndex = this.state.activeIndex === this.props.messages.length - 1 ? 0 : this.state.activeIndex + 1;
     this.setState({activeIndex: nextIndex});
-   
-  }
-
-  check=()=>{
-    if(this.state.activeIndex>this.state.likesCount)
-      this.setState({activeIndex: 0})
+    this.infinite()
+    console.log(this.state)
   }
 
   previous = () => {
     if (this.state.animating) return;
     const nextIndex = this.state.activeIndex === 0 ? this.props.messages.length - 1 : this.state.activeIndex - 1;
     this.setState({activeIndex: nextIndex});
+    this.infinite()
     console.log(this.state)
   }
 
   goToIndex = (newIndex) => {
     if (this.state.animating) return;
     this.setState({activeIndex: newIndex});
+    this.infinite()
     console.log(this.state)
   }
 
@@ -60,27 +64,25 @@ import {
 
       if(this.props.messages === null){
         return (
-          <Card style={{backgroundColor: "#C5C7CB"}}>
-          <CardBody>
-            <img
-            className="d-block w-100"
-            src={blurb}
-            alt="First slide"
-          />
+          <Card style={{backgroundColor: "transparent"}}>
+          <CardBody className = "owlCard">
+           
           </CardBody>
           </Card>
           )} else {
           const likesarray=[]
           const likes = this.props.messages.map((each)=>{
               if(each.likes.length>0){
-                each.likes.map((like)=>{
+                each.likes.filter((like)=>{
                   if(like.username===this.props.username){
                     likesarray.push(each)
-                  }
+                    return true
+                  } return false
                 })
               }  
               return likesarray
           })
+          console.log(likes)
          
           const slides=likesarray.map((message)=>{
               return(
@@ -92,13 +94,12 @@ import {
                 }
                 onExited={() => this.setState({animating: false})}
                 key={message.id}
-                className="blurbBackground"
+                
               >
                 <CarouselCaption captionHeader={message.text}
-                captionText={message.username} />
-                <img src={empty} style={{height: "220px"}}/>
-            
-              
+                captionText={message.username}
+                 />
+                <img src={empty} alt="" style={{height: "12rem"}}/>
               </CarouselItem>
               
               )
@@ -106,17 +107,20 @@ import {
               
       return (
         <Fragment>
-        <Card style={{ border: "5px solid #324164", maxWidth: "320px", margin: "0 auto"}} className="scratchBackground" >
-       
-        <CardBody >
-                <CardTitle className="h1 mb-2 pt-2 font-weight-bold " style={{color: "black"}}>Bookmarks</CardTitle>
-                <CardSubtitle className="h3 mb-2 pt-2 font-weight-bold " style={{color: "black"}}>Like a message to bookmark it here</CardSubtitle>
-        </CardBody>
+        <Card  style={{backgroundColor: "transparent", minHeight: "10rem", minWidth: "12rem"}} className = "owlCard">
         <CardBody>
+        <CardBody style={{padding: "0", }}>
+                <CardTitle className="text-center pb-3" style={{color: "#c9CAD9 ", fontFamily: 'Poppins', fontSize: "2rem", margin: "0", whiteSpace: "nowrap"}}>Bookmarks</CardTitle>
+                {/*<CardSubtitle className=" text-center" style={{color: "#D1D2F9 ", fontFamily: 'Poppins', fontSize: "1.2rem"}}>Like a message to bookmark it</CardSubtitle>*/}
+        </CardBody>
+        <CardBody style={{padding: "0",}}>
                 <Carousel  
                 activeIndex={this.state.activeIndex}
                 next={this.next}
                 previous={this.previous}
+                data-interval="500"
+                pauseOnHover="false"
+                onSlideEnd={this.infinite}
                 >
                   
                   <CarouselIndicators items={slides} activeIndex={this.state.activeIndex} onClickHandler={this.goToIndex} />
@@ -126,6 +130,7 @@ import {
                 <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
                 </Carousel>
                
+            </CardBody>
             </CardBody>
         </Card>
         
@@ -141,7 +146,7 @@ import {
     state=>({
       messages: state.messages.getMessages.result,
       username: state.auth.login.result.username
-    }), {getMessages})(MFSide);
+    }), {getMessages, getFriends})(MFSide);
 
 
   

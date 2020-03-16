@@ -1,52 +1,12 @@
-
-
-.item3{
-    background-color: #78854D;  /*dark green*/
-    background-color: #F0CF65;  /*dark yellow*/
-    background-color: #ABBB7C;  /*light green*/
-    background-color: #9B3D12;  /*red*/
-    background-color: #FCF5C7;  /*light yellow*/
-    background-color: #ffebd3; /*light peach from phone background on account*/
-    background-color: #296379; /*dark blue nav background color on account from phone background*/
+.carousel-inner>.item {
+    -webkit-transition: -webkit-transform 0.3s ease-in-out !important;
+    -o-transition: -o-transform 0.3s ease-in-out !important;
+    transition: transform 0.3s ease-in-out !important;
 }
 
-.background{
-    background-image: url(../telephoneImages/phonegrey.png);
-    background-repeat: no-repeat;
-}
-
-.largebackground{
-    background-image: url(../telephoneImages/phonegreylarge.png);
-    background-repeat: no-repeat;
-
-}
-
-.phoneGameBackground{
-    background-image: url(../telephoneImages/kidsphonegame.jpg);
-    background-repeat: no-repeat;
-
-}
-
-.telephoneBackground{
-    background-image: url(../telephoneImages/phonebackground.jpeg);
-    
-
-}
 
 .blurbBackground{
     background-image: url(../telephoneImages/textBlurb.png);
-    background-repeat: no-repeat;
-
-}
-
-.chordBackground{
-    background-image: url(../telephoneImages/chord.jpeg);
-    background-repeat: no-repeat;
-    
-}
-
-.phonecordbackground{
-    background-image: url(../telephoneImages/phonewithcord.png);
     background-repeat: no-repeat;
 
 }
@@ -95,6 +55,29 @@
 
 .bricklightnophone {
     background-image: url(../telephoneImages/bricklightnophone.jpeg);
-    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.bricklightnophoneProfile {
+    background-image: url(../telephoneImages/bricklightnophone.jpeg);
+    background-size: cover;
+
+}
+
+.owlCard{
+    background-image: url(../images/owl-black-rectangle.png);
+    background-size: cover;
+}
+
+.owlBackground{
+    background-image: url(../images/owl-white-rectangle.png);
+    background-size: 100% 100%;
+
+}
+
+.bricklightlonger{
+    background-image: url(../images/bricklightslonger.jpeg);
+    background-size: cover
 
 }

@@ -2,59 +2,58 @@
 import React from "react";
 import { Menu} from "./components";
 import { userIsAuthenticated } from "./HOCs";
-import { Container, Row, Col } from 'reactstrap';
-import {MFMain} from "./components"
-import {MFSide} from "./components"
+import { Row} from 'reactstrap';
 import { userInfo } from "../redux/account/userInfo"
 import { connect } from "react-redux";
+import { getMessages } from "../redux/messages/getMessages";
 import "./main.css"
-import MFCarousel from "./components/MessageFeed/MFCarousel"
-import booth from "../telephoneImages/bwphonebooth.png"
+import FeedTab from "../react/components/MessageFeed/FeedTab"
+import WelcomeModal from "../react/components/MessageFeed/WelcomeModal"
+import { getFriends } from "../redux/messages/getMessages";
+import {welcomeModal} from "../redux/welcomeModal/welcomeModal"
 
 class Profile extends React.Component {
   state={
-    newMessage: false
+    modal: true
   }
-
-  toggleNewMessage=e=>{
-    this.setState({ newMessage: !this.state.newMessage })
+  
+  toggle=()=>{
+    if(this.state.modal===true){
+      this.setState({modal: false})
+      
   }
-
+}
   componentDidMount(){
-    this.props.userInfo()
-  };
+    this.props.getMessages()
+  }
+
 
 
   render() {
     return (
       <>
         <Menu isAuthenticated={this.props.isAuthenticated} />
-        <main className="my-5 py-5 brick" >
-        <Container className="px-0" >
-        <Row noGutters className=" pt-md-5 w-100  px-xl-0 position-relative" style={{padding: "10"}}>
+        <main className="my-5 py-5 bricklightlonger ">
+         
+        <WelcomeModal
+        modal={this.state.modal}
+        toggle={this.toggle}/>
+          
+        <Row style={{marginTop: "120px"}}>
 
-            <Col xs={{ order: 1 }} md={{ size: 4}} tag="aside" className="pb-5 mb-5 pb-md-0 mb-md-0 mx-auto mx-md-0">
-            <Row>
-            <MFMain 
-            newMessage={this.state.newMessage}
-            toggleMessage={this.toggleNewMessage}
-            />
-            </Row>
-            <Row style={{marginTop: "50px"}}>
-            <MFSide />
-            </Row >
-            </Col>
-            
-            <Col xs={{ order: 2 }} md={{ size: 5}} tag="section" className="py-5 mb-5 py-md-0 mb-md-0" style={{marginLeft: "50px"}}>
-            <MFCarousel />
-            </Col>
+        <FeedTab />
 
         </Row>
-        </Container>
+       
   </main>
       </>
     );
   }
 }
 
-export default connect(null,{userInfo}) (userIsAuthenticated(Profile));
+export default connect(
+  state=>({
+    messages: state.messages.getMessages.result,
+    //modalState: state.welcomeModal.welcomeModal.result
+  })
+  ,{userInfo, getMessages, getFriends, welcomeModal}) (userIsAuthenticated(Profile));

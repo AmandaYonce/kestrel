@@ -1,18 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 import { logout } from "../../../redux";
-import {Navbar, Nav, NavItem, Collapse, NavbarToggler} from 'reactstrap';
-
+import {Navbar, Nav, NavItem, Collapse, NavbarToggler, NavbarBrand} from 'reactstrap';
+import logo from "../../../images/owl-icon.png"
 import { NavLink } from "react-router-dom"
 import {login} from "../../../redux"
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import SmallIcon from "../../../images/owl-black-square-single.png"
 import GoogleLogin from 'react-google-login'
-import phone from '../../../telephoneImages/phone3.png'
-import sign from '../../../telephoneImages/phoneSign.png'
-
-
+import {welcomeModal} from "../../../redux/welcomeModal/welcomeModal"
 
 //google client id 209391469626-1fdk4io2u5lcadmri9p6behjisl24a7r.apps.googleusercontent.com
 //google client secret n7qcHKqBThUh_zC7UzFJyQXH
@@ -42,6 +38,7 @@ class Menu extends React.Component {
   handleLogin=e=>{
     e.preventDefault()
     this.props.login({username: this.state.username, password: this.state.password})
+    this.props.welcomeModal(true)
   }
 
   handleLogout = event => {
@@ -65,13 +62,13 @@ class Menu extends React.Component {
       if(this.props.isAuthenticated) {
         return (
         <div id="menu">
-        <Navbar fixed="top" light expand="md" style={{backgroundColor: "#296379"}} >
+        <Navbar fixed="top" light expand="md" style={{backgroundColor: "#576490"}} >
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen}  navbar>
             <Nav className="mr-auto" navbar>
-              <NavItem >
-                  <img src={phone} alt="avatar" className="img-fluid" style={{ width: 100, paddingRight: 10 }} />
-                  <img src={sign} alt="avatar" className="img-fluid" style={{ width: 300 }} />
+              <NavItem style={{position: "relative"}}>
+                  <img src={logo} alt="avatar" style={{ width: "60px", position: "absolute", top: "24px" }} />
+                  <NavbarBrand  style={{'fontSize': "80px", "fontFamily": 'Dosis', "padding": "0", "color": "#d6e7e5", marginLeft: "72px" }}href="/">Kestrel</NavbarBrand>
                   
               </NavItem>
               </Nav>
@@ -86,7 +83,11 @@ class Menu extends React.Component {
           </NavLink>
           </NavItem>
           <NavItem>
-          <NavLink style={{"paddingRight": "20px", "fontSize":"45px", "color": "#faf9f5", "fontFamily": 'Odibee Sans'}} to="/" onClick={this.handleLogout}>
+          <NavLink style={{"paddingRight": "20px", "fontSize":"45px", "color": "#faf9f5", "fontFamily": 'Odibee Sans'}} to="/" 
+          onClick={(e)=>{
+            this.handleLogout(e)
+            this.props.welcomeModal(e,false)
+            }}>
             Logout
           </NavLink>
           </NavItem>
@@ -99,13 +100,13 @@ class Menu extends React.Component {
     
     return (
       <div id="menu" >
-        <Navbar fixed="top" light expand="md" style={{backgroundColor: "#296379"}} >
+        <Navbar fixed="top" light expand="md" style={{backgroundColor: "#576490"}} >
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="mr-auto" navbar>
-              <NavItem >
-                  <img src={phone} alt="avatar" className="img-fluid" style={{ width: 100, paddingRight: 10 }} />
-                  <img src={sign} alt="avatar" className="img-fluid" style={{ width: 300, paddingRight: "12px" }} />
+              <NavItem style={{position: "relative"}}>
+                  <img src={logo} alt="avatar" style={{ width: "60px", position: "absolute", top: "24px" }}/>
+                  <NavbarBrand  style={{'fontSize': "80px", "fontFamily": 'Dosis', "padding": "0", "color": "#d6e7e5", marginLeft: "72px" }}href="/">Kestrel</NavbarBrand>
                   
               </NavItem>
               </Nav>
@@ -113,13 +114,14 @@ class Menu extends React.Component {
             <Nav >
                 <Form onSubmit={this.handleLogin} style={{display: "flex"}}>
                 <NavItem>
-                  <Form.Control style={{"width": "170px", "marginRight":"5px", border: "2px solid #007bff"}} type="text" placeholder="Username" name="username" autoFocus required onChange={this.handleChange}/>
-                  <br/>
-                    <Form.Control style={{"width": "170px", border: "2px solid #007bff"}} type="password" placeholder="Password" name="password" required onChange={this.handleChange}/>
+                  <Form.Control style={{"width": "170px", "marginRight":"5px", border: "none", boxShadow: "1.5px 1.5px 0px 1.5px #d6e7e5"}} type="text" placeholder="Username" name="username" autoFocus required onChange={this.handleChange}/>
+                  </NavItem>
+                  <NavItem>
+                    <Form.Control style={{"width": "170px", border: "none", boxShadow: "1.5px 1.5px 0px 1.5px #d6e7e5", "marginRight":"5px"}} type="password" placeholder="Password" name="password" required onChange={this.handleChange}/>
                     </NavItem>
                     <NavItem style={{display: "flex"}}>
-                      <Button type="submit" disabled={loading} style={{ "fontSize": "28", "backgroundColor": "white", marginRight: "10px", color: "black"}}>
-                        <img src={phone} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "40px", "paddingRight": "5px" }} />
+                      <Button type="submit" disabled={loading} style={{ backgroundColor: "white", marginRight: "10px", color: "black", border: "none", boxShadow: "1.5px 1.5px 0px 1.5px #d6e7e5"}}>
+                        <img src={logo} alt="avatar" className="img-fluid" style={{ "width": "28px", "paddingRight": "5px" }} />
                           Login
                       </Button>
                       <GoogleLogin 
@@ -150,7 +152,7 @@ export default connect(
     loginLoading: state.auth.login.loading,
     loginError: state.auth.login.error
   }),
-  { logout, login, GoogleLogin }
+  { logout, login, GoogleLogin, welcomeModal }
 )(Menu);
 
 

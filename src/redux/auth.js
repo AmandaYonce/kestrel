@@ -9,12 +9,13 @@ import {
   createReducer
 } from "./helpers";
 
+
 const url = domain + "/auth";
 
 const LOGIN = createActions("login");
 export const login = loginData => dispatch => {
   dispatch(LOGIN.START());
-
+ 
   return fetch(url + "/login", {
     method: "POST",
     headers: jsonHeaders,
@@ -30,7 +31,7 @@ export const logout = () => (dispatch, getState) => {
   dispatch(LOGOUT.START());
 
   const token = getState().auth.login.result.token;
-
+  
   return fetch(url + "/logout", {
     method: "GET",
     headers: { Authorization: "Bearer " + token, ...jsonHeaders }
@@ -38,6 +39,7 @@ export const logout = () => (dispatch, getState) => {
     .then(handleJsonResponse)
     .then(result => dispatch(LOGOUT.SUCCESS(result)))
     .catch(err => Promise.reject(dispatch(LOGOUT.FAIL(err))));
+   
 };
 
 export const reducers = {
