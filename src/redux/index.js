@@ -17,8 +17,8 @@ import {modalReducer} from "./welcomeModal/welcomeModal"
 //import ReactTimeAgo from 'react-time-ago'
 import JavascriptTimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
+import{randomQuoteReducer} from "../redux/randomQuote/randomQuote"
 JavascriptTimeAgo.locale(en)
-
 
 
 export * from "./auth";
@@ -41,7 +41,8 @@ export const store = configureStore({
     deleteMessage: combineReducers(deleteMessageReducer),
     register: combineReducers(register),
     friends: combineReducers(friendsReducer),
-    welcomeModal: combineReducers(modalReducer)
+    welcomeModal: combineReducers(modalReducer),
+    randomQuote: combineReducers(randomQuoteReducer)
 
   },
   preloadedState: {},

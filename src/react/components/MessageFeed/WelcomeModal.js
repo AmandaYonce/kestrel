@@ -4,6 +4,7 @@ import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import {connect} from 'react-redux'
 import { userInfo } from "../../../redux/account/userInfo"
 import {welcomeModal} from "../../../redux/welcomeModal/welcomeModal"
+import {randomQuote} from "../../../redux/randomQuote/randomQuote"
 
 class WelcomeModal extends Component {
  /* state={
@@ -18,6 +19,10 @@ class WelcomeModal extends Component {
   }
 }*/
 
+componentDidMount(){
+  //this.props.randomQuote()
+}
+
     render(){
     return (
 
@@ -31,7 +36,7 @@ class WelcomeModal extends Component {
           Welcome back {this.props.username}
         </ModalHeader>
         <ModalBody>
-        <h3> random fact or quote api generator here </h3>
+        <h3> {this.props.quote} </h3>
 
         </ModalBody>
         <ModalFooter>
@@ -49,5 +54,6 @@ export default connect (
 state=>({
     username: state.auth.login.result.username,
     //modal: state.welcomeModal.welcomeModal.result
+    quote: state.randomQuote.randomQuote.result
   }),
-{userInfo, welcomeModal})(WelcomeModal)
+{userInfo, welcomeModal, randomQuote})(WelcomeModal)
