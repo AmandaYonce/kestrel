@@ -25,7 +25,7 @@ class RegistrationForm extends React.Component {
     console.log(response)
     //this.setState({redirect: true})
     const googleRegisterData={
-      username: response.profileObj.googleId.slice(12),
+      username: response.profileObj.givenName+response.profileObj.googleId.slice(-2),
       displayName: response.profileObj.givenName,
       password: response.profileObj.googleId.slice(12),
       

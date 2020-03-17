@@ -4,7 +4,7 @@ import { getMessages } from "../../../redux/messages/getMessages";
 import {CardBody, CardSubtitle, CardText} from 'reactstrap';
 import {handleLike, handleUnlike} from "../../../redux/messages/likeUnlike"
 import {deleteMessage} from "../../../redux/messages/deleteMessage"
-import { getFriends } from "../../../redux/messages/getMessages";
+//import { getFriends } from "../../../redux/messages/getMessages";
 import {login} from "../../../redux/auth"
 import "../../main.css"
 import thumb from "../../../images/likethumbround.png"
@@ -12,6 +12,7 @@ import ReactTimeAgo from 'react-time-ago'
 import Trash from "../../../images/trash.png"
 import User from "../../../images/user.png"
 import Bookmark from "../../../images/bookmark.png"
+import line from "../../../images/line.png"
 
 
 class MessageCard extends Component{
@@ -49,7 +50,8 @@ class MessageCard extends Component{
                onClick={(event)=>this.handleDeleteMessage(event, this.props.message.id)}
                style={{width: "30px", paddingLeft: "5px"}}/>
                   }
-              
+                  <br/>
+              <img src={line} alt="line" style={{width: "40rem"}} />
               </CardBody>
             
             </React.Fragment>
@@ -63,9 +65,9 @@ export default connect(
     state=>({
         user: state.auth.login.result.username,
         messages: state.messages.getMessages.result,
-        friends: state.friends.getFriends.result
+        //friends: state.friends.getFriends.result
     })
-    , {getMessages, handleLike, handleUnlike, deleteMessage, login, getFriends})(MessageCard);
+    , {getMessages, handleLike, handleUnlike, deleteMessage, login})(MessageCard);
 
 
     /* {this.props.uniqueUsers.includes(this.props.message.username)===true    && 

@@ -7,7 +7,8 @@ import {connect} from "react-redux"
 import PhoneBook from "./PhoneBook"
 import {userInfo} from "../../../redux/account/userInfo"
 import MFCarousel from "./MFCarousel"
-import {getFriends} from "../../../redux/messages/getMessages"
+import bookmark from "../../../images/bookmark.png"
+//import {getFriends} from "../../../redux/messages/getMessages"
 import "../../main.css"
 
 class FeedTab extends Component {
@@ -30,7 +31,7 @@ class FeedTab extends Component {
   toggle = tab => {
     console.log(tab)
     if(this.state.activeTab !== tab){ this.setState({activeTab: tab})}
-    if(tab==="2" || tab==="3"){this.props.getFriends()}
+    /*if(tab==="2" || tab==="3"){this.props.getFriends()}*/
   }
   render(){
   return (
@@ -92,7 +93,10 @@ class FeedTab extends Component {
               </Card>
             </Col>
             <Col md="6">
-            <div style={{backgroundColor: "white"}}>Tiles of bookmarked messages here</div>
+            <div style={{backgroundColor: "transparent"}}>
+             <h1> I don't know what else to put here</h1>
+            <img src={bookmark} alt="bookmark" style={{width: "15rem"}}/>
+            </div>
                 </Col>
           </Row>
         </TabPane>
@@ -107,4 +111,4 @@ class FeedTab extends Component {
 }
 }
 
-export default connect(null,{userInfo, getFriends}) (FeedTab);
+export default connect(null,{userInfo}) (FeedTab);

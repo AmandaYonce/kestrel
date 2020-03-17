@@ -11,7 +11,7 @@ import {
     CarouselCaption
   } from 'reactstrap';
   import { getMessages } from "../../../redux/messages/getMessages";
-  import {getFriends} from "../../../redux/messages/getMessages"
+  //import {getFriends} from "../../../redux/messages/getMessages"
   import { connect } from "react-redux";
   import "../../../react/main.css"
   import empty from "../../../telephoneImages/empty.png"
@@ -72,7 +72,7 @@ import {
           )} else {
           const likesarray=[]
           const likes = this.props.messages.map((each)=>{
-              if(each.likes.length>0){
+              if(each.likes.length>0 && each.username!==this.props.username){
                 each.likes.filter((like)=>{
                   if(like.username===this.props.username){
                     likesarray.push(each)
@@ -146,7 +146,7 @@ import {
     state=>({
       messages: state.messages.getMessages.result,
       username: state.auth.login.result.username
-    }), {getMessages, getFriends})(MFSide);
+    }), {getMessages})(MFSide);
 
 
   

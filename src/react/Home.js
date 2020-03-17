@@ -6,12 +6,12 @@ import { Container, Row, Col } from 'reactstrap';
 import "./main.css"
 import { getMessages } from "../redux/messages/getMessages";
 import { connect } from "react-redux";
-import {welcomeModal} from "../redux/welcomeModal/welcomeModal"
+
 
 class Home extends React.Component {
 
   componentDidMount(){
-    this.props.welcomeModal()
+    //this.props.welcomeModal(true)
   }; 
   
   render() {
@@ -34,6 +34,6 @@ class Home extends React.Component {
   }
 }
 
-export default connect (null, {getMessages, welcomeModal}) (userIsNotAuthenticated(Home));
+export default connect (null, {getMessages}) (userIsNotAuthenticated(Home));
 
 

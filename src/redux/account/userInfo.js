@@ -3,6 +3,10 @@ import {
   domain,
   handleJsonResponse,
   createActions,
+  getInitStateFromStorage,
+  createReducer,
+  asyncCases,
+  asyncInitialState
 } from "../helpers";
 
 const url=domain
@@ -26,3 +30,25 @@ export const userInfo = () => (dispatch, getState) => {
         USERINFO.FAIL, payload: err}))
     })
 };
+
+export const FRIENDINFO = createActions("friendInfo");
+export const friendInfo = (friend) => (dispatch) => {
+    dispatch(FRIENDINFO.START())
+
+  return fetch(url + "/users/"+ friend)
+    .then(handleJsonResponse)
+    .then(result =>{
+        dispatch({
+            type: FRIENDINFO.SUCCESS,
+            payload: result.user
+        })
+    })
+    .catch(err => {
+        return Promise.reject(dispatch({ type:
+        FRIENDINFO.FAIL, payload: err}))
+    })
+};
+
+export const friendInfoReducer = {
+  friendInfo: createReducer(getInitStateFromStorage("friendInfo", asyncInitialState), {...asyncCases(FRIENDINFO)}), 
+  }

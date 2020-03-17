@@ -2,20 +2,21 @@ import {
     asyncInitialState,
     asyncCases,
     createActions,
-    createReducer
+    createReducer,
+    getInitStateFromStorage
   } from "../helpers";
 
-  
+
   const WELCOMEMODAL = createActions("welcomeModal");
-  export const welcomeModal = (e, modal) => (dispatch) => {
-        dispatch(WELCOMEMODAL.START());
+  export const welcomeModal = (modal) => (dispatch) => {
+        //dispatch(WELCOMEMODAL.START());
     
-        dispatch(WELCOMEMODAL.SUCCESS(modal))
-      return modal
+       return dispatch(WELCOMEMODAL.SUCCESS(modal))
+      
   };
   
   export const modalReducer = {
-    welcomeModal: createReducer(asyncInitialState, {
+    welcomeModal: createReducer(getInitStateFromStorage("welcomeModal", asyncInitialState), {
       ...asyncCases(WELCOMEMODAL)
     })
   };

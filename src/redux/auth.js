@@ -8,6 +8,7 @@ import {
   createActions,
   createReducer
 } from "./helpers";
+import {welcomeModal} from "../redux/welcomeModal/welcomeModal"
 
 
 const url = domain + "/auth";
@@ -22,7 +23,9 @@ export const login = loginData => dispatch => {
     body: JSON.stringify(loginData)
   })
     .then(handleJsonResponse)
-    .then(result => dispatch(LOGIN.SUCCESS(result)))
+    .then(result => {
+      dispatch(welcomeModal(true))
+      dispatch(LOGIN.SUCCESS(result))})
     .catch(err => Promise.reject(dispatch(LOGIN.FAIL(err))));
 };
 
@@ -37,7 +40,9 @@ export const logout = () => (dispatch, getState) => {
     headers: { Authorization: "Bearer " + token, ...jsonHeaders }
   })
     .then(handleJsonResponse)
-    .then(result => dispatch(LOGOUT.SUCCESS(result)))
+    .then(result => {
+      //dispatch(welcomeModal(false))
+      dispatch(LOGOUT.SUCCESS(result))})
     .catch(err => Promise.reject(dispatch(LOGOUT.FAIL(err))));
    
 };

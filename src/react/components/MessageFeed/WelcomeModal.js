@@ -19,6 +19,10 @@ class WelcomeModal extends Component {
   }
 }*/
 
+toggleModal=()=>{
+  this.props.welcomeModal(false)
+}
+
 componentDidMount(){
   this.props.randomQuote()
 }
@@ -33,15 +37,16 @@ componentDidMount(){
         isOpen={this.props.modal}
       >
         <ModalHeader >
-          Welcome back {this.props.username}
+         <h3 style={{fontFamily: 'Odibee Sans', color: "#576490", fontSize: "3rem"}}>Welcome back {this.props.username}</h3>
         </ModalHeader>
         <ModalBody>
-        <h3> {this.props.quote} </h3>
+          <h2>Did you know...</h2>
+        <h5> {this.props.quote} </h5>
 
         </ModalBody>
         <ModalFooter>
           <Button 
-          onClick={this.props.toggle}
+          onClick={this.toggleModal}
           >Close</Button>
         </ModalFooter>
       </Modal>
@@ -53,7 +58,7 @@ componentDidMount(){
 export default connect (
 state=>({
     username: state.auth.login.result.username,
-    //modal: state.welcomeModal.welcomeModal.result
-    quote: state.randomQuote.randomQuote.result
+    quote: state.randomQuote.randomQuote.result,
+    modal: state.welcomeModal.welcomeModal.result
   }),
-{userInfo, welcomeModal, randomQuote})(WelcomeModal)
+{userInfo, randomQuote, welcomeModal})(WelcomeModal)

@@ -8,7 +8,7 @@ import {login} from "../../../redux"
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import GoogleLogin from 'react-google-login'
-import {welcomeModal} from "../../../redux/welcomeModal/welcomeModal"
+//import {welcomeModal} from "../../../redux/welcomeModal/welcomeModal"
 
 //google client id 209391469626-1fdk4io2u5lcadmri9p6behjisl24a7r.apps.googleusercontent.com
 //google client secret n7qcHKqBThUh_zC7UzFJyQXH
@@ -38,19 +38,20 @@ class Menu extends React.Component {
   handleLogin=e=>{
     e.preventDefault()
     this.props.login({username: this.state.username, password: this.state.password})
-    this.props.welcomeModal(true)
+    //this.props.welcomeModal(true)
   }
 
   handleLogout = event => {
     event.preventDefault();
     this.props.logout();
+    //this.props.welcomeModal(false)
   };
 
   responseGoogle=(response)=>{
     console.log(response)
     //this.setState({redirect: true})
     const googleLogInData={
-      username: response.profileObj.googleId.slice(12),
+      username: response.profileObj.givenName+response.profileObj.googleId.slice(-2),
       password: response.profileObj.googleId.slice(12)
     }
     console.log(googleLogInData)
@@ -84,10 +85,7 @@ class Menu extends React.Component {
           </NavItem>
           <NavItem>
           <NavLink style={{"paddingRight": "20px", "fontSize":"45px", "color": "#faf9f5", "fontFamily": 'Odibee Sans'}} to="/" 
-          onClick={(e)=>{
-            this.handleLogout(e)
-            this.props.welcomeModal(e,false)
-            }}>
+          onClick={this.handleLogout}>
             Logout
           </NavLink>
           </NavItem>
@@ -152,7 +150,7 @@ export default connect(
     loginLoading: state.auth.login.loading,
     loginError: state.auth.login.error
   }),
-  { logout, login, GoogleLogin, welcomeModal }
+  { logout, login, GoogleLogin }
 )(Menu);
 
 

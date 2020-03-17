@@ -9,24 +9,17 @@ import { getMessages } from "../redux/messages/getMessages";
 import "./main.css"
 import FeedTab from "../react/components/MessageFeed/FeedTab"
 import WelcomeModal from "../react/components/MessageFeed/WelcomeModal"
-import { getFriends } from "../redux/messages/getMessages";
+
 import {welcomeModal} from "../redux/welcomeModal/welcomeModal"
 
 class Profile extends React.Component {
-  state={
-    modal: true
-  }
   
-  toggle=()=>{
-    if(this.state.modal===true){
-      this.setState({modal: false})
-      
-  }
-}
   componentDidMount(){
     this.props.getMessages()
   }
-
+  toggleModal(){
+    this.props.welcomeModal(false)
+  }
 
 
   render() {
@@ -36,8 +29,7 @@ class Profile extends React.Component {
         <main className="my-5 py-5 bricklightlonger ">
          
         <WelcomeModal
-        modal={this.state.modal}
-        toggle={this.toggle}/>
+        />
           
         <Row style={{marginTop: "120px"}}>
 
@@ -54,6 +46,6 @@ class Profile extends React.Component {
 export default connect(
   state=>({
     messages: state.messages.getMessages.result,
-    //modalState: state.welcomeModal.welcomeModal.result
+   
   })
-  ,{userInfo, getMessages, getFriends, welcomeModal}) (userIsAuthenticated(Profile));
+  ,{userInfo, getMessages, welcomeModal}) (userIsAuthenticated(Profile));
