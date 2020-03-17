@@ -149,7 +149,9 @@ render(){
             {this.props.friend !== null &&
             <div >
             <CardSubtitle><span style={{fontSize: "1.2rem", fontWeight: "bold"}}>Username: </span>{uniqueUsers[this.state.activeTab]} </CardSubtitle>
+            <br/>
             <CardSubtitle><span style={{fontSize: "1.2rem", fontWeight: "bold"}}>Prefers to be called: </span>{this.props.friend.displayName}</CardSubtitle>
+            <br/>
             <CardSubtitle><span style={{fontSize: "1.2rem", fontWeight: "bold"}}>About: </span>{this.props.friend.about} </CardSubtitle>
             </div>
               }
