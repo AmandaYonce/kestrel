@@ -109,7 +109,7 @@ import {
         <Fragment>
         <Card  style={{backgroundColor: "transparent", minHeight: "10rem", minWidth: "12rem"}} className = "owlCard">
         <CardBody>
-        <CardBody style={{padding: "0", minHeight: "300px" }}>
+        <CardBody style={{padding: "0", minHeight: "150px" }}>
                 <CardTitle className="text-center pb-3" style={{color: "#c9CAD9 ", fontFamily: 'Poppins', fontSize: "2rem", margin: "0", whiteSpace: "nowrap"}}>Bookmarks</CardTitle>
                 {/*<CardSubtitle className=" text-center" style={{color: "#D1D2F9 ", fontFamily: 'Poppins', fontSize: "1.2rem"}}>Like a message to bookmark it</CardSubtitle>*/}
         </CardBody>
