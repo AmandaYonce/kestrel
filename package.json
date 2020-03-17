@@ -1,6 +1,6 @@
 {
-  "name": "kestrel",
-  "homepage": "https://amandayoncesc.gitlab.io.kestrel",
+  "name": "kwitter",
+  "homepage": "https://amandayoncesc.gitlab.io.kwitter",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

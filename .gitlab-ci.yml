@@ -13,4 +13,4 @@ pages:
   only:
     - master
 variables:
-  PUBLIC_URL: "/kestrel"
+  PUBLIC_URL: "/kwitter"
