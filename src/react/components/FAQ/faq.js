@@ -36,7 +36,7 @@ class Faq extends Component {
                 <CardBody >
                     <img src={bookmark} alt="bookmark" style={{width: "6rem", padding: "0.5rem"}}/>
                     <CardSubtitle style={{fontFamily: 'Odibee Sans', fontSize: "3rem"}}>Bookmarks</CardSubtitle>
-                    <CardText >Save bookmarks by liking messages. <br/>A bookmarked message will display the bookmark icon. <br/>View your bookmarks on the Bookmars tab.</CardText>
+                    <CardText >Save bookmarks by liking messages. <br/>A bookmarked message will display the bookmark icon. <br/>View your bookmarks on the Bookmarks tab.</CardText>
                 </CardBody>
                     </Col>
                     <Col>
