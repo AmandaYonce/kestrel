@@ -89,6 +89,11 @@ class Menu extends React.Component {
             Logout
           </NavLink>
           </NavItem>
+          <NavItem>
+          <NavLink style={{"paddingRight": "20px", "fontSize":"45px", "color": "#faf9f5", "fontFamily": 'Odibee Sans'}} to="/faq" >
+            FAQ
+          </NavLink>
+          </NavItem>
         </Nav>
         </Collapse>
         </Navbar>
@@ -128,9 +133,11 @@ class Menu extends React.Component {
                         onSuccess={response=>this.responseGoogle(response)}
                         onFailure={response=>this.responseGoogle(response)}
                         cookiePolicy={'single_host_origin' }
+                        
                         />
 
                   </NavItem>
+                 
                   </Form>
             </Nav>
           </Collapse>
