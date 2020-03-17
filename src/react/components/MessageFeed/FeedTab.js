@@ -41,7 +41,7 @@ class FeedTab extends Component {
           <NavLink
             className={classnames({ active: this.state.activeTab === '1' })}
             onClick={() => { this.toggle('1'); }}
-            style={{fontFamily: 'Poppins', fontSize: "1.5rem", fontWeight: "bold"}}
+            style={{fontFamily: 'Poppins', fontSize: "2rem", fontWeight: "bold"}}
           >
             Message Feed
           </NavLink>
@@ -50,7 +50,7 @@ class FeedTab extends Component {
           <NavLink
             className={classnames({ active: this.state.activeTab === '2' })}
             onClick={() => { this.toggle('2'); }}
-            style={{fontFamily: 'Poppins', fontSize: "1.5rem", fontWeight: "bold"}}
+            style={{fontFamily: 'Poppins', fontSize: "2rem", fontWeight: "bold"}}
           >
             Bookmarks
           </NavLink>
@@ -59,7 +59,7 @@ class FeedTab extends Component {
           <NavLink
             className={classnames({ active: this.state.activeTab === '3' })}
             onClick={() => { this.toggle('3'); }}
-            style={{fontFamily: 'Poppins', fontSize: "1.5rem", fontWeight: "bold"}}
+            style={{fontFamily: 'Poppins', fontSize: "2rem", fontWeight: "bold"}}
           >
               Friends
           </NavLink>
