@@ -22,7 +22,7 @@ class Faq extends Component {
             <Fragment>
             <Menu isAuthenticated={this.props.isAuthenticated}/>
             <Card style={{marginTop: "100px"}} className="text-center">     
-                <CardSubtitle style={{fontSize: "5rem"}}>Work In Progress Here</CardSubtitle>
+                <CardSubtitle style={{fontSize: "3rem"}}>Frequently Asked Questions</CardSubtitle>
             </Card>
             </Fragment>
         )
