@@ -1,11 +1,10 @@
 import React, { Component, Fragment } from 'react';
-import {  Card, Row, Col, Container, CardBody, CardSubtitle, CardText } from 'reactstrap';
+import {  Card, Row, Col, CardBody, CardSubtitle, CardText } from 'reactstrap';
 import { userIsAuthenticated } from "../../HOCs";
 import friend from "../../../images/friend.png"
 import bookmark from "../../../images/bookmark.png"
 import thumb from "../../../images/thumb.png"
 import trash from "../../../images/trash.png"
-import icon from "../../../images/owl-icon.png"
 import photoPlaceholder from "../../../images/photoPlaceholder.png"
 import message from "../../../images/message.png"
 import password from "../../../images/password.png"
