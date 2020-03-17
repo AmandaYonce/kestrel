@@ -92,9 +92,9 @@ class FeedTab extends Component {
                
               </Card>
             </Col>
-            <Col md="6">
+            <Col md="6" className="text-center">
             <div style={{backgroundColor: "transparent"}}>
-             <h1> I don't know what else to put here</h1>
+             <h1> Bookmark Messages to See Them Here</h1>
             <img src={bookmark} alt="bookmark" style={{width: "15rem"}}/>
             </div>
                 </Col>

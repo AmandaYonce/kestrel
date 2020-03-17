@@ -8,7 +8,7 @@ import "../../main.css"
 import UserMessageCard from "./userMessageCard"
 import {userInfo} from "../../../redux/account/userInfo"
 import {friendInfo} from "../../../redux/account/userInfo"
-import {empty} from "../../../telephoneImages/empty.png"
+import empty from "../../../telephoneImages/empty.png"
 import {domain} from "../../../redux/helpers"
 import {userMessages} from "../../../redux/messages/userMessages"
 
@@ -61,9 +61,10 @@ render(){
   if(uniqueUsers.length===0){
     return (
       <Container  className="owlBackground">
-        <Card>
-          <img src={empty} alt="empty"/>
-      <CardSubtitle key={Math.random()}>Make Friends to See Them Here</CardSubtitle>
+        <Card style={{backgroundColor: "transparent"}}>
+          
+      <CardSubtitle key={Math.random()} className="text-center" style={{fontSize: "3rem", color: "#576490", fontFamily: 'Poppins', marginTop: "50px"}}>Make Friends <br/>to See <br/>Them Here</CardSubtitle>
+      <img src={empty} alt="empty" style={{height: "200px"}}/>
       </Card>
       </Container>
     )
