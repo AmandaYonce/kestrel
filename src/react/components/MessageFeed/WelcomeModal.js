@@ -7,17 +7,6 @@ import {welcomeModal} from "../../../redux/welcomeModal/welcomeModal"
 import {randomQuote} from "../../../redux/randomQuote/randomQuote"
 
 class WelcomeModal extends Component {
- /* state={
-    modal: true
-  }
-  
-  toggle=()=>{
-    if(this.state.modal===true){
-      this.setState({modal: false})
-      this.props.welcomeModal()
-      
-  }
-}*/
 
 toggleModal=()=>{
   this.props.welcomeModal(false)

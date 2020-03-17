@@ -8,7 +8,6 @@ import PhoneBook from "./PhoneBook"
 import {userInfo} from "../../../redux/account/userInfo"
 import MFCarousel from "./MFCarousel"
 import bookmark from "../../../images/bookmark.png"
-//import {getFriends} from "../../../redux/messages/getMessages"
 import "../../main.css"
 
 class FeedTab extends Component {

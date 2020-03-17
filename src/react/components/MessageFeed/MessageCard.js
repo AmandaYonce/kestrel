@@ -4,7 +4,6 @@ import { getMessages } from "../../../redux/messages/getMessages";
 import {CardBody, CardSubtitle, CardText} from 'reactstrap';
 import {handleLike, handleUnlike} from "../../../redux/messages/likeUnlike"
 import {deleteMessage} from "../../../redux/messages/deleteMessage"
-//import { getFriends } from "../../../redux/messages/getMessages";
 import {login} from "../../../redux/auth"
 import "../../main.css"
 import thumb from "../../../images/likethumbround.png"
@@ -65,10 +64,8 @@ export default connect(
     state=>({
         user: state.auth.login.result.username,
         messages: state.messages.getMessages.result,
-        //friends: state.friends.getFriends.result
+        
     })
     , {getMessages, handleLike, handleUnlike, deleteMessage, login})(MessageCard);
 
 
-    /* {this.props.uniqueUsers.includes(this.props.message.username)===true    && 
-              <img src={friend} alt="friend" style={{width: "30px"}}/>}*/

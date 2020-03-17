@@ -58,7 +58,6 @@ class UserMessageCard extends Component{
 export default connect(
     state=>({
         user: state.auth.login.result.username,
-        //messages: state.userMessages.userMessages.result,
        
     })
     , {getMessages, handleLike, handleUnlike, userMessages})(UserMessageCard);

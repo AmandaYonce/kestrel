@@ -12,9 +12,7 @@ import { newMessageReducer } from "../redux/messages/newMessages";
 import {messageReducers} from "./messages/getMessages"
 import {deleteMessageReducer} from "./messages/deleteMessage"
 import { reducers as register } from "./stateReducers/registrationForm/registrationForm";
-//import {friendsReducer} from "./messages/getMessages"
 import {modalReducer} from "./welcomeModal/welcomeModal"
-//import ReactTimeAgo from 'react-time-ago'
 import JavascriptTimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
 import{randomQuoteReducer} from "../redux/randomQuote/randomQuote"
@@ -42,7 +40,6 @@ export const store = configureStore({
     newMessage: combineReducers(newMessageReducer),
     deleteMessage: combineReducers(deleteMessageReducer),
     register: combineReducers(register),
-    //friends: combineReducers(friendsReducer),
     welcomeModal: combineReducers(modalReducer),
     randomQuote: combineReducers(randomQuoteReducer),
     friendInfo: combineReducers(friendInfoReducer),

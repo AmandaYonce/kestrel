@@ -10,7 +10,6 @@ import {
     CarouselCaption
   } from 'reactstrap';
   import { getMessages } from "../../../redux/messages/getMessages";
-  //import {getFriends} from "../../../redux/messages/getMessages"
   import { connect } from "react-redux";
   import "../../../react/main.css"
   import empty from "../../../telephoneImages/empty.png"
