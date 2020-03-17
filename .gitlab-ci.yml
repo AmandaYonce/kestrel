@@ -7,7 +7,6 @@ pages:
     - rm -rf public
     - mv build public
     - mv dependencygraph.html public/
-    - cp src/NotFound.js public/404.html
   artifacts:
     paths:
       - public
