@@ -149,11 +149,11 @@ render(){
 
             {this.props.friend !== null &&
             <div >
-            <CardSubtitle><span style={{fontSize: "1.2rem", fontWeight: "bold"}}>Username: </span>{uniqueUsers[this.state.activeTab]} </CardSubtitle>
+            <CardSubtitle><span style={{fontSize: "1.2rem", fontWeight: "bold"}}>Username: <br/></span>{uniqueUsers[this.state.activeTab]} </CardSubtitle>
             <br/>
-            <CardSubtitle><span style={{fontSize: "1.2rem", fontWeight: "bold"}}>Prefers to be called: </span>{this.props.friend.displayName}</CardSubtitle>
+            <CardSubtitle><span style={{fontSize: "1.2rem", fontWeight: "bold"}}>Prefers to <br/>be called: <br/></span>{this.props.friend.displayName}</CardSubtitle>
             <br/>
-            <CardSubtitle><span style={{fontSize: "1.2rem", fontWeight: "bold"}}>About: </span>{this.props.friend.about} </CardSubtitle>
+            <CardSubtitle><span style={{fontSize: "1.2rem", fontWeight: "bold"}}>About:<br/> </span>{this.props.friend.about} </CardSubtitle>
             </div>
               }
               <Row className="scroll" style={{maxHeight: "500px", overflow: "auto", marginLeft: "4rem"}}>

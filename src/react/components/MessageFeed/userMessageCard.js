@@ -23,7 +23,7 @@ class UserMessageCard extends Component{
             <React.Fragment >
                 {this.props.messages !==null &&
                 
-            <CardBody key={this.props.messages.id} className="rounded" style={{padding: "15px"}}>
+            <CardBody key={this.props.messages.id} className="rounded scratchBackground" style={{padding: "15px", border: "1px solid silver"}}>
           
           <CardSubtitle style={{ fontSize: '2rem', color: "black", fontFamily: 'Dosis', }}>{this.props.messages.text}</CardSubtitle>
           
