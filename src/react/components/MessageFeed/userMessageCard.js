@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { getMessages } from "../../../redux/messages/getMessages";
-import {CardBody, CardSubtitle, CardText} from 'reactstrap';
+import {CardBody, CardSubtitle, CardText, Col} from 'reactstrap';
 import {handleLike, handleUnlike} from "../../../redux/messages/likeUnlike"
 import {userMessages} from "../../../redux/messages/userMessages"
 import "../../main.css"
@@ -23,7 +23,7 @@ class UserMessageCard extends Component{
             <React.Fragment >
                 {this.props.messages !==null &&
                 
-            <CardBody key={this.props.messages.id} className="rounded scratchBackground" style={{padding: "15px", border: "1px solid silver"}}>
+            <CardBody key={this.props.messages.id} className="rounded scratchBackground" style={{padding: "15px", border: "1px solid silver", width: "30rem"}}>
           
           <CardSubtitle style={{ fontSize: '2rem', color: "black", fontFamily: 'Dosis', }}>{this.props.messages.text}</CardSubtitle>
           
@@ -45,8 +45,9 @@ class UserMessageCard extends Component{
              
              
                   <br/>
-              <img src={line} alt="line" style={{width: "10rem"}} />
+              <img src={line} alt="line" style={{width: "25rem"}} />
               </CardBody>
+              
                 }
             </React.Fragment>
 

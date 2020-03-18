@@ -10,8 +10,8 @@ import thumb from "../../../images/likethumbround.png"
 import ReactTimeAgo from 'react-time-ago'
 import Trash from "../../../images/trash.png"
 import User from "../../../images/user.png"
-import Bookmark from "../../../images/bookmark.png"
 import line from "../../../images/line.png"
+import bluethumb from "../../../images/bluelikethumbround.png"
 
 
 class MessageCard extends Component{
@@ -37,11 +37,22 @@ class MessageCard extends Component{
               </CardText>
             <CardText style={{"fontSize": "1em", "marginBottom": "1px"}}><ReactTimeAgo date={this.props.message.createdAt} /></CardText>
               
-                <img src={thumb} alt="thumbsup" onClick={e=>this.props.handleLike(e, this.props.message.id)} style={{width: "30px", paddingRight: "8px"}} />
-                <span style={{fontSize: "1.5em"}}>{this.props.message.likes.length}</span>
-                {this.props.message.likes.filter((each)=>{ if (each.username.includes(this.props.user)===true) {return true} else {return false}}).length===1 &&
-                  <img src={Bookmark} alt="bookmark" style={{width: "30px", paddingLeft: "5px"}}/>
+                
+                {this.props.message.likes.filter((each)=>{ if (each.username.includes(this.props.user)===true) { return true} else {return false}}).length===0 &&
+                <img src={thumb} alt="thumbsup" onClick={e=>this.props.handleLike(e, this.props.message.id)} style={{width: "30px", paddingRight: "8px"
+                }} />
                 }
+
+                {this.props.message.likes.filter((each)=>{ if (each.username.includes(this.props.user)===true) { return true} else {return false}}).length===1 &&
+                <img src={bluethumb} alt="thumbsup" onClick={e=>this.props.handleLike(e, this.props.message.id)} style={{width: "30px", paddingRight: "8px"}} />
+                }
+                <span style={{fontSize: "1.5em"}}>{this.props.message.likes.length}</span>
+
+               
+
+                {/*this.props.message.likes.filter((each)=>{ if (each.username.includes(this.props.user)===true) {return true} else {return false}}).length===1 &&
+                  <img src={Bookmark} alt="bookmark" style={{width: "30px", paddingLeft: "5px"}}/>
+              */}
              
               {this.props.message.username===this.props.user &&
                <img src={Trash} 

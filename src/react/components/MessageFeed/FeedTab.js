@@ -85,18 +85,12 @@ class FeedTab extends Component {
         </TabPane>
         <TabPane tabId="2" style={{height: "636px"}}>
           <Row>
-            <Col md="6">
+           
               <Card body>
                <MFSide/>
                
               </Card>
-            </Col>
-            <Col md="6" className="text-center">
-            <div style={{backgroundColor: "transparent"}}>
-             <h1> Bookmark Messages to See Them Here</h1>
-            <img src={bookmark} alt="bookmark" style={{width: "15rem"}}/>
-            </div>
-                </Col>
+           
           </Row>
         </TabPane>
         <TabPane tabId="3" style={{height: "636px"}}>

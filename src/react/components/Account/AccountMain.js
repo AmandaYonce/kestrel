@@ -23,7 +23,12 @@ class AccountMain extends Component {
   state = { modal: false,
             passwordModal: false,
             deleteUserModal: false,
-            value: false};
+            value: false,
+            month: [0, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+  
+          };
+
+          
 
   componentDidMount(){
     if(this.props.googleStatus !== null){
@@ -31,8 +36,12 @@ class AccountMain extends Component {
     this.setState({value: true})
     }
     }
+
   }
+
+ 
   
+
   toggle=()=>{
     const newState=!this.state.modal
     this.setState({modal:newState})
@@ -70,9 +79,11 @@ class AccountMain extends Component {
         <CardBody style={{ "marginTop": "100px", border: "3px solid #324164"}} className="rounded scratchBackground">
     <CardTitle className="h3 mb-2 pt-2 font-weight-bold" style={{color: "#6E6F72", fontSize: "4rem"}} >{this.props.details.displayName}</CardTitle>
         <CardSubtitle className=" mb-3 font-weight-normal text-uppercase" style={{ fontSize: '2rem', color: "#626666" }}>{this.props.details.about}</CardSubtitle>
+    {this.props.details!==null &&
     <CardText className=" mb-4 font-weight-normal" style={{ fontSize: '1.1rem', color: "#626666" }}>
-      User Since: {Date(this.props.details.createdAt)}
+      User Since: {this.state.month[Number(this.props.details.createdAt.slice(5, 7))]+"-"+ this.props.details.createdAt.slice(8, 10) + "-"+ this.props.details.createdAt.slice(0, 4)}
       </CardText>
+      }
     <CardText className=" mb-4 font-weight-normal" style={{ fontSize: '1.1rem', color: "#626666" }}>
       User Updated: <ReactTimeAgo date={this.props.details.updatedAt} />
       </CardText>

@@ -81,3 +81,23 @@
     background-size: cover
 
 }
+
+.noOwlBackground{
+    background-image: url(../images/no-owl-white-rectangle.png);
+    background-size: 100% 100%;
+
+}
+
+.animation{
+    animation-name: bounce;
+    animation-duration: 5s; 
+    animation-iteration-count: infinite; 
+
+}
+
+@keyframes bounce{
+    50%{
+        width: 80%;
+        height: 80%;
+    }
+}

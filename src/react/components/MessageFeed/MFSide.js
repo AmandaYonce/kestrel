@@ -1,19 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import {
-    Card, CardBody,
-  } from 'reactstrap';
-  import {
-    Carousel,
-    CarouselItem,
-    CarouselControl,
-    CarouselIndicators,
-    CarouselCaption
+    Card, CardBody, CardText, CardSubtitle, Row, Col
   } from 'reactstrap';
   import { getMessages } from "../../../redux/messages/getMessages";
   import { connect } from "react-redux";
   import "../../../react/main.css"
   import empty from "../../../telephoneImages/empty.png"
   import "../../main.css"
+  import User from "../../../images/user.png"
 
 
 
@@ -68,6 +62,7 @@ import {
           </CardBody>
           </Card>
           )} else {
+
           const likesarray=[]
           const likes = this.props.messages.map((each)=>{
               if(each.likes.length>0 && each.username!==this.props.username){
@@ -82,53 +77,20 @@ import {
           })
           console.log(likes)
          
-          const slides=likesarray.map((message)=>{
-              return(
-                <CarouselItem
-                onExiting={() => {
-                  this.setState({animating: true})
-                  this.setState({likesCount: likesarray.length})
-                }
-                }
-                onExited={() => this.setState({animating: false})}
-                key={message.id}
-                
-              >
-                <CarouselCaption captionHeader={message.text}
-                captionText={message.username}
-                 />
-                <img src={empty} alt="" style={{height: "12rem"}}/>
-              </CarouselItem>
-              
-              )
-              })
-              
       return (
         <Fragment>
-        <Card  style={{backgroundColor: "transparent", minHeight: "10rem", minWidth: "12rem"}} className = "owlCard">
-        <CardBody>
-        <CardBody style={{padding: "0", minHeight: "100px" }}>
-               
-        </CardBody>
-        <CardBody style={{padding: "0",}}>
-                <Carousel  
-                activeIndex={this.state.activeIndex}
-                next={this.next}
-                previous={this.previous}
-                data-interval="500"
-                pauseOnHover="false"
-                onSlideEnd={this.infinite}
-                >
-                  
-                  <CarouselIndicators items={slides} activeIndex={this.state.activeIndex} onClickHandler={this.goToIndex} />
-                  {slides}
-                
-                <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
-                <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
-                </Carousel>
-               
-            </CardBody>
-            </CardBody>
+        <Card  style={{backgroundColor: "transparent", minHeight: "10rem", minWidth: "12rem"}}>
+          <Row className="scroll text-center" style={{height: "500px", overflow: "auto"}}>
+        <Col md-7>
+        {likesarray.map(each=>(
+          <CardBody className = "scratchBackground rounded" style={{border: "2px solid silver", padding: "15px", width: "30rem"}}>
+                <CardSubtitle >{each.text}</CardSubtitle>
+                <CardText style={{"fontSize": "1.2em", "marginBottom": "1px"}}>
+            <img src={User} alt="avatar" style={{width: "30px", paddingRight: "5px"}} className="rounded-circle"/>{each.username}</CardText>
+          </CardBody>
+        ))}
+        </Col>
+        </Row>
         </Card>
         
         </Fragment>

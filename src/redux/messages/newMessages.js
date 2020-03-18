@@ -27,7 +27,8 @@ export const addNewMessage = messageData => (dispatch, getState) => {
     .then(handleJsonResponse)
     .then(result => {
       dispatch(ADDNEWMESSAGE.SUCCESS(result))
-      dispatch(getMessages());
+      dispatch(getMessages())
+     
     })
     .catch(err => Promise.reject(dispatch(ADDNEWMESSAGE.FAIL(err))));
 };

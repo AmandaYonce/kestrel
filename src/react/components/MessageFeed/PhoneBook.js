@@ -71,7 +71,7 @@ render(){
   }
     return (
 
-    <Container className="owlBackground"> 
+    <Container className="noOwlBackground"> 
     <Nav tabs>
 
     <NavItem key={Math.random()}>
@@ -102,7 +102,7 @@ render(){
           <>
         <TabPane key={-1} tabId={-1} >
           <Row >
-          <Col md="8">
+          <Col md="12">
             <Card body style={{flexDirection: "row"}}>
            
             <div >
@@ -126,43 +126,49 @@ render(){
         
         <TabPane key={(uniqueUsers.indexOf(each))} tabId={(uniqueUsers.indexOf(each))} >
           <Row >
-          <Col md="8">
+          <Col md="12">
             <Card body style={{flexDirection: "row"}}>
-            
+              <Col md="5">
+            <Row className="text-center" style={{justifyContent: "center"}}>
             {this.props.friend === null &&
-            <div >
+            
             <img src={friend} alt="placeholder" style={{width: "15rem", padding: "2rem"}}/>
-            </div>
+           
             }
 
             {this.props.friend !== null && this.props.friend.pictureLocation===null &&
-            <div >
+            
             <img src={friend} alt="placeholder" style={{width: "15rem", padding: "2rem"}}/>
-            </div>
+            
             }
 
             {this.props.friend !== null && this.props.friend.pictureLocation!==null &&
-            <div >
+            
             <img src={domain+this.props.friend.pictureLocation} alt="placeholder" style={{width: "15rem", padding: "2rem"}}/>
-            </div>
+            
             }
-
+            </Row>
+            <Row style={{justifyContent: "center"}}>
             {this.props.friend !== null &&
-            <div >
-            <CardSubtitle><span style={{fontSize: "1.2rem", fontWeight: "bold"}}>Username: <br/></span>{uniqueUsers[this.state.activeTab]} </CardSubtitle>
+            <div style={{border: "2px solid silver", padding: "2.5rem"}}>
+            <CardSubtitle style={{fontSize: "1.2rem", fontFamily: 'Poppins'}}><span style={{fontSize: "1.7rem", fontWeight: "bold"}}>Username: </span>{uniqueUsers[this.state.activeTab]} </CardSubtitle>
             <br/>
-            <CardSubtitle><span style={{fontSize: "1.2rem", fontWeight: "bold"}}>Prefers to <br/>be called: <br/></span>{this.props.friend.displayName}</CardSubtitle>
+            <CardSubtitle style={{fontSize: "1.2rem", fontFamily: 'Poppins'}}><span style={{fontSize: "1.7rem", fontWeight: "bold"}}>Preferred Name: </span>{this.props.friend.displayName}</CardSubtitle>
             <br/>
-            <CardSubtitle><span style={{fontSize: "1.2rem", fontWeight: "bold"}}>About:<br/> </span>{this.props.friend.about} </CardSubtitle>
+            <CardSubtitle style={{fontSize: "1.2rem", fontFamily: 'Poppins'}}><span style={{fontSize: "1.7rem", fontWeight: "bold"}}>About: </span>{this.props.friend.about} </CardSubtitle>
             </div>
               }
+              </Row>
+              </Col>
               <Row className="scroll" style={{maxHeight: "500px", overflow: "auto", marginLeft: "4rem"}}>
+                <Col md="7">
               {this.props.friend !== null && this.props.userMessageList !==null &&
               this.props.userMessageList.map((message)=>{
                 if(this.props.userMessageList !==null){
                   return <UserMessageCard messages={message} key={message.id}></UserMessageCard>
                 } return ""
                 })}
+                </Col>
                 </Row>
               </Card>
             </Col>
