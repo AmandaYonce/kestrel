@@ -105,7 +105,7 @@ class RegistrationForm extends React.Component {
             <Button
              
               type="submit"
-              style={{ fontSize: "28", backgroundColor: "#576490" }}
+              style={{ fontSize: "28", backgroundColor: "#576490", marginRight: "10px" }}
             >
               <img
                 src={logo}
