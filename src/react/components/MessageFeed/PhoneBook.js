@@ -112,9 +112,9 @@ render(){
             <div >
               <br/>
               <br/>
-            <CardSubtitle className="text-center" style={{fontSize: "2rem", color: "#576490", fontFamily: 'Poppins'}}>Check out what your friends have been up to </CardSubtitle>
+            <CardSubtitle className="text-center scratchBackground" style={{fontSize: "2rem", color: "#576490", fontFamily: 'Poppins', padding: "4rem", border: "2px solid silver"}}>Check out what your friends<br/> have been doing. </CardSubtitle>
             </div>
-            
+            <div style={{backgroundColor: "transparent", minHeight:"30rem"}}></div>
               </Card>
             </Col>
            <div style={{backgroundColor: "red", height: "100px"}}></div>
