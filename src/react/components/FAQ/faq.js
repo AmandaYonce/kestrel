@@ -20,7 +20,7 @@ class Faq extends Component {
         return(
             <Fragment>
             <Menu isAuthenticated={this.props.isAuthenticated}/>
-            <Card style={{marginTop: "100px", marginBottom: "100px"}} >   
+            <Card style={{marginTop: "100px", marginBottom: "100px"}} className="scratchBackground">   
                  
                 <CardSubtitle style={{fontSize: "5rem", fontFamily: 'Odibee Sans', fontWeight: "bold"}} className="text-center"> Frequently Asked Questions</CardSubtitle>
                 <Row className="text-center">
