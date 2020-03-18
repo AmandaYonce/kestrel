@@ -15,13 +15,23 @@ import {
   import Password from '../../../images/password.png'
   import Edit from "../../../images/edit.png"
   import ReactTimeAgo from 'react-time-ago'
+  import {google} from "../../../redux/account/googleTracker"
  
 
 
 class AccountMain extends Component {
   state = { modal: false,
             passwordModal: false,
-            deleteUserModal: false};
+            deleteUserModal: false,
+            value: false};
+
+  componentDidMount(){
+    if(this.props.googleStatus !== null){
+    if(this.props.googleStatus.value===true){
+    this.setState({value: true})
+    }
+    }
+  }
   
   toggle=()=>{
     const newState=!this.state.modal
@@ -77,7 +87,8 @@ class AccountMain extends Component {
             Edit User Info
       </Button>
 
-      <Button variant="secondary"   
+      <Button variant="secondary" 
+      disabled={this.state.value}  
       onClick={this.togglePassword}
       className="btn-lg"
       style={{ "fontSize": "100", "backgroundColor": "#DFD8D2", "marginRight": "20px", fontFamily: 'Boogaloo, cursive',color: "black", boxShadow: "1.5px 1.5px 1.5px 1.5px #324164" }}>
@@ -122,7 +133,8 @@ export default connect(
     details: state.userInfo.userInfo.result,
     loading: state.userInfo.userInfo.loading,
     error: state.userInfo.userInfo.error,
+    googleStatus: state.google.google.result
   }),
-  { userInfo }
+  { userInfo, google }
 )(AccountMain);
 

@@ -18,6 +18,7 @@ import en from 'javascript-time-ago/locale/en'
 import{randomQuoteReducer} from "../redux/randomQuote/randomQuote"
 import{friendInfoReducer} from "../redux/account/userInfo"
 import {userMessagesReducers} from "../redux/messages/userMessages"
+import {googleReducer} from "./account/googleTracker"
 JavascriptTimeAgo.locale(en)
 
 
@@ -31,7 +32,6 @@ export const store = configureStore({
   reducer: {
     router: connectRouter(history),
     auth: combineReducers(authReducers),
-    messages: combineReducers(messageReducers),
     likeReducers: combineReducers(likeReducers),
     userInfo: combineReducers(userInfo),
     editUser: combineReducers(editReducers),
@@ -43,8 +43,9 @@ export const store = configureStore({
     welcomeModal: combineReducers(modalReducer),
     randomQuote: combineReducers(randomQuoteReducer),
     friendInfo: combineReducers(friendInfoReducer),
-    userMessages: combineReducers(userMessagesReducers)
-
+    userMessages: combineReducers(userMessagesReducers),
+    google: combineReducers(googleReducer),
+    messages: combineReducers(messageReducers),
   },
   preloadedState: {},
   devTools: process.env.NODE_ENV !== "production"

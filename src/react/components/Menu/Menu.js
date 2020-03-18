@@ -8,6 +8,7 @@ import {login} from "../../../redux"
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import GoogleLogin from 'react-google-login'
+import{google} from "../../../redux/account/googleTracker"
 
 //google client id 209391469626-1fdk4io2u5lcadmri9p6behjisl24a7r.apps.googleusercontent.com
 //google client secret n7qcHKqBThUh_zC7UzFJyQXH
@@ -42,6 +43,7 @@ class Menu extends React.Component {
 
   handleLogout = event => {
     event.preventDefault();
+    this.props.google(null)
     this.props.logout();
     
   };
@@ -53,8 +55,13 @@ class Menu extends React.Component {
       username: response.profileObj.givenName+response.profileObj.googleId.slice(-2),
       password: response.profileObj.googleId.slice(12)
     }
+    const googleInfo={
+      value: true,
+      password: response.profileObj.googleId.slice(12)
+    }
     console.log(googleLogInData)
     this.props.login(googleLogInData)
+    this.props.google(googleInfo)
   }
 
   render() {
@@ -157,7 +164,7 @@ export default connect(
     loginLoading: state.auth.login.loading,
     loginError: state.auth.login.error
   }),
-  { logout, login, GoogleLogin }
+  { logout, login, GoogleLogin, google }
 )(Menu);
 
 

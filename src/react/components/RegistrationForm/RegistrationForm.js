@@ -10,6 +10,7 @@ import logo from "../../../images/owl-icon.png"
 import Password from "../../../images/password.png"
 import User from "../../../images/user.png"
 import displayName from "../../../images/displayName.png"
+import {google} from "../../../redux/account/googleTracker"
 
 class RegistrationForm extends React.Component {
   state = { username: "", displayName: "", password: "" };
@@ -28,10 +29,14 @@ class RegistrationForm extends React.Component {
       username: response.profileObj.givenName+response.profileObj.googleId.slice(-2),
       displayName: response.profileObj.givenName,
       password: response.profileObj.googleId.slice(12),
-      
+    }
+    const googleInfo={
+      value: true,
+      password: response.profileObj.googleId.slice(12)
     }
     console.log(googleRegisterData)
     this.props.register(googleRegisterData)
+    this.props.google(googleInfo)
   }
 
   render() {
@@ -137,5 +142,5 @@ export default connect(
     loading: state.register.register.loading,
     error: state.register.register.error
   }),
-  { register }
+  { register, google }
 )(RegistrationForm);
