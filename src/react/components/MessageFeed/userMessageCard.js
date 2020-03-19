@@ -5,10 +5,10 @@ import {CardBody, CardSubtitle, CardText} from 'reactstrap';
 import {handleLike, handleUnlike} from "../../../redux/messages/likeUnlike"
 import {userMessages} from "../../../redux/messages/userMessages"
 import "../../main.css"
-import thumb from "../../../images/likethumbround.png"
 import ReactTimeAgo from 'react-time-ago'
 import User from "../../../images/user.png"
 import line from "../../../images/line.png"
+import bluethumb from "../../../images/bluelikethumbround.png"
 
 
 class UserMessageCard extends Component{
@@ -33,7 +33,7 @@ class UserMessageCard extends Component{
               </CardText>
             <CardText style={{"fontSize": "1em", "marginBottom": "1px"}}><ReactTimeAgo date={this.props.messages.createdAt} /></CardText>
               
-                <img src={thumb} alt="thumbsup" onClick={e=>{
+                <img src={bluethumb} alt="thumbsup" onClick={e=>{
                   this.props.handleLike(e, this.props.messages.id)
                   this.props.userMessages(this.props.messages.username)}} 
                 style={{width: "30px", paddingRight: "8px"}} />

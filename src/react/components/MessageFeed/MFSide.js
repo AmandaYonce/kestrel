@@ -5,6 +5,7 @@ import {Card, CardBody, CardText, CardSubtitle, Row, Col, CardTitle} from 'react
   import "../../../react/main.css"
   import "../../main.css"
   import User from "../../../images/user.png"
+  import ReactTimeAgo from 'react-time-ago'
 
 
 
@@ -76,14 +77,15 @@ import {Card, CardBody, CardText, CardSubtitle, Row, Col, CardTitle} from 'react
          
       return (
         <Fragment>
-        <Card  style={{backgroundColor: "transparent", minHeight: "10rem", minWidth: "12rem"}}>
-          <CardTitle>Bookmarks</CardTitle>
+        <Card  style={{backgroundColor: "transparent", minHeight: "10rem", minWidth: "12rem"}} className="text-center bowtie">
+          <CardTitle style={{color: "#576490", fontSize: "2.7rem", fontFamily: 'Odibee Sans', margin: "0"}}>Bookmarks</CardTitle>
           <Row className="scroll text-center" style={{height: "500px", overflow: "auto"}}>
             <Col md-2></Col>
         <Col md-7>
         {likesarray.map(each=>(
           <CardBody className = "scratchBackground rounded" style={{border: "2px solid silver", padding: "15px", width: "30rem"}}>
-                <CardSubtitle >{each.text}</CardSubtitle>
+                <CardSubtitle style={{"fontSize": "1.5em", "marginBottom": "1px"}}>{each.text}</CardSubtitle>
+                <CardText style={{"fontSize": "1em", "marginBottom": "1px"}}> <ReactTimeAgo date={each.createdAt} /></CardText>
                 <CardText style={{"fontSize": "1.2em", "marginBottom": "1px"}}>
             <img src={User} alt="avatar" style={{width: "30px", paddingRight: "5px"}} className="rounded-circle"/>{each.username}</CardText>
           </CardBody>
