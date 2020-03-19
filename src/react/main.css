@@ -5,12 +5,6 @@
 }
 
 
-.blurbBackground{
-    background-image: url(../telephoneImages/textBlurb.png);
-    background-repeat: no-repeat;
-
-}
-
 .scratchBackground{
     background-image: url(../telephoneImages/scratch.png);
     
@@ -44,12 +38,6 @@
     background-image: url(../telephoneImages/brick.jpeg);
     background-repeat: no-repeat;
     background-size: 100% 100%;
-
-}
-
-.bricklight {
-    background-image: url(../telephoneImages/bricklight.jpeg);
-    background-repeat: no-repeat;
 
 }
 
@@ -88,16 +76,7 @@
 
 }
 
-.animation{
-    animation-name: bounce;
-    animation-duration: 5s; 
-    animation-iteration-count: infinite; 
-
-}
-
-@keyframes bounce{
-    50%{
-        width: 80%;
-        height: 80%;
-    }
+.brickOwl {
+    background-image: url(../images/brickOwl.png);
+    background-size: cover;
 }

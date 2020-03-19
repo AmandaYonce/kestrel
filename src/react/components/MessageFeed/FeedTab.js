@@ -7,7 +7,6 @@ import {connect} from "react-redux"
 import PhoneBook from "./PhoneBook"
 import {userInfo} from "../../../redux/account/userInfo"
 import MFCarousel from "./MFCarousel"
-import bookmark from "../../../images/bookmark.png"
 import "../../main.css"
 
 class FeedTab extends Component {

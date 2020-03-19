@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { getMessages } from "../../../redux/messages/getMessages";
-import {CardBody, CardSubtitle, CardText, Col} from 'reactstrap';
+import {CardBody, CardSubtitle, CardText} from 'reactstrap';
 import {handleLike, handleUnlike} from "../../../redux/messages/likeUnlike"
 import {userMessages} from "../../../redux/messages/userMessages"
 import "../../main.css"
 import thumb from "../../../images/likethumbround.png"
 import ReactTimeAgo from 'react-time-ago'
 import User from "../../../images/user.png"
-import Bookmark from "../../../images/bookmark.png"
 import line from "../../../images/line.png"
 
 
@@ -39,9 +38,7 @@ class UserMessageCard extends Component{
                   this.props.userMessages(this.props.messages.username)}} 
                 style={{width: "30px", paddingRight: "8px"}} />
                 <span style={{fontSize: "1.5em"}}>{this.props.messages.likes.length}</span>
-                {this.props.messages.likes.filter((like)=>{ if (like.username.includes(this.props.user)===true) {return true} else {return false}}).length===1 &&
-                  <img src={Bookmark} alt="bookmark" style={{width: "30px", paddingLeft: "5px"}}/>
-                }
+                
              
              
                   <br/>

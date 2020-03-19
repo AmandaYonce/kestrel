@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import {  Card, Row, Col, CardBody, CardSubtitle, CardText } from 'reactstrap';
+import {  Card, Row, Col, CardBody, CardSubtitle, CardText, CardTitle } from 'reactstrap';
 import { userIsAuthenticated } from "../../HOCs";
 import friend from "../../../images/friend.png"
 import bookmark from "../../../images/bookmark.png"
@@ -11,18 +11,50 @@ import password from "../../../images/password.png"
 import Menu from "../Menu/Menu"
 import "../../main.css"
 import displayName from "../../../images/displayName.png"
+import joanna from "../../../images/joannaAvatar.png"
+import Amanda from "../../../images/amandaAvatar.png"
+import Javier from "../../../images/javierAvatar.png"
+
+
 
 class Faq extends Component {
-   
+
 
     render() {
 
         return(
             <Fragment>
             <Menu isAuthenticated={this.props.isAuthenticated}/>
-            <Card style={{marginTop: "100px", marginBottom: "100px"}} className="scratchBackground">   
-                 
-                <CardSubtitle style={{fontSize: "5rem", fontFamily: 'Odibee Sans', fontWeight: "bold"}} className="text-center"> Frequently Asked Questions</CardSubtitle>
+            <Card style={{marginTop: "95px", marginBottom: "100px"}} className="scratchBackground"> 
+            <Row style={{justifyContent: "center"}}>
+            <CardTitle style={{fontSize: "8rem", fontFamily: 'Odibee Sans'}}>The A-Team Developers</CardTitle>
+            </Row>
+
+            <Row className="text-center" >  
+            
+            <Col style={{padding: "10px", paddingLeft: "5rem"}}>
+            <CardBody style={{border: "2px solid silver"}}>
+                <img src={joanna} alt="holder" style={{width: "15rem"}} />
+                <CardTitle style={{fontSize: "2.7rem", fontWeight: "bold"}}>Joanna</CardTitle>
+                <CardSubtitle style={{fontSize: "1.4rem", fontWeight: "bold"}}>Quality Assurance</CardSubtitle>
+            </CardBody>
+            </Col>
+            <Col style={{padding: "10px"}}>
+            <CardBody style={{border: "2px solid silver"}}>
+                <img src={Javier} alt="holder" style={{width: "15rem"}}/>
+                <CardTitle style={{fontSize: "2.7rem", fontWeight: "bold"}}>Javier</CardTitle>
+                <CardSubtitle style={{fontSize: "1.4rem", fontWeight: "bold"}}>Product Owner</CardSubtitle>
+            </CardBody>
+            </Col>
+            <Col style={{padding: "10px", paddingRight: "5rem"}}>
+            <CardBody style={{border: "2px solid silver"}}>
+                <img src={Amanda} alt="holder" style={{width: "15rem"}}/>
+                <CardTitle style={{fontSize: "2.7rem", fontWeight: "bold"}}>Amanda</CardTitle>
+                <CardSubtitle style={{fontSize: "1.4rem", fontWeight: "bold"}}>Scrum Master</CardSubtitle>
+            </CardBody>
+            </Col>
+            </Row>
+                <CardSubtitle style={{fontSize: "5rem", fontFamily: 'Odibee Sans', fontWeight: "bold", marginTop: "10px"}} className="text-center"> Frequently Asked Questions</CardSubtitle>
                 <Row className="text-center">
                     <Col>
                 <CardBody >

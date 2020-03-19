@@ -1,11 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import {
-    Card, CardBody, CardText, CardSubtitle, Row, Col
-  } from 'reactstrap';
+import {Card, CardBody, CardText, CardSubtitle, Row, Col, CardTitle} from 'reactstrap';
   import { getMessages } from "../../../redux/messages/getMessages";
   import { connect } from "react-redux";
   import "../../../react/main.css"
-  import empty from "../../../telephoneImages/empty.png"
   import "../../main.css"
   import User from "../../../images/user.png"
 
@@ -80,7 +77,9 @@ import {
       return (
         <Fragment>
         <Card  style={{backgroundColor: "transparent", minHeight: "10rem", minWidth: "12rem"}}>
+          <CardTitle>Bookmarks</CardTitle>
           <Row className="scroll text-center" style={{height: "500px", overflow: "auto"}}>
+            <Col md-2></Col>
         <Col md-7>
         {likesarray.map(each=>(
           <CardBody className = "scratchBackground rounded" style={{border: "2px solid silver", padding: "15px", width: "30rem"}}>
@@ -90,6 +89,7 @@ import {
           </CardBody>
         ))}
         </Col>
+        <Col md-3></Col>
         </Row>
         </Card>
         
