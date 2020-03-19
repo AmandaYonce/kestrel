@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Home from "./Home";
-import Profile from "./Profile";
+import Profile from "./Message";
 import Account from "./Account"
 import NotFound from "./NotFound";
 import Faq from "../react/components/FAQ/faq"

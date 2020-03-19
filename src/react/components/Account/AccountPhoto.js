@@ -11,7 +11,7 @@ import EditPhotoModal from "./EditPhotoModal"
 import Photo from "../../../images/photo.png"
 import Placeholder from "../../../images/photoPlaceholder.png"
 
-  class AccountSide extends Component {
+  class AccountPhoto extends Component {
     state = { photoModal: false};
 
   toggle=()=>{
@@ -89,4 +89,4 @@ import Placeholder from "../../../images/photoPlaceholder.png"
       error: state.userInfo.userInfo.error,
     }),
     { userInfo, editPhoto }
-  )(AccountSide);
+  )(AccountPhoto);

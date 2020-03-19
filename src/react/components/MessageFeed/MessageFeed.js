@@ -11,7 +11,7 @@ import Form from 'react-bootstrap/Form'
 import MessageCard from "./MessageCard"
 
 
-class MFCarousel extends Component{
+class MessageFeed extends Component{
   constructor(props) {
     super(props);
     this.input = React.createRef();
@@ -179,7 +179,7 @@ const mapStateToProps=state=>{
     getMessages, handleLike, handleUnlike, deleteMessage, login
   }
   
- export default connect(mapStateToProps, mapDispatchToProps)(MFCarousel);
+ export default connect(mapStateToProps, mapDispatchToProps)(MessageFeed);
 
 
        

@@ -1,7 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import {
-    CardBody,
-    CardTitle, CardSubtitle, CardText
+import {CardBody, CardTitle, CardSubtitle, CardText
   } from 'reactstrap';
   import Button from 'react-bootstrap/Button'
   import { userInfo } from "../../../redux/account/userInfo"

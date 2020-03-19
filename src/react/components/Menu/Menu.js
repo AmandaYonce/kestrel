@@ -121,7 +121,7 @@ class Menu extends React.Component {
               </NavItem>
               </Nav>
 
-            <Nav >
+            <Nav >   
                 <Form onSubmit={this.handleLogin} style={{display: "flex"}}>
                 <NavItem>
                   <Form.Control style={{"width": "170px", "marginRight":"5px", border: "none", boxShadow: "1.5px 1.5px 0px 1.5px #d6e7e5"}} type="text" placeholder="Username" name="username" autoFocus required onChange={this.handleChange}/>

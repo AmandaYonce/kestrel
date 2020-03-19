@@ -8,7 +8,7 @@ import "../../main.css"
 import message from "../../../images/message.png"
 
 
-class MFMain extends Component {
+class NewMessage extends Component {
   constructor(props) {
     super(props);
     this.input = React.createRef();
@@ -76,4 +76,4 @@ class MFMain extends Component {
     );
   }
 }
-export default connect(null, { addNewMessage })(MFMain);
+export default connect(null, { addNewMessage }) (NewMessage);

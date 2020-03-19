@@ -1,8 +1,3 @@
-.carousel-inner>.item {
-    -webkit-transition: -webkit-transform 0.3s ease-in-out !important;
-    -o-transition: -o-transform 0.3s ease-in-out !important;
-    transition: transform 0.3s ease-in-out !important;
-}
 
 
 .scratchBackground{

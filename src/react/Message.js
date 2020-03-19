@@ -7,12 +7,12 @@ import { userInfo } from "../redux/account/userInfo"
 import { connect } from "react-redux";
 import { getMessages } from "../redux/messages/getMessages";
 import "./main.css"
-import FeedTab from "../react/components/MessageFeed/FeedTab"
-import WelcomeModal from "../react/components/MessageFeed/WelcomeModal"
+import FeedTab from "./components/MessageFeed/FeedTab"
+import WelcomeModal from "./components/MessageFeed/WelcomeModal"
 
 import {welcomeModal} from "../redux/welcomeModal/welcomeModal"
 
-class Profile extends React.Component {
+class Message extends React.Component {
   
   componentDidMount(){
     this.props.getMessages()
@@ -48,4 +48,4 @@ export default connect(
     messages: state.messages.getMessages.result,
    
   })
-  ,{userInfo, getMessages, welcomeModal}) (userIsAuthenticated(Profile));
+  ,{userInfo, getMessages, welcomeModal}) (userIsAuthenticated(Message));

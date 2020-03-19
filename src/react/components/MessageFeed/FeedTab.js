@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Row, Col, Container } from 'reactstrap';
 import classnames from 'classnames';
-import MFSide from "./MFSide"
-import MFMain from "./MFMain"
+import Bookmarks from "./Bookmarks"
+import NewMessage from "./NewMessage"
 import {connect} from "react-redux"
 import PhoneBook from "./PhoneBook"
 import {userInfo} from "../../../redux/account/userInfo"
-import MFCarousel from "./MFCarousel"
+import MFCarousel from "./MessageFeed"
 import "../../main.css"
 
 class FeedTab extends Component {
@@ -69,7 +69,7 @@ class FeedTab extends Component {
 
           <Col md="4">
               <Card body>
-              <MFMain 
+              <NewMessage 
                 newMessage={this.state.newMessage}
                 toggleMessage={this.toggleNewMessage}
                 className="flex-fill"
@@ -86,7 +86,7 @@ class FeedTab extends Component {
           <Row>
            
               <Card body>
-               <MFSide/>
+               <Bookmarks/>
                
               </Card>
            

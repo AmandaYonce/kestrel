@@ -9,7 +9,7 @@ import {Card, CardBody, CardText, CardSubtitle, Row, Col, CardTitle} from 'react
 
 
 
-  class MFSide extends Component {
+  class Bookmarks extends Component {
     state={
       activeIndex: 0,
       animating: false,
@@ -36,7 +36,7 @@ import {Card, CardBody, CardText, CardSubtitle, Row, Col, CardTitle} from 'react
     const nextIndex = this.state.activeIndex === 0 ? this.props.messages.length - 1 : this.state.activeIndex - 1;
     this.setState({activeIndex: nextIndex});
     this.infinite()
-    console.log(this.state)
+    console.log(this.state)   
   }
 
   goToIndex = (newIndex) => {
@@ -107,7 +107,7 @@ import {Card, CardBody, CardText, CardSubtitle, Row, Col, CardTitle} from 'react
     state=>({
       messages: state.messages.getMessages.result,
       username: state.auth.login.result.username
-    }), {getMessages})(MFSide);
+    }), {getMessages})(Bookmarks);
 
 
   
