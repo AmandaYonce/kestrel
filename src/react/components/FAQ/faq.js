@@ -3,7 +3,7 @@ import {  Card, Row, Col, CardBody, CardSubtitle, CardText, CardTitle } from 're
 import { userIsAuthenticated } from "../../HOCs";
 import friend from "../../../images/friend.png"
 import bookmark from "../../../images/bookmark.png"
-import thumb from "../../../images/thumb.png"
+import thumb from "../../../images/likethumbroundblack.png"
 import trash from "../../../images/trash.png"
 import photoPlaceholder from "../../../images/photoPlaceholder.png"
 import message from "../../../images/message.png"
