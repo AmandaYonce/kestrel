@@ -11,6 +11,6 @@ pages:
     paths:
       - public
   only:
-    - telephone
+    - master
 variables:
   PUBLIC_URL: "/kwitter"
