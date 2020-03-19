@@ -13,6 +13,15 @@ import { messageReducers } from "./messages/getMessages";
 import { deleteMessageReducer } from "./messages/deleteMessage";
 import { reducers as register } from "./stateReducers/registrationForm/registrationForm";
 import { reducers as deleteUser } from "./account/deleteUser";
+import {modalReducer} from "./welcomeModal/welcomeModal"
+import JavascriptTimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en'
+import{randomQuoteReducer} from "../redux/randomQuote/randomQuote"
+import{friendInfoReducer} from "../redux/account/userInfo"
+import {userMessagesReducers} from "../redux/messages/userMessages"
+import {googleReducer} from "./account/googleTracker"
+JavascriptTimeAgo.locale(en)
+
 
 export * from "./auth";
 
@@ -24,7 +33,6 @@ export const store = configureStore({
   reducer: {
     router: connectRouter(history),
     auth: combineReducers(authReducers),
-    messages: combineReducers(messageReducers),
     likeReducers: combineReducers(likeReducers),
     userInfo: combineReducers(userInfo),
     editUser: combineReducers(editReducers),
@@ -33,7 +41,13 @@ export const store = configureStore({
     newMessage: combineReducers(newMessageReducer),
     deleteMessage: combineReducers(deleteMessageReducer),
     register: combineReducers(register),
-    deleteUser: combineReducers(deleteUser)
+    deleteUser: combineReducers(deleteUser),
+    welcomeModal: combineReducers(modalReducer),
+    randomQuote: combineReducers(randomQuoteReducer),
+    friendInfo: combineReducers(friendInfoReducer),
+    userMessages: combineReducers(userMessagesReducers),
+    google: combineReducers(googleReducer),
+    messages: combineReducers(messageReducers),
   },
   preloadedState: {},
   devTools: process.env.NODE_ENV !== "production"

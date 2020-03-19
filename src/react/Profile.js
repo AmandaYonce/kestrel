@@ -2,49 +2,50 @@
 import React from "react";
 import { Menu} from "./components";
 import { userIsAuthenticated } from "./HOCs";
-import { Container, Row, Col } from 'reactstrap';
-import {MFMain} from "./components"
-import {MFSide} from "./components"
+import { Row} from 'reactstrap';
 import { userInfo } from "../redux/account/userInfo"
 import { connect } from "react-redux";
+import { getMessages } from "../redux/messages/getMessages";
+import "./main.css"
+import FeedTab from "../react/components/MessageFeed/FeedTab"
+import WelcomeModal from "../react/components/MessageFeed/WelcomeModal"
+
+import {welcomeModal} from "../redux/welcomeModal/welcomeModal"
 
 class Profile extends React.Component {
-  state={
-    newMessage: false
-  }
-
-  toggleNewMessage=e=>{
-    this.setState({ newMessage: !this.state.newMessage })
-  }
-
+  
   componentDidMount(){
-    this.props.userInfo()
-  };
+    this.props.getMessages()
+  }
+  toggleModal(){
+    this.props.welcomeModal(false)
+  }
 
 
   render() {
     return (
       <>
         <Menu isAuthenticated={this.props.isAuthenticated} />
-        <main className="my-5 py-5">
-        <Container className="px-0" style={{"marginTop": "50px"}}>
-        <Row noGutters className="pt-2 pt-md-5 w-100 px-4 px-xl-0 position-relative">
-            <Col xs={{ order: 2 }} md={{ size: 4, order: 1 }} tag="aside" className="pb-5 mb-5 pb-md-0 mb-md-0 mx-auto mx-md-0">
-            <MFSide />
-            </Col>
-            
-            <Col xs={{ order: 1 }} md={{ size: 7, offset: 1 }} tag="section" className="py-5 mb-5 py-md-0 mb-md-0">
-            <MFMain 
-            newMessage={this.state.newMessage}
-            toggleMessage={this.toggleNewMessage}
-            />
-            </Col>
+        <main className="my-5 py-5 bricklightlonger ">
+         
+        <WelcomeModal
+        />
+          
+        <Row style={{marginTop: "120px"}}>
+
+        <FeedTab />
+
         </Row>
-        </Container>
+       
   </main>
       </>
     );
   }
 }
 
-export default connect(null,{userInfo}) (userIsAuthenticated(Profile));
+export default connect(
+  state=>({
+    messages: state.messages.getMessages.result,
+   
+  })
+  ,{userInfo, getMessages, welcomeModal}) (userIsAuthenticated(Profile));

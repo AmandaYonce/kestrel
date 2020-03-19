@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import {
-    Card, CardImg, CardBody,
+    Card, CardImg, CardBody, Col
   } from 'reactstrap';
-import HolderImage from "../../../images/owl-white-background.png"
 import { userInfo } from "../../../redux/account/userInfo"
 import { connect } from "react-redux";
 import {domain} from "../../../redux/helpers"
 import Button from 'react-bootstrap/Button'
-import SmallIcon from "../../../images/owl-black-square-single.png"
 import {editPhoto} from "../../../redux/account/editPhoto"
 import EditPhotoModal from "./EditPhotoModal"
+import Photo from "../../../images/photo.png"
+import Placeholder from "../../../images/photoPlaceholder.png"
 
   class AccountSide extends Component {
     state = { photoModal: false};
@@ -25,47 +25,50 @@ import EditPhotoModal from "./EditPhotoModal"
       if(this.props.details===null || this.props===null){
         this.props.userInfo()
       return (
-        <Card style={{ marginTop: 100 }}>
+        <Col>
+        <Card style={{ marginTop: 100, backgroundColor: "transparent" }}>
         <CardBody  >
             <CardImg top width="100%" 
-            src={HolderImage} alt="Kwitter Icon" 
-            className="img-fluid rounded-circle" 
+            src={Placeholder} alt="Kwitter Icon" 
             style={{ width: 335 }} />
             </CardBody>
-            <Button variant="secondary" 
-              type="submit"  
-              onClick={this.toggleDeleteUser}
-              style={{ "fontSize": "28", "backgroundColor": "aliceBlue", "color": "black" }}>
-              <img src={SmallIcon} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "40px", "paddingRight": "5px" }} />
-            Add/Edit Photo
-            </Button>
+            
         </Card>
+         <Button variant="secondary" 
+         type="submit"  
+         onClick={this.toggleDeleteUser}
+         style={{ "fontSize": "28", "backgroundColor": "aliceBlue", "color": "black", boxShadow: "1.5px 1.5px 1.5px 1.5px #324164" }}>
+         <img src={Photo} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "40px", "paddingRight": "5px" }} />
+       Add/Edit Photo
+       </Button>
+       </Col>
       )}
       
       return (
-        <Card style={{ marginTop: 100 }}>
+        <Col className="text-center">
+        <Card style={{ marginTop: 100, backgroundColor: "transparent" }}>
         <CardBody >
           {this.props.details.pictureLocation===null &&  
            <CardImg top width="100%" 
-           src={HolderImage} alt="Kwitter Icon" 
-           className="img-fluid rounded-circle" 
-           style={{ width: 335 }} />
+           src={Placeholder} alt="Kwitter Icon" 
+           />
           
           }
           {this.props.details.pictureLocation !== null &&
             <CardImg top width="100%" 
             src={domain+this.props.details.pictureLocation} alt="Kwitter Icon" 
-            className="img-fluid rounded-circle" 
-            style={{ width: 335}} />
+            className="img-fluid" 
+            />
           }
             </CardBody>
-
-            <Button variant="secondary"  
+        </Card>
+        <Button variant="secondary"  
                   onClick={(e)=>{
                     this.toggle()
                   }}
-                  style={{ "fontSize": "28", "backgroundColor": "aliceBlue", "color": "black" }}>
-                <img src={SmallIcon} alt="avatar" className="img-fluid rounded-circle" style={{ "width": "40px", "paddingRight": "5px" }} />
+                  className="btn-lg"
+                  style={{ "fontSize": "28", "backgroundColor": "#DFD8D2", "color": "black", fontFamily: 'Boogaloo, cursive', boxShadow: "1.5px 1.5px 1.5px 1.5px #324164" }}>
+                <img src={Photo} alt="avatar"  style={{ "width": "40px", "paddingRight": "5px" }} />
                 Add/Edit Photo
             </Button>
 
@@ -73,7 +76,7 @@ import EditPhotoModal from "./EditPhotoModal"
             modal={this.state.photoModal}
             toggle={this.toggle}>
             </EditPhotoModal>
-        </Card>
+        </Col>
       )
     }
     

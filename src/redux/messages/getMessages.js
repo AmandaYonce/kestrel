@@ -4,13 +4,14 @@ import {
     createActions,
     getInitStateFromStorage,
     createReducer,
-    asyncCases
+    asyncCases,
+  
   } from "../helpers";
 
 export const GETMESSAGES = createActions("getMessages");
 export const getMessages = () => (dispatch) => {
     dispatch(GETMESSAGES.START())
-
+    
 
   return fetch("https://kwitter-api.herokuapp.com/messages?limit=200&offset=0")
     .then(handleJsonResponse)
@@ -21,10 +22,7 @@ export const getMessages = () => (dispatch) => {
         payload: result
       })
     })
-    .catch(err => {
-        return Promise.reject(dispatch({ type:
-        GETMESSAGES.Fail, payload: err}))
-    })
+    
 };
 
 const initialState={
@@ -34,7 +32,6 @@ const initialState={
 }
 
 export const messageReducers = {
-  getMessages: createReducer(getInitStateFromStorage("getMessages", initialState), {...asyncCases(GETMESSAGES)})
+  getMessages: createReducer(getInitStateFromStorage("getMessages", initialState), {...asyncCases(GETMESSAGES)}), 
   }
 
-  

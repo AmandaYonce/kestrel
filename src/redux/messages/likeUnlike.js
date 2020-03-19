@@ -59,7 +59,6 @@ return fetch(url+"/messages/"+messageID, {
     result.message.likes.map(each=>{
       if(each.username===username){
           const likeID=each.id
-          console.log(likeID)
         fetch(url+"/likes/"+likeID, {
           method: "DELETE",
           headers: { Authorization: "Bearer "+ token, ...jsonHeaders}

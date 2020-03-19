@@ -8,20 +8,24 @@ import {
   createActions,
   createReducer
 } from "./helpers";
+import {welcomeModal} from "../redux/welcomeModal/welcomeModal"
+
 
 const url = domain + "/auth";
 
 const LOGIN = createActions("login");
 export const login = loginData => dispatch => {
   dispatch(LOGIN.START());
-
+ 
   return fetch(url + "/login", {
     method: "POST",
     headers: jsonHeaders,
     body: JSON.stringify(loginData)
   })
     .then(handleJsonResponse)
-    .then(result => dispatch(LOGIN.SUCCESS(result)))
+    .then(result => {
+      dispatch(welcomeModal(true))
+      dispatch(LOGIN.SUCCESS(result))})
     .catch(err => Promise.reject(dispatch(LOGIN.FAIL(err))));
 };
 
@@ -30,14 +34,17 @@ export const logout = () => (dispatch, getState) => {
   dispatch(LOGOUT.START());
 
   const token = getState().auth.login.result.token;
-
+  
   return fetch(url + "/logout", {
     method: "GET",
     headers: { Authorization: "Bearer " + token, ...jsonHeaders }
   })
     .then(handleJsonResponse)
-    .then(result => dispatch(LOGOUT.SUCCESS(result)))
+    .then(result => {
+      //dispatch(welcomeModal(false))
+      dispatch(LOGOUT.SUCCESS(result))})
     .catch(err => Promise.reject(dispatch(LOGOUT.FAIL(err))));
+   
 };
 
 export const reducers = {

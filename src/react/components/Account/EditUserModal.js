@@ -6,6 +6,7 @@ import React, { Component } from 'react';
   import { userInfo } from "../../../redux/account/userInfo"
   import { connect } from "react-redux";
   import {editUser} from "../../../redux/account/edituser"
+  import {google} from "../../../redux/account/googleTracker"
  
 
 class EditUserModal extends Component {
@@ -14,6 +15,14 @@ class EditUserModal extends Component {
         about: "",
         displayName: "" 
     }
+
+    componentDidMount(){
+      if(this.props.googleStatus !== null){
+        if(this.props.googleStatus.value===true){
+        this.setState({password: this.props.googleStatus.password})
+        }
+        }
+      }
     
 
     handleAboutChange=(event)=>{
@@ -30,6 +39,7 @@ class EditUserModal extends Component {
         const newState=event.target.value
         this.setState({password:newState})
     }
+
     
 
   render() {
@@ -46,13 +56,16 @@ class EditUserModal extends Component {
         </ModalHeader>
         <ModalBody>
         <Form.Row>
+        
+        {this.props.googleStatus===null &&
         <Form.Row>
             <Form.Group as={Col} md="6" id="login-form" >
           <Form.Label style={{"fontSize": "25px", "fontFamily": 'Poppins'}} htmlFor="password">Current Password</Form.Label>
           <Form.Control style={{"width": "600px"}} type="text" placeholder="password" name="username" autoFocus required  onChange={this.handleGetPassword}/>
           </Form.Group>
             </Form.Row>
-           
+            }
+            
             <Form.Group as={Col} md="6" id="login-form" >
             <Form.Label style={{"fontSize": "25px", "fontFamily": 'Poppins'}} htmlFor="displayname">Display Name</Form.Label>
             <Form.Control style={{"width": "250px"}} type="text" placeholder={this.props.details.displayName} name="username" autoFocus required onChange={this.handleDisplayNameChange}/>
@@ -89,6 +102,7 @@ export default connect(
       details: state.userInfo.userInfo.result,
       loading: state.userInfo.userInfo.loading,
       error: state.userInfo.userInfo.error,
+      googleStatus: state.google.google.result
     }),
-    { userInfo, editUser }
+    { userInfo, editUser, google }
   )(EditUserModal);

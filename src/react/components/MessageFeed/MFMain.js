@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from "react";
 import { CardBody, Card } from "reactstrap";
 import Form from "react-bootstrap/Form";
-import MFCarousel from "./MFCarousel";
-import SmallIcon from "../../../images/owl-black-square-single.png";
 import Button from "react-bootstrap/Button";
 import { addNewMessage } from "../../../redux/messages/newMessages";
 import { connect } from "react-redux";
+import "../../main.css"
+import message from "../../../images/message.png"
 
 
 class MFMain extends Component {
@@ -32,17 +32,16 @@ class MFMain extends Component {
     this.setState({ message: e.target.value })
    
   }
-
-
   render() {
 
     return (
       <Fragment>
-        <Card>
-          <CardBody>
+        <Card style={{backgroundColor: "transparent"}}>
+          <CardBody className="text-center">
+          <CardBody className="rounded" style={{padding: "0"}}>
             <Form.Group>
-              <Form.Label className="h3 mb-2 pt-2 font-weight-bold text-secondary">
-                What's Happening
+              <Form.Label className="text-center" style={{color: "#576490", fontSize: "3.2rem", fontFamily: 'Odibee Sans', margin: "0", whiteSpace: "nowrap" }}>
+                New Message
               </Form.Label>
               <Form.Control
                 as="textarea"
@@ -57,21 +56,22 @@ class MFMain extends Component {
           </CardBody>
 
           <Button
-            variant="secondary"
+            className="btn-xl"
+           
             type="submit"
-            style={{ fontSize: "28", backgroundColor: "#333333" }}
+            style={{backgroundColor: "#7796CB", color:"Black", border: "2px solid #A3BCF9" }}
             onClick={this.handleAddNewMessage}
           >
             <img
-              src={SmallIcon}
-              alt="avatar"
-              className="img-fluid rounded-circle"
-              style={{ width: "40px" }}
+              src={message}
+              alt="message"
+              style={{ width: "30px", paddingRight: "5px"}}
             />
             New Message
           </Button>
+          </CardBody>
         </Card>
-        <MFCarousel />
+        
       </Fragment>
     );
   }

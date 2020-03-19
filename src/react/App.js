@@ -4,6 +4,7 @@ import Home from "./Home";
 import Profile from "./Profile";
 import Account from "./Account"
 import NotFound from "./NotFound";
+import Faq from "../react/components/FAQ/faq"
 import "./Assets.css"
 
 
@@ -18,6 +19,7 @@ class App extends React.Component {
         <Route exact path="/profiles/:username" component={Profile} />
         <Route exact path="/account/:username" component={Account}/>
         <Route exact path="/messagefeed/:username" component={Profile}/>
+        <Route exact path="/faq" component={Faq}/>
         <Route path="*" component={NotFound} />
       </Switch>
     );

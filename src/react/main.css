@@ -1,0 +1,82 @@
+.carousel-inner>.item {
+    -webkit-transition: -webkit-transform 0.3s ease-in-out !important;
+    -o-transition: -o-transform 0.3s ease-in-out !important;
+    transition: transform 0.3s ease-in-out !important;
+}
+
+
+.scratchBackground{
+    background-image: url(../telephoneImages/scratch.png);
+    
+
+}
+
+.herringbone{
+    background-image: url(../telephoneImages/herringbone.jpeg);
+    background-repeat: no-repeat;
+
+}
+
+.diamonds {
+    background-image: url(../telephoneImages/diamonds.jpeg);
+    background-repeat: no-repeat;
+}
+
+.elegant{
+    background-image: url(../telephoneImages/elegant.jpeg);
+    background-repeat: no-repeat;
+
+}
+
+.bowtie{
+    background-image: url(../telephoneImages/bowtie.jpeg);
+    background-repeat: no-repeat;
+
+}
+
+.brick{
+    background-image: url(../telephoneImages/brick.jpeg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+}
+
+.bricklightnophone {
+    background-image: url(../telephoneImages/bricklightnophone.jpeg);
+    background-size: cover;
+
+}
+
+.bricklightnophoneProfile {
+    background-image: url(../telephoneImages/bricklightnophone.jpeg);
+    background-size: cover;
+
+}
+
+.owlCard{
+    background-image: url(../images/owl-black-rectangle.png);
+    background-size: cover;
+}
+
+.owlBackground{
+    background-image: url(../images/owl-white-rectangle.png);
+    background-size: 100% 100%;
+
+}
+
+.bricklightlonger{
+    background-image: url(../images/bricklightslonger.jpeg);
+    background-size: cover
+
+}
+
+.noOwlBackground{
+    background-image: url(../images/no-owl-white-rectangle.png);
+    background-size: 100% 100%;
+
+}
+
+.brickOwl {
+    background-image: url(../images/brickOwl.png);
+    background-size: cover;
+}
