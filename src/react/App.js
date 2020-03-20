@@ -15,7 +15,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <BrowserRouter>
+      
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/profiles/:username" component={Profile} />
@@ -24,7 +24,7 @@ class App extends React.Component {
         <Route exact path="/faq" component={Faq}/>
         <Route path="*" component={NotFound} />
       </Switch>
-      </BrowserRouter>
+     
     );
   }
 }
