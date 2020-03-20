@@ -6,7 +6,7 @@ import Account from "./Account"
 import NotFound from "./NotFound";
 import Faq from "../react/components/FAQ/faq"
 import "./Assets.css"
-import {BrowserRouter} from 'react-router-dom';
+//import {BrowserRouter} from 'react-router-dom';
 
 
 class App extends React.Component {
