@@ -17,11 +17,11 @@ class App extends React.Component {
     return (
       <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/profiles/:username" component={Profile} />
-        <Route exact path="/account/:username" component={Account}/>
-        <Route exact path="/messagefeed/:username" component={Profile}/>
-        <Route exact path="/faq" component={Faq}/>
+        <Route exact path="/kwitter" component={Home} />
+        <Route exact path="/kwitter/profiles/:username" component={Profile} />
+        <Route exact path="/kwitter/account/:username" component={Account}/>
+        <Route exact path="/kwitter/messagefeed/:username" component={Profile}/>
+        <Route exact path="/kwitter/faq" component={Faq}/>
         <Route path="*" component={NotFound} />
       </Switch>
       </BrowserRouter>
