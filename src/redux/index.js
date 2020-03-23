@@ -20,6 +20,8 @@ import{randomQuoteReducer} from "../redux/randomQuote/randomQuote"
 import{friendInfoReducer} from "../redux/account/userInfo"
 import {userMessagesReducers} from "../redux/messages/userMessages"
 import {googleReducer} from "./account/googleTracker"
+import {failedRegisterReducer} from "../redux/stateReducers/registrationForm/failedRegisterModal"
+import {failedLoginReducer} from "../redux/stateReducers/registrationForm/failedLoginModal"
 JavascriptTimeAgo.locale(en)
 
 
@@ -48,6 +50,8 @@ export const store = configureStore({
     userMessages: combineReducers(userMessagesReducers),
     google: combineReducers(googleReducer),
     messages: combineReducers(messageReducers),
+    registerModal: combineReducers(failedRegisterReducer),
+    loginModal: combineReducers(failedLoginReducer)
   },
   preloadedState: {},
   devTools: process.env.NODE_ENV !== "production"

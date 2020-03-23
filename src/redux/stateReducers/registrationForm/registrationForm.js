@@ -9,6 +9,8 @@ import {
   createReducer
 } from "../../helpers";
 import { login } from "../../auth";
+import {failedRegisterModal} from "./failedRegisterModal"
+
 const url = domain;
 
 const REGISTER = createActions("register");
@@ -28,7 +30,10 @@ export const register = registerData => dispatch => {
       dispatch(login(loginData));
       dispatch(REGISTER.SUCCESS(result));
     })
-    .catch(err => Promise.reject(dispatch(REGISTER.FAIL(err))));
+    .catch(err => {
+      dispatch(failedRegisterModal(true))
+      Promise.reject(dispatch(REGISTER.FAIL(err)))
+    })
 };
 export const reducers = {
   register: createReducer(

@@ -9,6 +9,7 @@ import {
   createReducer
 } from "./helpers";
 import {welcomeModal} from "../redux/welcomeModal/welcomeModal"
+import {failedLoginModal} from "../redux/stateReducers/registrationForm/failedLoginModal"
 
 
 const url = domain + "/auth";
@@ -26,7 +27,10 @@ export const login = loginData => dispatch => {
     .then(result => {
       dispatch(welcomeModal(true))
       dispatch(LOGIN.SUCCESS(result))})
-    .catch(err => Promise.reject(dispatch(LOGIN.FAIL(err))));
+    .catch(err => {
+      dispatch(failedLoginModal(true))
+      Promise.reject(dispatch(LOGIN.FAIL(err)))
+    });
 };
 
 const LOGOUT = createActions("logout");

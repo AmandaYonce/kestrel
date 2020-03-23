@@ -6,13 +6,13 @@ import { Container, Row, Col } from 'reactstrap';
 import "./main.css"
 import { getMessages } from "../redux/messages/getMessages";
 import { connect } from "react-redux";
+import FailedRegister from "./components/RegistrationForm/FailedRegister"
+import {failedRegisterModal} from "../redux/stateReducers/registrationForm/failedRegisterModal"
+import FailedLogin from "./components/RegistrationForm/failedLogin"
+import {failedLoginModal} from "../redux/stateReducers/registrationForm/failedLoginModal"
 
 
-class Home extends React.Component {
-
-  componentDidMount(){
-    //this.props.welcomeModal(true)
-  };    
+class Home extends React.Component {   
   
   render() {
     return (
@@ -29,11 +29,24 @@ class Home extends React.Component {
         </Row>
         </Container>
         </main>
+        <FailedRegister
+        modal={this.props.registerModal}
+        />
+        <FailedLogin 
+        modal= {this.props.loginModal}
+        />
       </>
     );
   }
 }
 
-export default connect (null, {getMessages}) (userIsNotAuthenticated(Home));
+export default connect (
+  state=>({
+    registerModal: state.registerModal.failedRegisterModal.result,
+    loginModal: state.loginModal.failedLoginModal.result
+  })
+  , 
+  
+  {getMessages, failedRegisterModal, failedLoginModal}) (userIsNotAuthenticated(Home));
 
 
