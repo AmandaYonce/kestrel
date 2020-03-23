@@ -95,7 +95,7 @@ class Menu extends React.Component {
           </NavLink>
           </NavItem>
           <NavItem>
-          <NavLink style={{"paddingRight": "20px", "fontSize":"45px", "color": "#faf9f5", "fontFamily": 'Odibee Sans'}} to="/kwitter" 
+          <NavLink style={{"paddingRight": "20px", "fontSize":"45px", "color": "#faf9f5", "fontFamily": 'Odibee Sans'}} to="/" 
           onClick={this.handleLogout}>
             Logout
           </NavLink>
