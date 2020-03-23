@@ -6,7 +6,7 @@ import Account from "./Account"
 import NotFound from "./NotFound";
 import Faq from "../react/components/FAQ/faq"
 import "./Assets.css"
-import {BrowserRouter} from 'react-router-dom';
+//import {BrowserRouter} from 'react-router-dom';
 
 
 class App extends React.Component {
@@ -15,16 +15,15 @@ class App extends React.Component {
 
   render() {
     return (
-      <BrowserRouter>
+     
       <Switch>
-        <Route exact path="/kwitter" component={Home} />
+        <Route exact path="/" component={Home} />
         <Route exact path="/profiles/:username" component={Profile} />
         <Route exact path="/account/:username" component={Account}/>
         <Route exact path="/messagefeed/:username" component={Profile}/>
         <Route exact path="/faq" component={Faq}/>
         <Route path="*" component={NotFound} />
       </Switch>
-      </BrowserRouter>
     );
   }
 }

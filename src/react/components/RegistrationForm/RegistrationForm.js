@@ -14,10 +14,12 @@ import {google} from "../../../redux/account/googleTracker"
 
 class RegistrationForm extends React.Component {
   state = { username: "", displayName: "", password: "" };
+
   handleRegistration = e => {
     e.preventDefault();
     this.props.register(this.state);
   };
+
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -40,6 +42,7 @@ class RegistrationForm extends React.Component {
   }
 
   render() {
+    
     return (
       <React.Fragment>
         <CardBody className="rounded" style={{backgroundColor: "#FCF5C7", border: "4px solid #576490", boxShadow: "2px 2px 2px 2px #d6e7e5", opacity: ".8", marginTop: "70px"}} >
@@ -131,11 +134,11 @@ class RegistrationForm extends React.Component {
           </Form>
         </CardBody>
       </React.Fragment>
-    );
+    )
+    
   }
 }
 
-//export default RegistrationForm;
 export default connect(
   state => ({
     result: state.register.register.result,
