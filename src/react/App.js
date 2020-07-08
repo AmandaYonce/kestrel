@@ -8,6 +8,9 @@ import Faq from "../react/components/FAQ/faq"
 import "./Assets.css"
 //import {BrowserRouter} from 'react-router-dom';
 
+//heroku backend https://git.heroku.com/kestrel24.git
+//heroku frontend https://kestrel24.herokuapp.com/
+
 
 class App extends React.Component {
 
